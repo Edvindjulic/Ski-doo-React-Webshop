@@ -1,5 +1,5 @@
-import BasicTable from "../components/table";
-import { products } from "../data";
+import BasicTextFields from "../components/CheckoutForm";
+import BasicTable from "../components/Table";
 
 export default function ConfirmOrder() {
   return (
@@ -12,6 +12,7 @@ export default function ConfirmOrder() {
       <h2>Pris: {products[0].price}</h2> */}
 
       <BasicTable />
+      <BasicTextFields />
     </div>
   );
 }

@@ -6,19 +6,23 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { products } from "../data";
-import { Avatar, TableFooter } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 
 export default function BasicTable() {
   const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 350 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
             <TableCell align="right">Product</TableCell>
+            <TableCell align="right">Add</TableCell>
             <TableCell align="right">Amount</TableCell>
+
+            <TableCell align="right">Remove</TableCell>
+
             <TableCell align="right">
               Summa: {totalPrice.toLocaleString("sv-SE")} SEK
             </TableCell>
@@ -39,7 +43,13 @@ export default function BasicTable() {
                 />
               </TableCell>
               <TableCell align="right">{product.title}</TableCell>
+              <TableCell align="right">
+                <Button variant="contained">+</Button>
+              </TableCell>
               <TableCell align="right">{product.id}</TableCell>
+              <TableCell align="right">
+                <Button variant="contained">-</Button>
+              </TableCell>
               <TableCell align="right">
                 {product.price.toLocaleString("sv-SE")} SEK
               </TableCell>
