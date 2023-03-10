@@ -13,9 +13,9 @@ export default function BasicTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350 }} aria-label="simple table">
+      <Table sx={{ minWidth: 350, maxWidth: 900 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow sx={{ color: "secondary.main", bgcolor: "primary.main" }}>
             <TableCell>Image</TableCell>
             <TableCell align="right">Product</TableCell>
             <TableCell align="right">Add</TableCell>

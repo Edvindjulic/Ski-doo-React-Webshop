@@ -22,57 +22,30 @@ export const generateId = () => {
 
 export const products: Product[] = [
   {
+    id: "1",
     image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1032228-02_Fm_M0013527&mw=1500&fmt=webp',
-    title: 'Jolly',
+      "https://www.ski-doo.com/content/dam/global/en/ski-doo/my24/studio/sport-utility/tundra/side/SKI-MY24-TUN-LE-600-EFI-85Hp-Black-000GDRA00-Studio-RSIDE-NA.png",
+    title: "Ski-Doo Tundra",
     description:
-      'Stool with comfortable, shaped seat. Made of solid wood, in the Toon Wood type. Height 61 cm. Seat 40x32 cm. Seat height: 61 cm Width at the bottom 47 cm. Mounted.',
-    price: 1599,
-    id: 'e1',
+      "Djup snö, hårda vinterförhållanden - det spelar ingen roll för Tundra LE. Med REV Gen4 plattformen kan föraren nu ta sig an allt med ultrasnabba köregenskaper, överlägsen bärförmåga och mångsidiga funktioner som alla drivs av pålitliga Rotax-motorer.",
+    price: 10000,
   },
   {
+    id: "2",
     image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1595558-01_Fm_M0037129&mw=1500&fmt=webp',
-    title: 'Chardonne',
+      "https://www.ski-doo.com/content/dam/global/en/ski-doo/my24/studio/trail/mxz/side/SKI-MY24-MXZ-Sport-600-EFI-Neo-Yellow-Studio-RSIDE-000BHRB00.png",
+    title: "MXZ Sport",
     description:
-      'Armchair with pine and plywood frame with nozag suspension and foam filling. Brushed metal legs. Dimensions: Width 89 cm, height 77 cm, depth 83 cm. Seat height 43 cm, seat depth 62 cm, seat width 54 cm.',
-    price: 3919,
-    id: 'd2',
+      "Dynamisk ledprestanda med värdeorienterade funktioner och förtroendeingivande körning. En skoter full av skoj utan att plånboken töms.",
+    price: 123900,
   },
   {
+    id: "3",
     image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=hom_1663846-02_Fs&mw=1500&fmt=webp',
-    title: 'Xander',
+      "https://www.ski-doo.com/content/dam/global/en/ski-doo/my24/studio/deep-snow/freeride/spring-only/SKI-MY24-FREE-Standard-MOON-Neo-Mint-000VDRC00-Studio-RSIDE-NA-SpringOnly.png",
+    title: "Ski-Doo FreeRide",
     description:
-      'Lounge armchair with upholstery in bouquet fabric and passpoalk edge along the top edge. Legs and frame in powder-coated metal. Foam filling. Easier installation.',
-    price: 2299,
-    id: 'c1',
-  },
-  {
-    image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1615855-02_Fm_M0044073&mw=1500&fmt=webp',
-    title: 'Magnolia',
-    description:
-      'Rattan bedside table with shelf underneath. The top is reinforced with a plywood board under the rattan. Dimensions: Width 41 cm, height 71 cm, depth 31 cm. Leg height 22 cm. Height to the upper edge of the lower shelf 25 cm. Dimensions between the shelves 42.5 cm.',
-    price: 1299,
-    id: 'f4',
-  },
-  {
-    image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1503126-03_Fm_M0037108&mw=1500&fmt=webp',
-    title: 'Bella',
-    description:
-      'Upholstered headboard attached to the wall (two hooks on the back). Wooden frame (pine). Upholstery in velvet of polyester and filling of polyether. Width 95 cm. Height 61.5 cm. Depth 7.5 cm.',
-    price: 999,
-    id: 'e6',
-  },
-  {
-    image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1664039-01_Fm_M0059479&mw=1500&fmt=webp',
-    title: 'Essentials',
-    description:
-      'Side table / cabinet in solid mango wood with wax-treated surface. Two doors with wooden handles and soft closing. The cabinet is divided inside and has a fixed shelf. Dimensions between shelves approx. 27 cm. Clear height under furniture 14 cm. Delivered assembled.',
-    price: 5499,
-    id: 'a3',
+      "Freeride klarar av att erövra extrema förhållanden i djupsnö och gör det med alldeles egen stil, och sticker ut i en värld där branta sluttningar och stora hopp är normen.",
+    price: 219900,
   },
 ];
