@@ -1,5 +1,11 @@
-export default function ConfirmOrder () {
+import BasicTextFields from "../components/CheckoutForm";
+import BasicTable from "../components/Table";
+
+export default function ConfirmOrder() {
   return (
-    <h1>Confirm order goes here</h1>
-  )
+    <div>
+      <BasicTable />
+      <BasicTextFields />
+    </div>
+  );
 }
