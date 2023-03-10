@@ -15,13 +15,20 @@ export default function BasicTable() {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 350, maxWidth: 900 }} aria-label="simple table">
         <TableHead>
-          <TableRow sx={{ color: "secondary.main", bgcolor: "primary.main" }}>
-            <TableCell>Image</TableCell>
-            <TableCell align="right">Product</TableCell>
-            <TableCell align="right">Add</TableCell>
-            <TableCell align="right">Amount</TableCell>
+          <TableRow
+            sx={{
+              bgcolor: "primary.main",
+            }}
+          >
+            <TableCell sx={{ color: "text.secondary" }}>Products</TableCell>
+            <TableCell sx={{ color: "text.primary" }} align="right"></TableCell>
+            <TableCell
+              sx={{ color: "text.disabled" }}
+              align="right"
+            ></TableCell>
+            <TableCell align="right"></TableCell>
 
-            <TableCell align="right">Remove</TableCell>
+            <TableCell align="right"></TableCell>
 
             <TableCell align="right">
               Summa: {totalPrice.toLocaleString("sv-SE")} SEK
