@@ -5,9 +5,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { products } from "../data";
 import { Avatar, Button } from "@mui/material";
-
+import { products } from "../../data";
 export default function BasicTable() {
   const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
 
