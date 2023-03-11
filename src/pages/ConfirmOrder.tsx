@@ -7,7 +7,12 @@ export default function ConfirmOrder() {
 
   return (
     <div>
-      <div>{JSON.stringify(cart)}</div>
+      <div>Du har {cart.length} saker i kundvagnen</div>
+      <div>
+        {cart.map((product) => (
+          <p key={product.id}>{product.title}</p>
+        ))}
+      </div>
       <BasicTable />
       <BasicTextFields />
     </div>

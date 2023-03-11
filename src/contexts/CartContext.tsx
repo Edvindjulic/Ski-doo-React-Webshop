@@ -3,6 +3,7 @@ import { Product, products } from "../../data";
 
 interface ContextValue {
   cart: Product[];
+  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
 export const CartContext = createContext<ContextValue>(null as any);
@@ -13,9 +14,11 @@ interface Props {
 }
 
 export default function ShoppingCart({ children }: Props) {
-  const [cart, setCart] = useState(products);
+  const [cart, setCart] = useState([]);
 
   return (
-    <CartContext.Provider value={{ cart }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cart, setCart }}>
+      {children}
+    </CartContext.Provider>
   );
 }

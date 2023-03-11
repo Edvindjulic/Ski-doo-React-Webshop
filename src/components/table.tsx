@@ -7,8 +7,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Avatar, Button } from "@mui/material";
 import { products } from "../../data";
+import { useCart } from "../contexts/CartContext";
+
 export default function BasicTable() {
   const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
+  const { cart, setCart } = useCart();
 
   return (
     <TableContainer component={Paper}>
@@ -50,11 +53,25 @@ export default function BasicTable() {
               </TableCell>
               <TableCell align="right">{product.title}</TableCell>
               <TableCell align="right">
-                <Button variant="contained">+</Button>
+                <Button
+                  variant="contained"
+                  onClick={() => setCart([...cart, product])}
+                >
+                  +
+                </Button>
               </TableCell>
-              <TableCell align="right">{product.id}</TableCell>
               <TableCell align="right">
-                <Button variant="contained">-</Button>
+                {cart.filter((item) => item.id === product.id).length}
+              </TableCell>
+              <TableCell align="right">
+                <Button
+                  variant="contained"
+                  onClick={() =>
+                    setCart(cart.filter((item) => item.id !== product.id))
+                  }
+                >
+                  -
+                </Button>{" "}
               </TableCell>
               <TableCell align="right">
                 {product.price.toLocaleString("sv-SE")} SEK
