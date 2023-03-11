@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function ShoppingCart({ children }: Props) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<Product[]>([]);
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>

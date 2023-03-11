@@ -13,6 +13,19 @@ export default function BasicTable() {
   const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
   const { cart, setCart } = useCart();
 
+  const removeById = (id) => {
+    let found = false;
+    const filteredCart = cart.filter((item) => {
+      if (!found && item.id === id) {
+        found = true;
+        return false;
+      } else {
+        return true;
+      }
+    });
+    setCart(filteredCart);
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 350, maxWidth: 900 }} aria-label="simple table">
@@ -66,9 +79,7 @@ export default function BasicTable() {
               <TableCell align="right">
                 <Button
                   variant="contained"
-                  onClick={() =>
-                    setCart(cart.filter((item) => item.id !== product.id))
-                  }
+                  onClick={() => removeById(product.id)}
                 >
                   -
                 </Button>{" "}
