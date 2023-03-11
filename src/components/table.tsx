@@ -11,7 +11,7 @@ import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
   const { cart, setCart } = useCart();
-  const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
+  const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
 
   const removeById = (id: string) => {
     let found = false;
