@@ -68,10 +68,10 @@ export default function BasicTable() {
               <TableCell align="right">
                 <Button
                   variant="contained"
-                  onClick={() => setCart([...cart, product])}
+                  onClick={() => removeById(product.id)}
                 >
-                  +
-                </Button>
+                  -
+                </Button>{" "}
               </TableCell>
               <TableCell align="right">
                 {cart.filter((item) => item.id === product.id).length}
@@ -79,10 +79,10 @@ export default function BasicTable() {
               <TableCell align="right">
                 <Button
                   variant="contained"
-                  onClick={() => removeById(product.id)}
+                  onClick={() => setCart([...cart, product])}
                 >
-                  -
-                </Button>{" "}
+                  +
+                </Button>
               </TableCell>
               <TableCell align="right">
                 {(
