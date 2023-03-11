@@ -13,7 +13,7 @@ export default function BasicTable() {
   const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
   const { cart, setCart } = useCart();
 
-  const removeById = (id) => {
+  const removeById = (id: string) => {
     let found = false;
     const filteredCart = cart.filter((item) => {
       if (!found && item.id === id) {
