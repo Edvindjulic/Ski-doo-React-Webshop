@@ -10,8 +10,8 @@ import { products } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
-  const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
   const { cart, setCart } = useCart();
+  const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
 
   const removeById = (id: string) => {
     let found = false;
@@ -85,7 +85,11 @@ export default function BasicTable() {
                 </Button>{" "}
               </TableCell>
               <TableCell align="right">
-                {product.price.toLocaleString("sv-SE")} SEK
+                {(
+                  cart.filter((item) => item.id === product.id).length *
+                  product.price
+                ).toLocaleString("sv-SE")}{" "}
+                SEK
               </TableCell>
             </TableRow>
           ))}
