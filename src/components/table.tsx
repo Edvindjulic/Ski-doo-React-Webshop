@@ -6,12 +6,33 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Avatar, Button } from "@mui/material";
-import { products } from "../../data";
+import { CartItem, Product, products } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
   const { cart, setCart } = useCart();
   const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
+
+  interface ProductMap {
+    [id: string]: {
+      product: Product;
+      quantity: number;
+    };
+  }
+
+  const cartUniqueItems = Object.values(
+    cart.reduce((acc: ProductMap, product) => {
+      if (acc[product.id]) {
+        acc[product.id].quantity++;
+      } else {
+        acc[product.id] = {
+          product,
+          quantity: 1,
+        };
+      }
+      return acc;
+    }, {})
+  );
 
   const removeById = (id: string) => {
     let found = false;
@@ -35,23 +56,15 @@ export default function BasicTable() {
               bgcolor: "primary.main",
             }}
           >
-            <TableCell sx={{ color: "text.secondary" }}>Products</TableCell>
-            <TableCell sx={{ color: "text.primary" }} align="right"></TableCell>
-            <TableCell
-              sx={{ color: "text.disabled" }}
-              align="right"
-            ></TableCell>
+            <TableCell>Products</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Quantity</TableCell>
+            <TableCell align="right">Price</TableCell>
             <TableCell align="right"></TableCell>
-
-            <TableCell align="right"></TableCell>
-
-            <TableCell align="right">
-              Summa: {totalPrice.toLocaleString("sv-SE")} SEK
-            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((product) => (
+          {cartUniqueItems.map(({ product, quantity }) => (
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -73,9 +86,7 @@ export default function BasicTable() {
                   -
                 </Button>{" "}
               </TableCell>
-              <TableCell align="right">
-                {cart.filter((item) => item.id === product.id).length}
-              </TableCell>
+              <TableCell align="right">{quantity}</TableCell>
               <TableCell align="right">
                 <Button
                   variant="contained"
@@ -85,14 +96,21 @@ export default function BasicTable() {
                 </Button>
               </TableCell>
               <TableCell align="right">
-                {(
-                  cart.filter((item) => item.id === product.id).length *
-                  product.price
-                ).toLocaleString("sv-SE")}{" "}
-                SEK
+                {(quantity * product.price).toLocaleString("sv-SE")} SEK
               </TableCell>
             </TableRow>
           ))}
+
+          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableCell colSpan={3} />
+            <TableCell align="right">Total summa:</TableCell>
+            <TableCell align="right">
+              {cart
+                .reduce((acc, product) => acc + product.price, 0)
+                .toLocaleString("sv-SE")}{" "}
+              SEK
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
