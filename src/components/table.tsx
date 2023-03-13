@@ -6,7 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Avatar, Button } from "@mui/material";
-import { CartItem, Product, products } from "../../data";
+import { Product } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
@@ -58,9 +58,10 @@ export default function BasicTable() {
           >
             <TableCell>Products</TableCell>
             <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Quantity</TableCell>
-            <TableCell align="right">Price</TableCell>
             <TableCell align="right"></TableCell>
+            <TableCell align="right">Quantity</TableCell>
+            <TableCell align="right"></TableCell>
+            <TableCell align="right">Price</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -103,7 +104,7 @@ export default function BasicTable() {
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
             <TableCell colSpan={3} />
-            <TableCell align="right">Total summa:</TableCell>
+            <TableCell align="right">Total price:</TableCell>
             <TableCell align="right">
               {totalPrice.toLocaleString("sv-SE")} SEK
             </TableCell>
