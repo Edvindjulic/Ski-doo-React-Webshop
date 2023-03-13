@@ -9,11 +9,11 @@ export default function ConfirmOrder() {
   return (
     <div>
       <div>Du har {cart.length} saker i kundvagnen</div>
-      <div>
+      {/* <div>
         {cart.map((product) => (
           <p key={generateId()}>{product.title}</p>
         ))}
-      </div>
+      </div> */}
       <BasicTable />
       <BasicTextFields />
     </div>
