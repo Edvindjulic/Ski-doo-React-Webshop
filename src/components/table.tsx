@@ -105,10 +105,7 @@ export default function BasicTable() {
             <TableCell colSpan={3} />
             <TableCell align="right">Total summa:</TableCell>
             <TableCell align="right">
-              {cart
-                .reduce((acc, product) => acc + product.price, 0)
-                .toLocaleString("sv-SE")}{" "}
-              SEK
+              {totalPrice.toLocaleString("sv-SE")} SEK
             </TableCell>
           </TableRow>
         </TableBody>
