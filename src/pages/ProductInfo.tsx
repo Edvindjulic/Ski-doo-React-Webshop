@@ -1,38 +1,45 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
+import { products } from "../../data";
+
+
+interface ProductInfoProps {
+  selectedProductID: string;
+}
 
 
 
-const card = (
-  <React.Fragment>
-    <CardContent>
-      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-        <Typography variant="h5">2024</Typography> 
-        <Typography variant="h5">219 999kr</Typography>
-      </Box>
-      <Typography variant="h4">Brand/Model</Typography>
-      <Typography>Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fugiat, alias corrupti asperiores amet soluta modi beatae qui expedita rem laborum quasi, veniam cum consectetur saepe pariatur tempora temporibus esse!</Typography>
-    </CardContent>
-    
-  </React.Fragment>
-)
-
-
-
-export default function ProductInfo () {
-
-  const backgroundImageUrl = 
-  "https://www.ski-doo.com/content/skidoo/sv_se/modeller/djup-sno/freeride/_jcr_content/root/modelteaser.coreimg.png/1676660948435/ski-my24-free-standard-moon-neo-mint-000vdrc00-studio-34fr-na.png";
-
+export default function ProductInfo ({ selectedProductID }: ProductInfoProps ) {
+  
+  const backgroundImage = 
+  "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
+  
+  const selectedProduct = products[0];
+  // const selectedProduct = products.find((product) => product.id === selectedProductID)
+  const ModelImage = selectedProduct?.background;
+  
+  const card = (
+    <React.Fragment>
+      <CardContent>
+        <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+          <Typography variant="h5">2024</Typography> 
+          <Typography variant="h5">{selectedProduct?.price}</Typography>
+        </Box>
+        <Typography variant="h4">{selectedProduct?.title}</Typography>
+        <Typography>{selectedProduct?.description}</Typography>
+      </CardContent>
+      
+    </React.Fragment>
+  )
   return (
     <Box
     sx={{
       display: "flex",
       flexDirection: "column",
       border: "1px solid black",
-      backgroundImage: `url(${backgroundImageUrl})`,
+      backgroundImage: `url(${backgroundImage})`,
       backgroundRepeat: "no-repeat",
-      backgroundSize: "contain",
+      // backgroundSize: "cover",
       height: "90vh", 
       alignItems: "flex-end",
       justifyContent: "center"
@@ -47,11 +54,21 @@ export default function ProductInfo () {
         // justifyContent: 'center',
         alignItems: 'center',
         }}>
-        <h2>Product title goes here</h2>
         
         
-        <Card sx={{}} variant="outlined">{card}<button>placeholder-knapp</button></Card>
+        <Card sx={{}} variant="outlined">{card}<button>Add to Cart*</button></Card>
         
+        <Box sx={{
+          position: 'absolute',
+          width: '100%',
+          maxHeight: '50vh',
+          objectFit: 'contain',
+          border: '1px solid black',
+          background: ModelImage ? `url(${ModelImage}) no-repeat center/contain` : 'none',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+        }} ></Box>
       </Box>
     </Box>
   )
