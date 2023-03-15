@@ -7,8 +7,8 @@ export default function ConfirmOrder() {
 
   return (
     <div>
-      {/* <div>Du har {cart.length} saker i kundvagnen</div>
-      <BasicTable /> */}
+      <div>Du har {cart.length} saker i kundvagnen</div>
+      <BasicTable />
       <CheckoutForm />
     </div>
   );
