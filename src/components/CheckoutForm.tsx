@@ -9,7 +9,7 @@ const CheckoutSchema = Yup.object().shape({
   email: Yup.string()
     .email("Du måste ange en giltig email")
     .required("Ange en email"),
-  adress: Yup.string().required("Ange din adress"),
+  street: Yup.string().required("Ange din adress"),
   phone: Yup.string().required("Ange ditt telefonnummer"),
   name: Yup.string().required("Ange ditt namn"),
   zipcode: Yup.string(),
@@ -22,7 +22,7 @@ export default function CheckoutForm() {
   const formik = useFormik<CheckoutValues>({
     initialValues: {
       email: "",
-      adress: "",
+      street: "",
       phone: "",
       name: "",
       zipcode: "",
@@ -63,11 +63,11 @@ export default function CheckoutForm() {
         type="street"
         name="street"
         label="Adress"
-        value={formik.values.adress}
+        value={formik.values.street}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.adress && Boolean(formik.errors.adress)}
-        helperText={formik.touched.adress && formik.errors.adress}
+        error={formik.touched.street && Boolean(formik.errors.street)}
+        helperText={formik.touched.street && formik.errors.street}
         data-cy="customer-address"
       />
       <TextField
@@ -109,6 +109,9 @@ export default function CheckoutForm() {
         helperText={formik.touched.email && formik.errors.email}
         data-cy="customer-email"
       />
+      {formik.touched.email && formik.errors.email && (
+        <span>{formik.errors.email}</span>
+      )}
       <TextField
         fullWidth
         id="phone"
