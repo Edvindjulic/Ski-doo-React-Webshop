@@ -49,7 +49,7 @@ export default function CheckoutForm() {
         id="name"
         type="name"
         name="name"
-        label="Name"
+        label="Namn"
         value={formik.values.name}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -75,7 +75,7 @@ export default function CheckoutForm() {
         id="zipcode"
         type="zipcode"
         name="zipcode"
-        label="Zipcode"
+        label="Postnummer"
         value={formik.values.zipcode}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -88,7 +88,7 @@ export default function CheckoutForm() {
         id="city"
         type="city"
         name="city"
-        label="City"
+        label="Stad"
         value={formik.values.city}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -114,7 +114,7 @@ export default function CheckoutForm() {
         id="phone"
         type="phone"
         name="phone"
-        label="Phone number"
+        label="Telefonnummer"
         value={formik.values.phone}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
