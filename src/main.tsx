@@ -1,13 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from 'react-router-dom';
-import App from './App';
-import './index.css';
-import Admin from './pages/Admin';
-import ConfirmOrder from './pages/ConfirmOrder';
-import { default as Checkout, default as ProductInfo } from './pages/ProductInfo';
-import Products from './pages/Products';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import App from "./App";
+import ShoppingCart, { CartContext } from "./contexts/CartContext";
+import "./index.css";
+import Admin from "./pages/Admin";
+import ConfirmOrder from "./pages/ConfirmOrder";
+import {
+  default as Checkout,
+  default as ProductInfo,
+} from "./pages/ProductInfo";
+import Products from "./pages/Products";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,11 +29,12 @@ const router = createBrowserRouter(
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   )
-)
+);
 
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <ShoppingCart>
+      <RouterProvider router={router} />
+    </ShoppingCart>
   </React.StrictMode>
 );
