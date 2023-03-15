@@ -59,9 +59,9 @@ export default function CheckoutForm() {
       />
       <TextField
         fullWidth
-        id="adress"
-        type="adress"
-        name="adress"
+        id="street"
+        type="street"
+        name="street"
         label="Adress"
         value={formik.values.adress}
         onChange={formik.handleChange}
