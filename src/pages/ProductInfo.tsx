@@ -1,6 +1,8 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import { products } from "../../data";
+import { useCart } from "../contexts/CartContext";
+
 
 interface ProductInfoProps {
   selectedProductID: string;
@@ -8,6 +10,10 @@ interface ProductInfoProps {
 
 export default function ProductInfo({}: // selectedProductID,
 ProductInfoProps) {
+
+  const { cart, setCart } = useCart();
+
+
   const backgroundImage =
     "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
 
@@ -33,7 +39,9 @@ ProductInfoProps) {
     </React.Fragment>
   );
   return (
+
     <Box
+    
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -57,7 +65,8 @@ ProductInfoProps) {
         }}>
         <Card sx={{}} variant="outlined">
           {card}
-          <button>Add to Cart*</button>
+          <Button variant="contained" onClick={() => setCart([...cart, selectedProduct])} > + </Button>
+         < div>Du har {cart.length} saker i kundvagnen</div>
         </Card>
         <Box
           sx={{
