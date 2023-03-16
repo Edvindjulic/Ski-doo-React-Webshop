@@ -140,7 +140,7 @@ export default function CheckoutForm() {
       />
 
       <Button color="primary" variant="contained" fullWidth type="submit">
-        Submit
+        Beställ
       </Button>
     </Box>
   );
