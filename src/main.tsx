@@ -17,6 +17,7 @@ import {
   default as ProductInfo,
 } from "./pages/ProductInfo";
 import Products from "./pages/Products";
+import ConfirmBooking from './pages/ConfirmBooking';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="productinfo" element={<ProductInfo />} />
       <Route path="checkout" element={<Checkout />} />
       <Route path="confirmorder" element={<ConfirmOrder />} />
+      <Route path="confirmbooking" element={<ConfirmBooking />} />
       <Route path="admin" element={<Admin />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
