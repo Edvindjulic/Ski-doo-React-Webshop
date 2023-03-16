@@ -73,7 +73,7 @@ export default function BasicTable() {
               <TableCell component="th" scope="row">
                 <Avatar
                   alt={product.title}
-                  src={product.image}
+                  src={product.productImage}
                   sx={{ width: 150, height: 150 }}
                   variant="square"
                 />
