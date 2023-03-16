@@ -49,7 +49,7 @@ export default function BasicTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350, maxWidth: 900 }} aria-label="simple table">
+      <Table sx={{ minWidth: 350, maxWidth: 1000 }} aria-label="simple table">
         <TableHead>
           <TableRow
             sx={{
@@ -57,11 +57,11 @@ export default function BasicTable() {
             }}
           >
             <TableCell>Products</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right"></TableCell>
-            <TableCell align="right">Quantity</TableCell>
-            <TableCell align="right"></TableCell>
-            <TableCell align="right">Price</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center">Quantity</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="left">Price</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -69,6 +69,7 @@ export default function BasicTable() {
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              data-cy={"cart-item"}
             >
               <TableCell component="th" scope="row">
                 <Avatar
@@ -78,25 +79,29 @@ export default function BasicTable() {
                   variant="square"
                 />
               </TableCell>
-              <TableCell align="right">{product.title}</TableCell>
-              <TableCell align="right">
+              <TableCell align="center">{product.title}</TableCell>
+              <TableCell align="center">
                 <Button
                   variant="contained"
                   onClick={() => removeById(product.id)}
+                  data-cy="decrease-quantity-button"
                 >
                   -
                 </Button>{" "}
               </TableCell>
-              <TableCell align="right">{quantity}</TableCell>
-              <TableCell align="right">
+              <TableCell align="center" data-cy="product-quantity">
+                {quantity}
+              </TableCell>
+              <TableCell align="center">
                 <Button
                   variant="contained"
                   onClick={() => setCart([...cart, product])}
+                  data-cy="increase-quantity-button"
                 >
                   +
                 </Button>
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="left">
                 {(quantity * product.price).toLocaleString("sv-SE")} SEK
               </TableCell>
             </TableRow>
@@ -104,8 +109,8 @@ export default function BasicTable() {
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
             <TableCell colSpan={3} />
-            <TableCell align="right">Total price:</TableCell>
-            <TableCell align="right">
+            <TableCell align="center">Total price:</TableCell>
+            <TableCell align="left" data-cy="total-price">
               {totalPrice.toLocaleString("sv-SE")} SEK
             </TableCell>
           </TableRow>
