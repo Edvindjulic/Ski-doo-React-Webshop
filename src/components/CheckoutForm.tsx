@@ -60,7 +60,9 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.name && Boolean(formik.errors.name)}
         helperText={formik.touched.name && formik.errors.name}
-        data-cy="customer-name"
+        inputProps={{ "data-cy": "customer-name" }}
+        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        autoComplete="name"
       />
       <TextField
         fullWidth
@@ -73,7 +75,9 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.street && Boolean(formik.errors.street)}
         helperText={formik.touched.street && formik.errors.street}
-        data-cy="customer-address"
+        inputProps={{ "data-cy": "customer-adress" }}
+        FormHelperTextProps={{ "data-cy": "customer-adress-error" } as any}
+        autoComplete="street-address"
       />
       <TextField
         fullWidth
@@ -86,7 +90,8 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.zipcode && Boolean(formik.errors.zipcode)}
         helperText={formik.touched.zipcode && formik.errors.zipcode}
-        data-cy="customer-zipcode"
+        inputProps={{ "data-cy": "customer-zipcode" }}
+        autoComplete="postal-code"
       />
       <TextField
         fullWidth
@@ -99,7 +104,8 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.city && Boolean(formik.errors.city)}
         helperText={formik.touched.city && formik.errors.city}
-        data-cy="customer-city"
+        inputProps={{ "data-cy": "customer-city" }}
+        autoComplete="address-level2"
       />
       <TextField
         fullWidth
@@ -112,11 +118,11 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.email && Boolean(formik.errors.email)}
         helperText={formik.touched.email && formik.errors.email}
-        data-cy="customer-email"
+        inputProps={{ "data-cy": "customer-email" }}
+        FormHelperTextProps={{ "data-cy": "customer-email-error" } as any}
+        autoComplete="email"
       />
-      {formik.touched.email && formik.errors.email && (
-        <span>{formik.errors.email}</span>
-      )}
+
       <TextField
         fullWidth
         id="phone"
@@ -128,7 +134,9 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.phone && Boolean(formik.errors.phone)}
         helperText={formik.touched.phone && formik.errors.phone}
-        data-cy="customer-phone"
+        inputProps={{ "data-cy": "customer-phone" }}
+        FormHelperTextProps={{ "data-cy": "customer-phone-error" } as any}
+        autoComplete="tel"
       />
 
       <Button color="primary" variant="contained" fullWidth type="submit">
