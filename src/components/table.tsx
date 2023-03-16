@@ -47,8 +47,6 @@ export default function BasicTable() {
     setCart(filteredCart);
   };
 
-  //         inputProps={{ "data-cy": "customer-name" }}
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 350, maxWidth: 1000 }} aria-label="simple table">
