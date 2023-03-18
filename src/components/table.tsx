@@ -10,7 +10,7 @@ import { Product } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
-  const { cart, setCart } = useCart();
+  const { cart, setCart, addProduct } = useCart();
   const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
 
   interface ProductMap {
@@ -95,7 +95,7 @@ export default function BasicTable() {
               <TableCell align="center">
                 <Button
                   variant="contained"
-                  onClick={() => setCart([...cart, product])}
+                  onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
                 >
                   +
