@@ -5,7 +5,7 @@ interface ContextValue {
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   addProduct: (product: Product) => void;
-  removeProduct: (product: string) => void;
+  removeProduct: (product: Product) => void;
 }
 
 export const CartContext = createContext<ContextValue>(null as any);
@@ -22,10 +22,10 @@ export default function ShoppingCart({ children }: Props) {
     setCart([...cart, anything]);
   };
 
-  const removeProduct = (productID: string) => {
+  const removeProduct = (product: Product) => {
     let found = false;
     const filteredCart = cart.filter((item) => {
-      if (!found && item.id === productID) {
+      if (!found && item.id === product.id) {
         found = true;
         return false;
       } else {

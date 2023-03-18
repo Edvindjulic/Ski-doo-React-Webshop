@@ -11,7 +11,7 @@ export default function ConfirmOrder() {
   return (
     <div>
       <IconButton aria-label="cart">
-        <StyledBadge badgeContent={cart.length} color="secondary">
+        <StyledBadge badgeContent={cart.length} color="warning">
           <ShoppingCartIcon />
         </StyledBadge>
       </IconButton>

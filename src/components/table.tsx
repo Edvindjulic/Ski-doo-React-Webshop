@@ -70,7 +70,7 @@ export default function BasicTable() {
               <TableCell align="center">
                 <Button
                   variant="contained"
-                  onClick={() => removeProduct(product.id)}
+                  onClick={() => removeProduct(product)}
                   data-cy="decrease-quantity-button"
                 >
                   -
