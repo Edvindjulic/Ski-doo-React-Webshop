@@ -5,7 +5,7 @@ interface ContextValue {
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   addProduct: (product: Product) => void;
-  // removeProduct: (product: Product) => void;
+  removeProduct: (product: string) => void;
 }
 
 export const CartContext = createContext<ContextValue>(null as any);
@@ -21,7 +21,19 @@ export default function ShoppingCart({ children }: Props) {
   const addProduct = (anything: Product) => {
     setCart([...cart, anything]);
   };
-  const removeProduct = (product: Product) => {};
+
+  const removeProduct = (productID: string) => {
+    let found = false;
+    const filteredCart = cart.filter((item) => {
+      if (!found && item.id === productID) {
+        found = true;
+        return false;
+      } else {
+        return true;
+      }
+    });
+    setCart(filteredCart);
+  };
 
   return (
     <CartContext.Provider
@@ -29,6 +41,7 @@ export default function ShoppingCart({ children }: Props) {
         cart,
         setCart,
         addProduct,
+        removeProduct,
       }}
     >
       {children}
