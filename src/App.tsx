@@ -1,14 +1,14 @@
-import { Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import Header from "./header";
 
 export default function App() {
   return (
-    <div>
-      <h1>Hello Students, begin here!</h1>
-      <Button variant="contained">TEST</Button>
-      <Button variant="text">TEST</Button>
+    <Box>
+     <Header/>
+      
       <Outlet/>
-    </div>
+    </Box>
   );
 }
 
