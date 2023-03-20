@@ -13,26 +13,28 @@ export default function BasicTable() {
   const { cart, addProduct, removeProduct } = useCart();
   const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
 
-  interface ProductMap {
-    [id: string]: {
-      product: Product;
-      quantity: number;
-    };
-  }
+  // interface ProductMap {
+  //   [id: string]: {
+  //     product: Product;
+  //     quantity: number;
+  //   };
+  // }
 
-  const cartUniqueItems = Object.values(
-    cart.reduce((acc: ProductMap, product) => {
-      if (acc[product.id]) {
-        acc[product.id].quantity++;
-      } else {
-        acc[product.id] = {
-          product,
-          quantity: 1,
-        };
-      }
-      return acc;
-    }, {})
-  );
+  // const cartUniqueItems = Object.values(
+  //   cart.reduce((acc: ProductMap, product) => {
+  //     if (acc[product.id]) {
+  //       acc[product.id].quantity++;
+  //     } else {
+  //       acc[product.id] = {
+  //         product,
+  //         quantity: 1,
+  //       };
+  //     }
+  //     return acc;
+  //   }, {})
+  // );
+
+  let unique = [...new Map(cart.map((item) => [item["id"], item])).values()];
 
   return (
     <TableContainer component={Paper}>
@@ -57,7 +59,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cartUniqueItems.map(({ product, quantity }) => (
+          {unique.map((product) => (
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -85,7 +87,7 @@ export default function BasicTable() {
                 </Button>{" "}
               </TableCell>
               <TableCell align="center" data-cy="product-quantity">
-                {quantity}
+                {product.quantity}
               </TableCell>
               <TableCell align="center">
                 <Button
@@ -99,7 +101,7 @@ export default function BasicTable() {
               </TableCell>
               <TableCell align="left" data-cy="product-price">
                 {/* {(quantity * product.price).toLocaleString("sv-SE")} SEK */}
-                {quantity * product.price}
+                {product.quantity * product.price}
               </TableCell>
             </TableRow>
           ))}
