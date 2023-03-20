@@ -10,7 +10,7 @@ import { Product } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
-  const { cart, setCart } = useCart();
+  const { cart, addProduct, removeProduct } = useCart();
   const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
 
   interface ProductMap {
@@ -33,19 +33,6 @@ export default function BasicTable() {
       return acc;
     }, {})
   );
-
-  const removeById = (id: string) => {
-    let found = false;
-    const filteredCart = cart.filter((item) => {
-      if (!found && item.id === id) {
-        found = true;
-        return false;
-      } else {
-        return true;
-      }
-    });
-    setCart(filteredCart);
-  };
 
   return (
     <TableContainer component={Paper}>
@@ -83,7 +70,7 @@ export default function BasicTable() {
               <TableCell align="center">
                 <Button
                   variant="contained"
-                  onClick={() => removeById(product.id)}
+                  onClick={() => removeProduct(product)}
                   data-cy="decrease-quantity-button"
                 >
                   -
@@ -95,7 +82,7 @@ export default function BasicTable() {
               <TableCell align="center">
                 <Button
                   variant="contained"
-                  onClick={() => setCart([...cart, product])}
+                  onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
                 >
                   +

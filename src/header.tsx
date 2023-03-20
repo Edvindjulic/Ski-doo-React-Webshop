@@ -12,10 +12,13 @@ export default function Header() {
   return (  <Box sx={{background: 'black', color: 'white', width: '100%', display:'flex', flexDirection: 'column' ,justifyContent:'center', alignItems: 'center', height:'7rem', }}>
   <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}> 
     <Box sx={{marginLeft: 'auto', fontSize: '40px'}}>SNÖSKOTERSHOPPEN </Box>
-      <Tooltip title="Kundvagn">
-        <ShoppingCart sx={{  color: 'Grey', fontSize:'2rem', marginLeft: 'auto', marginRight: '1rem',}}
-        />
-      </Tooltip>
+      <Box sx={{  color: 'Grey', fontSize:'2rem', marginLeft: 'auto', marginRight: '1rem'}}>
+        <Tooltip title="Kundvagn">
+            <NavLink to="./confirmorder"><ShoppingCart />
+            </NavLink>
+          </Tooltip>
+      </Box>
+      
   </Box>
 
 
