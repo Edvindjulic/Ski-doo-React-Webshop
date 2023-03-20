@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Product, products } from "../../data";
+import { useLocalStorageState } from "../hooks/useLocalstorage";
 
 interface ContextValue {
   cart: Product[];
@@ -16,7 +17,7 @@ interface Props {
 }
 
 export default function ShoppingCart({ children }: Props) {
-  const [cart, setCart] = useState<Product[]>(products);
+  const [cart, setCart] = useLocalStorageState<Product[]>([], "cart");
 
   const addProduct = (anything: Product) => {
     setCart([...cart, anything]);

@@ -56,15 +56,16 @@ export default function BasicTable() {
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              data-cy={"cart-item"}
+              data-cy="cart-item"
             >
               <TableCell component="th" scope="row">
                 <Avatar
                   alt={product.title}
-                  src={product.productImage}
+                  src={product.image}
                   sx={{ width: 150, height: 150 }}
                   variant="square"
                 />
+                {/* <img src={product.image} alt={product.title} /> */}
               </TableCell>
               <TableCell align="center">{product.title}</TableCell>
               <TableCell align="center">
