@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const CheckoutSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,6 +20,8 @@ const CheckoutSchema = Yup.object().shape({
 type CheckoutValues = Yup.InferType<typeof CheckoutSchema>;
 
 export default function CheckoutForm() {
+  const navigate = useNavigate();
+
   const formik = useFormik<CheckoutValues>({
     initialValues: {
       email: "",
@@ -30,6 +33,8 @@ export default function CheckoutForm() {
     },
     validationSchema: CheckoutSchema,
     onSubmit: (values) => {
+      navigate("/confirmbooking");
+
       console.log(values);
     },
   });
