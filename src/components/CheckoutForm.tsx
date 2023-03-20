@@ -5,10 +5,12 @@ import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";
-
 const CheckoutSchema = Yup.object().shape({
   email: Yup.string()
     .email("Du måste ange en giltig email")
+    .test("dot-in-email", "Email måste innehålla en punkt", (value) =>
+      value?.includes(".")
+    )
     .required("Ange en email"),
   street: Yup.string().required("Ange din adress"),
   phone: Yup.string().required("Ange ditt telefonnummer"),
