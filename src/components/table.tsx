@@ -36,7 +36,12 @@ export default function BasicTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350, maxWidth: 1000 }} aria-label="simple table">
+      <Table
+        sx={{ minWidth: 350, maxWidth: 1000 }}
+        aria-label="simple table"
+        size="small"
+        padding="none"
+      >
         <TableHead>
           <TableRow
             sx={{
@@ -62,12 +67,14 @@ export default function BasicTable() {
                 <Avatar
                   alt={product.title}
                   src={product.image}
-                  sx={{ width: 150, height: 150 }}
+                  sx={{ width: 10, height: 10 }}
                   variant="square"
                 />
                 {/* <img src={product.image} alt={product.title} /> */}
               </TableCell>
-              <TableCell align="center">{product.title}</TableCell>
+              <TableCell align="center" data-cy="product-title">
+                {product.title}
+              </TableCell>
               <TableCell align="center">
                 <Button
                   variant="contained"
@@ -83,14 +90,16 @@ export default function BasicTable() {
               <TableCell align="center">
                 <Button
                   variant="contained"
+                  size="small"
                   onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
                 >
                   +
                 </Button>
               </TableCell>
-              <TableCell align="left">
-                {(quantity * product.price).toLocaleString("sv-SE")} SEK
+              <TableCell align="left" data-cy="product-price">
+                {/* {(quantity * product.price).toLocaleString("sv-SE")} SEK */}
+                {quantity * product.price}
               </TableCell>
             </TableRow>
           ))}
@@ -99,7 +108,8 @@ export default function BasicTable() {
             <TableCell colSpan={3} />
             <TableCell align="center">Total price:</TableCell>
             <TableCell align="left" data-cy="total-price">
-              {totalPrice.toLocaleString("sv-SE")} SEK
+              {/* {totalPrice.toLocaleString("sv-SE")} SEK */}
+              {totalPrice}
             </TableCell>
           </TableRow>
         </TableBody>
