@@ -1,34 +1,13 @@
 import { ShoppingCart } from "@mui/icons-material";
-import { Box, Tab, Tooltip } from "@mui/material";
-import React from "react";
+import { Box, Tooltip } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-interface LinkTabProps {
-  label?: string;
-  href?: string;
-}
 
-function LinkTab(props: LinkTabProps) {
-  return (
-    <Tab
-      sx={{color: 'white'}}
-      component="a"
-      onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
+
 
 
 export default function Header() {
   
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
 
   return (  <Box sx={{background: 'black', color: 'white', width: '100%', display:'flex', flexDirection: 'column' ,justifyContent:'center', alignItems: 'center', height:'7rem', }}>
   <Box sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}> 
