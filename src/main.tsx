@@ -5,19 +5,19 @@ import {
   createRoutesFromElements,
   Navigate,
   Route,
-  RouterProvider,
+  RouterProvider
 } from "react-router-dom";
 import App from "./App";
-import ShoppingCart, { CartContext } from "./contexts/CartContext";
+import ShoppingCart from "./contexts/CartContext";
 import "./index.css";
 import Admin from "./pages/Admin";
+import ConfirmBooking from './pages/ConfirmBooking';
 import ConfirmOrder from "./pages/ConfirmOrder";
 import {
   default as Checkout,
-  default as ProductInfo,
+  default as ProductInfo
 } from "./pages/ProductInfo";
 import Products from "./pages/Products";
-import ConfirmBooking from './pages/ConfirmBooking';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
