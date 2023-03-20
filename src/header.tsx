@@ -41,7 +41,7 @@ export default function Header() {
           }}
         >
           <Tooltip title="Kundvagn">
-            <NavLink to="./confirmorder">
+            <NavLink to="./checkout">
               <IconButton aria-label="cart" data-cy="cart-link">
                 <StyledBadge
                   badgeContent={cart.length}
