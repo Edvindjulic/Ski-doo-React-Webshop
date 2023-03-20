@@ -29,7 +29,7 @@ export default function Header() {
           justifyContent: "center",
         }}
       >
-        <Box sx={{ marginLeft: "auto", fontSize: "40px" }}>
+        <Box sx={{ marginLeft: "auto", fontSize: "10px" }}>
           SNÖSKOTERSHOPPEN{" "}
         </Box>
         <Box
