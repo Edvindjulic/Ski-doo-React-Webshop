@@ -44,7 +44,10 @@ export default function Header() {
             <NavLink to="./checkout">
               <IconButton aria-label="cart" data-cy="cart-link">
                 <StyledBadge
-                  badgeContent={cart.length}
+                  badgeContent={cart.reduce(
+                    (total, item) => total + item.quantity,
+                    0
+                  )}
                   color="warning"
                   data-cy="cart-items-count-badge"
                 >

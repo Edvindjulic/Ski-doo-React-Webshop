@@ -69,7 +69,7 @@ export default function BasicTable() {
                 <Avatar
                   alt={product.title}
                   src={product.image}
-                  sx={{ width: 10, height: 10 }}
+                  sx={{ width: 70, height: 70 }}
                   variant="square"
                 />
                 {/* <img src={product.image} alt={product.title} /> */}
@@ -91,6 +91,7 @@ export default function BasicTable() {
                   defaultValue={product.quantity}
                   data-cy="product-quantity"
                 />
+                {product.quantity}
               </TableCell>
               <TableCell align="center">
                 <Button
