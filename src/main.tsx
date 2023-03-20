@@ -12,7 +12,6 @@ import ShoppingCart from "./contexts/CartContext";
 import "./index.css";
 import Admin from "./pages/Admin";
 import ConfirmBooking from "./pages/ConfirmBooking";
-import ConfirmOrder from "./pages/Checkout";
 import Checkout from "./pages/Checkout";
 import Products from "./pages/Products";
 import ProductInfo from "./pages/ProductInfo";
