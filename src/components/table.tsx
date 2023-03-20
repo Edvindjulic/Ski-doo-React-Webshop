@@ -11,8 +11,9 @@ import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
   const { cart, addProduct, removeProduct } = useCart();
-  const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
-
+  const totalCost = cart.reduce((acc, item) => {
+    return acc + item.quantity * item.price;
+  }, 0);
   // interface ProductMap {
   //   [id: string]: {
   //     product: Product;
@@ -115,7 +116,7 @@ export default function BasicTable() {
             <TableCell align="center">Total price:</TableCell>
             <TableCell align="left" data-cy="total-price">
               {/* {totalPrice.toLocaleString("sv-SE")} SEK */}
-              {totalPrice}
+              {totalCost}
             </TableCell>
           </TableRow>
         </TableBody>
