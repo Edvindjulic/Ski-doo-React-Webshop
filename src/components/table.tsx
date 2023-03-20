@@ -5,7 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Avatar, Button } from "@mui/material";
+import { Avatar, Button, Input } from "@mui/material";
 import { Product } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
@@ -86,8 +86,11 @@ export default function BasicTable() {
                   -
                 </Button>{" "}
               </TableCell>
-              <TableCell align="center" data-cy="product-quantity">
-                {product.quantity}
+              <TableCell align="center">
+                <Input
+                  defaultValue={product.quantity}
+                  data-cy="product-quantity"
+                />
               </TableCell>
               <TableCell align="center">
                 <Button
