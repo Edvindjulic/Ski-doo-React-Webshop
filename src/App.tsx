@@ -5,11 +5,13 @@ import Header from "./header";
 export default function App() {
   return (
     <Box>
-     <Header/>
-      
-      <Outlet/>
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer>footer</footer>
     </Box>
   );
 }
-
-

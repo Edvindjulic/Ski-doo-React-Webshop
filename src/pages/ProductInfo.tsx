@@ -11,11 +11,14 @@ interface ProductInfoProps {
 export default function ProductInfo({}: ProductInfoProps) {
   const { cart, setCart } = useCart();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [lastAddedProduct, setLastAddedProduct] = useState<{
-    title: string;
-    price: number;
-    image: string;
-  } | undefined>(undefined);
+  const [lastAddedProduct, setLastAddedProduct] = useState<
+    | {
+        title: string;
+        price: number;
+        image: string;
+      }
+    | undefined
+  >(undefined);
 
   const handleSnackbarClose = (
     event: React.SyntheticEvent<Element, Event> | Event,
@@ -30,20 +33,14 @@ export default function ProductInfo({}: ProductInfoProps) {
   const backgroundImage =
     "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
 
-  const selectedProduct = products.find(
-    (product) => product.id === "1"
-  );
+  const selectedProduct = products.find((product) => product.id === "1");
 
   const card = (
     <React.Fragment>
       <CardContent>
-        <Box
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h5">2024</Typography>
-          <Typography variant="h5">
-            {selectedProduct?.price}
-          </Typography>
+          <Typography variant="h5">{selectedProduct?.price}</Typography>
         </Box>
         <Typography variant="h4">{selectedProduct?.title}</Typography>
         <Typography>{selectedProduct?.description}</Typography>

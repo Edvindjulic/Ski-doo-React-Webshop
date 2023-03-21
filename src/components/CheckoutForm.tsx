@@ -4,21 +4,27 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutSchema = Yup.object().shape({
   email: Yup.string()
     .email("Du måste ange en giltig email")
+    .test("dot-in-email", "Email måste innehålla en punkt", (value) =>
+      value?.includes(".")
+    )
     .required("Ange en email"),
   street: Yup.string().required("Ange din adress"),
   phone: Yup.string().required("Ange ditt telefonnummer"),
   name: Yup.string().required("Ange ditt namn"),
-  zipcode: Yup.string(),
-  city: Yup.string(),
+  zipcode: Yup.string().required("Ange ditt postnummer").min(5).max(5),
+  city: Yup.string().required("Ange din stad"),
 });
 
 type CheckoutValues = Yup.InferType<typeof CheckoutSchema>;
 
 export default function CheckoutForm() {
+  const navigate = useNavigate();
+
   const formik = useFormik<CheckoutValues>({
     initialValues: {
       email: "",
@@ -30,6 +36,8 @@ export default function CheckoutForm() {
     },
     validationSchema: CheckoutSchema,
     onSubmit: (values) => {
+      navigate("/confirmbooking");
+
       console.log(values);
     },
   });
@@ -75,8 +83,8 @@ export default function CheckoutForm() {
         onBlur={formik.handleBlur}
         error={formik.touched.street && Boolean(formik.errors.street)}
         helperText={formik.touched.street && formik.errors.street}
-        inputProps={{ "data-cy": "customer-adress" }}
-        FormHelperTextProps={{ "data-cy": "customer-adress-error" } as any}
+        inputProps={{ "data-cy": "customer-address" }}
+        FormHelperTextProps={{ "data-cy": "customer-address-error" } as any}
         autoComplete="street-address"
       />
       <TextField
@@ -91,6 +99,7 @@ export default function CheckoutForm() {
         error={formik.touched.zipcode && Boolean(formik.errors.zipcode)}
         helperText={formik.touched.zipcode && formik.errors.zipcode}
         inputProps={{ "data-cy": "customer-zipcode" }}
+        FormHelperTextProps={{ "data-cy": "customer-zipcode-error" } as any}
         autoComplete="postal-code"
       />
       <TextField
@@ -105,7 +114,8 @@ export default function CheckoutForm() {
         error={formik.touched.city && Boolean(formik.errors.city)}
         helperText={formik.touched.city && formik.errors.city}
         inputProps={{ "data-cy": "customer-city" }}
-        autoComplete="address-level2"
+        FormHelperTextProps={{ "data-cy": "customer-city-error" } as any}
+        autoComplete="city"
       />
       <TextField
         fullWidth
