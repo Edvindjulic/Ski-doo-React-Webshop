@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { products } from "../../data";
+import { CartItem, products } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function Products() {
@@ -18,7 +18,7 @@ export default function Products() {
           <img src={product.image} alt={product.title} width="100px" />
           <button
             data-cy="product-buy-button"
-            onClick={() => addProduct(product)}
+            onClick={() => addProduct(product as CartItem)}
           >
             Add to cart
           </button>

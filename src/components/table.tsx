@@ -60,7 +60,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {unique.map((product) => (
+          {cart.map((product) => (
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
