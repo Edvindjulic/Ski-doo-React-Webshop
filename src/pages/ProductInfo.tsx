@@ -3,12 +3,11 @@ import React, { useState } from "react";
 import { CartItem, products } from "../../data";
 import { useCart } from "../contexts/CartContext";
 import Snackbar from "../components/Snackbar";
+import { useParams } from "react-router-dom";
 
-interface ProductInfoProps {
-  selectedProductID: string;
-}
+export default function ProductInfo() {
+  const params = useParams();
 
-export default function ProductInfo({}: ProductInfoProps) {
   const { cart, setCart } = useCart();
   const { addProduct } = useCart();
 
@@ -35,7 +34,7 @@ export default function ProductInfo({}: ProductInfoProps) {
   const backgroundImage =
     "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
 
-  const selectedProduct = products.find((product) => product.id === "1");
+  const selectedProduct = products.find((product) => product.id === params.id);
 
   const card = (
     <React.Fragment>
@@ -50,6 +49,9 @@ export default function ProductInfo({}: ProductInfoProps) {
     </React.Fragment>
   );
 
+  if (!selectedProduct) {
+    return <h1>Product not found</h1>;
+  }
   return (
     <Box
       sx={{

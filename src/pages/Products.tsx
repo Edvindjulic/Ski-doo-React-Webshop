@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { CartItem, products } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
@@ -10,7 +11,7 @@ export default function Products() {
       <h1>Products here</h1>
 
       {products.map((product) => (
-        <div data-cy="product">
+        <Link to={"/product/" + product.id} data-cy="product">
           <h2 data-cy="product-title">{product.title}</h2>
           <h6 data-cy="product-price">{product.price}</h6>
           <h6 data-cy="product-description">{product.description}</h6>
@@ -22,7 +23,7 @@ export default function Products() {
           >
             Add to cart
           </button>
-        </div>
+        </Link>
       ))}
     </div>
   );
