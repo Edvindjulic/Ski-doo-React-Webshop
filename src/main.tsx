@@ -15,7 +15,7 @@ import ConfirmBooking from "./pages/ConfirmBooking";
 import Checkout from "./pages/Checkout";
 import Products from "./pages/Products";
 import OrderProvider from "./contexts/OrderContext";
-import React from "react";
+import ProductInfo from "./pages/ProductInfo";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
