@@ -4,7 +4,8 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const CheckoutSchema = Yup.object().shape({
   email: Yup.string()
     .email("Du måste ange en giltig email")
