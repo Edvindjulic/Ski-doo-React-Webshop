@@ -14,7 +14,8 @@ import Admin from "./pages/Admin";
 import ConfirmBooking from "./pages/ConfirmBooking";
 import Checkout from "./pages/Checkout";
 import Products from "./pages/Products";
-import ProductInfo from "./pages/ProductInfo";
+import OrderProvider from "./contexts/OrderContext";
+import React from "react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,8 +32,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ShoppingCart>
-      <RouterProvider router={router} />
-    </ShoppingCart>
+    <OrderProvider>
+      <ShoppingCart>
+        <RouterProvider router={router} />
+      </ShoppingCart>
+    </OrderProvider>
   </React.StrictMode>
 );
