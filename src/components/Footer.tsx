@@ -12,7 +12,6 @@ export default function Footer() {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '1rem',
-        position: 'fixed',
         bottom: 0,
       }}
     >

@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   Paper,
-  Backdrop,
 } from "@mui/material";
 
 interface SnackbarProps {
@@ -31,6 +30,7 @@ export default function Snackbar({
       <MuiSnackbar
         open={open}
         onClose={handleClose}
+        autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
         {lastAddedProduct && (
@@ -70,14 +70,6 @@ export default function Snackbar({
           </Paper>
         )}
       </MuiSnackbar>
-      <Backdrop
-        open={open}
-        onClick={handleClose}
-        sx={{
-          zIndex: (theme) => theme.zIndex.snackbar - 1,
-          backgroundColor: "transparent",
-        }}
-      />
     </>
   );
 }
