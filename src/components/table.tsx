@@ -5,38 +5,46 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Avatar, Button } from "@mui/material";
+import { Avatar, Button, Input } from "@mui/material";
 import { Product } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
   const { cart, addProduct, removeProduct } = useCart();
-  const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
+  const totalCost = cart.reduce((acc, item) => {
+    return acc + item.quantity * item.price;
+  }, 0);
+  // interface ProductMap {
+  //   [id: string]: {
+  //     product: Product;
+  //     quantity: number;
+  //   };
+  // }
 
-  interface ProductMap {
-    [id: string]: {
-      product: Product;
-      quantity: number;
-    };
-  }
+  // const cartUniqueItems = Object.values(
+  //   cart.reduce((acc: ProductMap, product) => {
+  //     if (acc[product.id]) {
+  //       acc[product.id].quantity++;
+  //     } else {
+  //       acc[product.id] = {
+  //         product,
+  //         quantity: 1,
+  //       };
+  //     }
+  //     return acc;
+  //   }, {})
+  // );
 
-  const cartUniqueItems = Object.values(
-    cart.reduce((acc: ProductMap, product) => {
-      if (acc[product.id]) {
-        acc[product.id].quantity++;
-      } else {
-        acc[product.id] = {
-          product,
-          quantity: 1,
-        };
-      }
-      return acc;
-    }, {})
-  );
+  let unique = [...new Map(cart.map((item) => [item["id"], item])).values()];
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350, maxWidth: 1000 }} aria-label="simple table">
+      <Table
+        sx={{ minWidth: 350, maxWidth: 1000 }}
+        aria-label="simple table"
+        size="small"
+        padding="none"
+      >
         <TableHead>
           <TableRow
             sx={{
@@ -52,21 +60,24 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cartUniqueItems.map(({ product, quantity }) => (
+          {cart.map((product) => (
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              data-cy={"cart-item"}
+              data-cy="cart-item"
             >
               <TableCell component="th" scope="row">
                 <Avatar
                   alt={product.title}
-                  src={product.productImage}
-                  sx={{ width: 150, height: 150 }}
+                  src={product.image}
+                  sx={{ width: 70, height: 70 }}
                   variant="square"
                 />
+                {/* <img src={product.image} alt={product.title} /> */}
               </TableCell>
-              <TableCell align="center">{product.title}</TableCell>
+              <TableCell align="center" data-cy="product-title">
+                {product.title}
+              </TableCell>
               <TableCell align="center">
                 <Button
                   variant="contained"
@@ -76,20 +87,26 @@ export default function BasicTable() {
                   -
                 </Button>{" "}
               </TableCell>
-              <TableCell align="center" data-cy="product-quantity">
-                {quantity}
+              <TableCell align="center">
+                <Input
+                  defaultValue={product.quantity}
+                  data-cy="product-quantity"
+                />
+                {product.quantity}
               </TableCell>
               <TableCell align="center">
                 <Button
                   variant="contained"
+                  size="small"
                   onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
                 >
                   +
                 </Button>
               </TableCell>
-              <TableCell align="left">
-                {(quantity * product.price).toLocaleString("sv-SE")} SEK
+              <TableCell align="left" data-cy="product-price">
+                {/* {(quantity * product.price).toLocaleString("sv-SE")} SEK */}
+                {product.quantity * product.price}
               </TableCell>
             </TableRow>
           ))}
@@ -98,7 +115,8 @@ export default function BasicTable() {
             <TableCell colSpan={3} />
             <TableCell align="center">Total price:</TableCell>
             <TableCell align="left" data-cy="total-price">
-              {totalPrice.toLocaleString("sv-SE")} SEK
+              {/* {totalPrice.toLocaleString("sv-SE")} SEK */}
+              {totalCost}
             </TableCell>
           </TableRow>
         </TableBody>

@@ -6,11 +6,15 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <Box>
-     <Header/>
-      <Outlet/>
-      <Footer />
+
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer><Footer /></footer>
+
     </Box>
   );
 }
-
-
