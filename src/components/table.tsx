@@ -88,11 +88,7 @@ export default function BasicTable() {
                 </Button>{" "}
               </TableCell>
               <TableCell align="center">
-                <Input
-                  defaultValue={product.quantity}
-                  data-cy="product-quantity"
-                />
-                {product.quantity}
+                <Input value={product.quantity} data-cy="product-quantity" />
               </TableCell>
               <TableCell align="center">
                 <Button
