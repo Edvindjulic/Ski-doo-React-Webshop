@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { products } from "../../data";
+import { CartItem, products } from "../../data";
 import { useCart } from "../contexts/CartContext";
 import Snackbar from "../components/Snackbar";
 
@@ -10,6 +10,8 @@ interface ProductInfoProps {
 
 export default function ProductInfo({}: ProductInfoProps) {
   const { cart, setCart } = useCart();
+  const { addProduct } = useCart();
+
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [lastAddedProduct, setLastAddedProduct] = useState<
     | {
@@ -73,23 +75,12 @@ export default function ProductInfo({}: ProductInfoProps) {
       >
         <Card sx={{}} variant="outlined">
           {card}
-          <Button
-            variant="contained"
-            onClick={() => {
-              if (selectedProduct) {
-                setCart([...cart, selectedProduct]);
-                setSnackbarOpen(true);
-                setLastAddedProduct({
-                  title: selectedProduct.title,
-                  price: selectedProduct.price,
-                  image: selectedProduct.productImage,
-                });
-              }
-            }}
+          <button
+            data-cy="product-buy-button"
+            onClick={() => addProduct(selectedProduct as CartItem)}
           >
-            +
-          </Button>
-          <div>Du har {cart.length} saker i kundvagnen</div>
+            Add to cart
+          </button>
         </Card>
         <Box
           sx={{
