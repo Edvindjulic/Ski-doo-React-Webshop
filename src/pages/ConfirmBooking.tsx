@@ -41,7 +41,7 @@ export default function ConfirmBooking() {
           }}
         >
            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={product?.image} alt={product?.title} style={{ width: '30%', height: '100%' }} />
+            <img src={product?.productImage} alt={product?.title} style={{ width: '30%', height: '100%' }} />
             <Typography variant="subtitle2">{product?.title}</Typography>
             <Typography variant="subtitle2">1st</Typography>
             <Typography variant="subtitle2">{product?.price} kr</Typography>
