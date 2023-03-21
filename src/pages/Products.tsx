@@ -1,9 +1,29 @@
 import { useState } from "react";
 import { CartItem, products } from "../../data";
 import { useCart } from "../contexts/CartContext";
+import Snackbar from "../components/Snackbar";
 
 export default function Products() {
   const { addProduct } = useCart();
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [lastAddedProduct, setLastAddedProduct] = useState<
+    | {
+        title: string;
+        price: number;
+        image: string;
+      }
+    | undefined
+  >(undefined);
+
+  const handleSnackbarClose = (
+    event: React.SyntheticEvent<Element, Event> | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <div>
@@ -18,12 +38,25 @@ export default function Products() {
           <img src={product.image} alt={product.title} width="100px" />
           <button
             data-cy="product-buy-button"
-            onClick={() => addProduct(product as CartItem)}
+            onClick={() => {
+            addProduct(product as CartItem);
+            setSnackbarOpen(true);
+            setLastAddedProduct({
+              title: product.title,
+              price: product.price,
+              image: product.image,
+            });
+          }}
           >
-            Add to cart
+          Add to cart
           </button>
         </div>
       ))}
+      <Snackbar
+  open={snackbarOpen}
+  handleClose={handleSnackbarClose}
+  lastAddedProduct={lastAddedProduct}
+/>
     </div>
   );
 }
