@@ -45,7 +45,7 @@ export default function Products() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            maxWidth: "30%",
+            // maxWidth: "30%",
             margin: "1rem",
             padding: "1rem",
           }}
@@ -67,25 +67,30 @@ export default function Products() {
                 <h2 data-cy="product-title">{product.title}</h2>
               </Box>
             </Box>
-          </Link>
+          
           <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
               width: "100%",
               fontSize: "25px",
+            
             }}
           >
             <h6>2023</h6>
             <h6 data-cy="product-price">{product.price}</h6>
           </Box>
-          <p data-cy="product-description">{product.description}</p>
+          <Box sx={{ maxWidth: '30rem', display: 'flex', flexWrap: 'wrap'}}>
+            <p data-cy="product-description">{product.description}</p>
+          </Box>
           {/* <h6 data-cy="product-id">{product.id}</h6> */}
+          </Link>
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-end",
               padding: "0.5rem",
+              
             }}
           >
             <button
@@ -106,6 +111,7 @@ export default function Products() {
         </Card>
       ))}
       <Snackbar
+        data-cy="added-to-cart-toast"
         open={snackbarOpen}
         handleClose={handleSnackbarClose}
         lastAddedProduct={lastAddedProduct}
