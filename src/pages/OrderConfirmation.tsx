@@ -1,12 +1,11 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
-import { products } from "../../data/index";
 import { useOrder } from "../contexts/OrderContext";
 
 export default function OrderConfirmation() {
   const { order } = useOrder();
-
-  // find the product with id 1
-  const product = products.find((p) => p.id === "5");
+  const totalCost = order.products.reduce((acc, item) => {
+    return acc + item.quantity * item.price;
+  }, 0);
 
   return (
     <Box
@@ -32,46 +31,50 @@ export default function OrderConfirmation() {
           textAlign: "center",
         }}
       >
-        Din beställning
+        Din beställning: {totalCost.toLocaleString("sv-SE")} kr
       </Typography>
-      <Card
-        variant="outlined"
-        sx={{
-          width: "90%",
-          margin: "0.8rem 0",
-          backgroundColor: "white",
-          height: "5rem",
-          border: "1px solid black",
-        }}
-      >
-        <CardContent
+      {order.products.map((product) => (
+        <Card
+          variant="outlined"
+          key={product.id}
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
+            width: "90%",
+            margin: "0.8rem 0",
+            backgroundColor: "white",
+            height: "5rem",
+            border: "1px solid black",
           }}
         >
-          <Box
+          <CardContent
             sx={{
               display: "flex",
-              flexDirection: "row",
-              gap: "1rem",
               justifyContent: "center",
               alignItems: "center",
+              height: "100%",
             }}
           >
-            <img
-              src={product?.image}
-              alt={product?.title}
-              style={{ width: "30%", height: "100%" }}
-            />
-            <Typography variant="subtitle2">{product?.title}</Typography>
-            <Typography variant="subtitle2">1st</Typography>
-            <Typography variant="subtitle2">{product?.price} kr</Typography>
-          </Box>
-        </CardContent>
-      </Card>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "1rem",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                style={{ width: "30%", height: "100%" }}
+              />
+              <Typography variant="subtitle2">{product.title}</Typography>
+              <Typography variant="subtitle2">{product.quantity}</Typography>
+              <Typography variant="subtitle2">{product.price} kr</Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      ))}
+
       <Typography
         variant="h5"
         component="h5"

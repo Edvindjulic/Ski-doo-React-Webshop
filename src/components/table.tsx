@@ -1,12 +1,11 @@
+import { Avatar, Button, Input } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Avatar, Button, Input } from "@mui/material";
-import { Product } from "../../data";
 import { useCart } from "../contexts/CartContext";
 
 export default function BasicTable() {
@@ -101,8 +100,7 @@ export default function BasicTable() {
                 </Button>
               </TableCell>
               <TableCell align="left" data-cy="product-price">
-                {/* {(quantity * product.price).toLocaleString("sv-SE")} SEK */}
-                {product.quantity * product.price}
+                {(product.quantity * product.price).toLocaleString("sv-SE")} SEK
               </TableCell>
             </TableRow>
           ))}
@@ -111,8 +109,7 @@ export default function BasicTable() {
             <TableCell colSpan={3} />
             <TableCell align="center">Total price:</TableCell>
             <TableCell align="left" data-cy="total-price">
-              {/* {totalPrice.toLocaleString("sv-SE")} SEK */}
-              {totalCost}
+              {totalCost.toLocaleString("sv-SE")} SEK
             </TableCell>
           </TableRow>
         </TableBody>
