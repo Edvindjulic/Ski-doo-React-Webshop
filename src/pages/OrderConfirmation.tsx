@@ -1,7 +1,10 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { products } from "../../data/index";
+import { useOrder } from "../contexts/OrderContext";
 
 export default function OrderConfirmation() {
+  const { order } = useOrder();
+
   // find the product with id 1
   const product = products.find((p) => p.id === "5");
 
@@ -30,6 +33,7 @@ export default function OrderConfirmation() {
         }}
       >
         Din beställning
+        {console.log(order)}
       </Typography>
       <Card
         variant="outlined"
