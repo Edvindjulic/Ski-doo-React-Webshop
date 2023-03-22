@@ -81,7 +81,6 @@ export default function Header() {
         }}>
         <NavLink to="./">Start</NavLink>
         <NavLink to="./checkout">Kassa</NavLink>
-        <NavLink to="./confirmbooking">GENVÄG</NavLink>
         <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
