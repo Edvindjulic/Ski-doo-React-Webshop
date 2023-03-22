@@ -61,7 +61,7 @@ export default function Products() {
               }}
             >
               <Box sx={{ fontStyle: "italic", paddingRight: "0.8rem" }}>
-                <h2 data-cy="product-title">{product.brand}</h2>
+                <h2>{product.brand}</h2>
               </Box>
               <Box>
                 <h2 data-cy="product-title">{product.title}</h2>
