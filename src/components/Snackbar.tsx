@@ -1,11 +1,11 @@
-import React from "react";
 import {
-  Snackbar as MuiSnackbar,
   Box,
-  Typography,
   Button,
   Paper,
+  Snackbar as MuiSnackbar,
+  Typography,
 } from "@mui/material";
+import React from "react";
 
 interface SnackbarProps {
   open: boolean;
@@ -31,7 +31,7 @@ export default function Snackbar({
         open={open}
         onClose={handleClose}
         autoHideDuration={3000}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         {lastAddedProduct && (
           <Paper
@@ -63,8 +63,12 @@ export default function Snackbar({
                   height: "40px",
                 }}
               />
-              <Typography variant="subtitle1">{lastAddedProduct.title}</Typography>
-              <Typography variant="subtitle1">{lastAddedProduct.price} kr</Typography>
+              <Typography variant="subtitle1">
+                {lastAddedProduct.title}
+              </Typography>
+              <Typography variant="subtitle1">
+                {lastAddedProduct.price} kr
+              </Typography>
             </Box>
             <Button variant="contained">Gå till kassan</Button>
           </Paper>
