@@ -14,7 +14,6 @@ export default function OrderConfirmation() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: "70vh",
         backgroundColor: "#D9D9D9",
         margin: "0 auto",
       }}
@@ -40,7 +39,7 @@ export default function OrderConfirmation() {
           data-cy="product"
           key={product.id}
           sx={{
-            width: "90%",
+            width: "95%",
             margin: "0.8rem 0",
             backgroundColor: "white",
             border: "1px solid black",
@@ -66,7 +65,7 @@ export default function OrderConfirmation() {
               <img
                 src={product.image}
                 alt={product.title}
-                style={{ width: "30%", height: "100%" }}
+                style={{ width: "20%", height: "100%" }}
               />
               <Typography variant="subtitle2" data-cy="product-title">
                 {product.title}
@@ -88,7 +87,6 @@ export default function OrderConfirmation() {
         component="h5"
         sx={{
           height: "6vh",
-          width: "100%",
           fontSize: "1rem",
           fontWeight: "bold",
           marginTop: "1rem",
