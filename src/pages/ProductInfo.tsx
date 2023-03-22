@@ -79,7 +79,15 @@ export default function ProductInfo() {
           {card}
           <button
             data-cy="product-buy-button"
-            onClick={() => addProduct(selectedProduct as CartItem)}
+            onClick={() => {
+              addProduct(selectedProduct as CartItem);
+              setSnackbarOpen(true);
+              setLastAddedProduct({
+                title: selectedProduct.title,
+                price: selectedProduct.price,
+                image: selectedProduct.image,
+              });
+            }}
           >
             Add to cart
           </button>

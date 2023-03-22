@@ -1,5 +1,6 @@
 export interface Product {
   id: string;
+  brand: string;
   title: string;
   description: string;
   image: string;
@@ -24,7 +25,8 @@ export const generateId = () => {
 export const products: Product[] = [
   {
     id: "1",
-    title: "Ski-Doo Tundra",
+    brand: "Ski-Doo",
+    title: "Tundra",
     description:
       "Djup snö, hårda vinterförhållanden - det spelar ingen roll för Tundra LE. Med REV Gen4 plattformen kan föraren nu ta sig an allt med ultrasnabba köregenskaper, överlägsen bärförmåga och mångsidiga funktioner som alla drivs av pålitliga Rotax-motorer.",
     image:
@@ -35,7 +37,8 @@ export const products: Product[] = [
   },
   {
     id: "2",
-    title: "Ski-Doo MXZ",
+    brand: "Ski-Doo",
+    title: "MXZ",
     description:
       "Dynamisk ledprestanda med värdeorienterade funktioner och förtroendeingivande körning. En skoter full av skoj utan att plånboken töms.",
     image:
@@ -47,7 +50,8 @@ export const products: Product[] = [
   },
   {
     id: "3",
-    title: "Ski-Doo FreeRide",
+    brand: "Ski-Doo",
+    title: "FreeRide",
     description:
       "Freeride klarar av att erövra extrema förhållanden i djupsnö och gör det med alldeles egen stil, och sticker ut i en värld där branta sluttningar och stora hopp är normen.",
     image:
@@ -58,7 +62,8 @@ export const products: Product[] = [
   },
   {
     id: "4",
-    title: "Ski-Doo Renegade",
+    brand: "Ski-Doo",
+    title: "Renegade",
     description:
       "Framtagen för vinteräventyraren med längre drivband för bättre grepp och ökad komfort. Med två- och fyrtakts Rotax motorer finns det en Renegade för alla ledförhållanden.",
     image:
@@ -69,7 +74,8 @@ export const products: Product[] = [
   },
   {
     id: "5",
-    title: "Ski-Doo Expedition",
+    brand: "Ski-Doo",
+    title: "Expedition",
     description:
       "Ski-Doo Expedition-modellerna är otroligt mångsidiga och har en fantastisk kapacitet i en och samma skoter, både på och utanför leder. Jobba vid stugan ena timmen, starta ett nytt äventyr nästa timme.",
     image:
@@ -80,7 +86,8 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    title: "Ski-Doo Skandic",
+    brand: "Ski-Doo",
+    title: "Skandic",
     description:
       "Brutal styrka möter förfinad kapacitet med Skandic. Dess enorma dragkapacitet och stora bäryta gör svåra arbeten enkla och dess stora bärförmåga gör att du kan köra dit du vill.",
     image:

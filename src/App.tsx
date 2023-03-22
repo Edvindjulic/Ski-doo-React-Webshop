@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Header from "./header";
 import Footer from "./components/Footer";
+import Header from "./header";
 
 export default function App() {
   return (
-    <Box>
+    <Box sx={{height: '100%'}}>
 
       <header>
         <Header />

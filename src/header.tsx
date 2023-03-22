@@ -19,6 +19,7 @@ export default function Header() {
         justifyContent: "center",
         alignItems: "center",
         height: "7rem",
+        textDecoration: "none",
       }}
     >
       <Box
@@ -27,10 +28,14 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          "& a": {
+            color: "white",
+            textDecoration: "none",
+          },
         }}
       >
-        <Box sx={{ marginLeft: "auto", fontSize: "10px" }}>
-          SNÖSKOTERSHOPPEN{" "}
+        <Box sx={{ marginLeft: "auto", fontSize: "30px" }}>
+          <NavLink to="./">SNÖSKOTERSHOPEN</NavLink>{" "}
         </Box>
         <Box
           sx={{
@@ -42,7 +47,7 @@ export default function Header() {
         >
           <Tooltip title="Kundvagn">
             <NavLink to="./checkout">
-              <IconButton aria-label="cart" data-cy="cart-link">
+              <IconButton aria-label="cart" data-cy="cart-link" color="success">
                 <StyledBadge
                   badgeContent={cart.reduce(
                     (total, item) => total + item.quantity,
@@ -67,6 +72,13 @@ export default function Header() {
           padding: "0 1rem",
           textDecoration: "none",
           color: "white",
+          "& a": {
+            color: "white",
+            textDecoration: "none",
+            "&:hover": {
+              color: "yellow",
+            },
+          },
         }}
       >
         <NavLink to="./">Start</NavLink>
