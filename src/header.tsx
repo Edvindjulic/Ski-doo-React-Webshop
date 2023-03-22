@@ -19,18 +19,21 @@ export default function Header() {
         justifyContent: "center",
         alignItems: "center",
         height: "7rem",
-      }}
-    >
+        textDecoration: "none",
+      }}>
       <Box
         sx={{
           width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-        }}
-      >
-        <Box sx={{ marginLeft: "auto", fontSize: "10px" }}>
-          SNÖSKOTERSHOPPEN{" "}
+          "& a": {
+            color: "white",
+            textDecoration: "none",
+          },
+        }}>
+        <Box sx={{ marginLeft: "auto", fontSize: "30px" }}>
+          <NavLink to="./">SNÖSKOTERSHOPEN</NavLink>{" "}
         </Box>
         <Box
           sx={{
@@ -38,19 +41,20 @@ export default function Header() {
             fontSize: "2rem",
             marginLeft: "auto",
             marginRight: "1rem",
-          }}
-        >
+          }}>
           <Tooltip title="Kundvagn">
             <NavLink to="./checkout">
-              <IconButton aria-label="cart" data-cy="cart-link">
+              <IconButton
+                aria-label="cart"
+                data-cy="cart-link"
+                color="success">
                 <StyledBadge
                   badgeContent={cart.reduce(
                     (total, item) => total + item.quantity,
                     0
                   )}
                   color="warning"
-                  data-cy="cart-items-count-badge"
-                >
+                  data-cy="cart-items-count-badge">
                   <ShoppingCartIcon />
                 </StyledBadge>
               </IconButton>
@@ -67,10 +71,16 @@ export default function Header() {
           padding: "0 1rem",
           textDecoration: "none",
           color: "white",
-        }}
-      >
+          "& a": {
+            color: "white",
+            textDecoration: "none",
+            "&:hover": {
+              color: "yellow",
+            },
+          },
+        }}>
         <NavLink to="./">Start</NavLink>
-        <NavLink to="./confirmbooking">Kassa</NavLink>
+        <NavLink to="./checkout">Kassa</NavLink>
         <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
