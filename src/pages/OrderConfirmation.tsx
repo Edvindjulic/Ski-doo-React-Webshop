@@ -33,7 +33,6 @@ export default function OrderConfirmation() {
         }}
       >
         Din beställning
-        {console.log(order)}
       </Typography>
       <Card
         variant="outlined"
@@ -96,12 +95,13 @@ export default function OrderConfirmation() {
           width: "90%",
         }}
       >
-        <Typography variant="subtitle1">Sven Svensson</Typography>
+        <Typography variant="subtitle1">{order.customer.name}</Typography>
         <Typography variant="subtitle1">
-          SvenssonGatan 10, 123 45, Svenninge
+          {order.customer.street} ,{order.customer.zipcode},{" "}
+          {order.customer.city}
         </Typography>
-        <Typography variant="subtitle1">sven@gmail.com</Typography>
-        <Typography variant="subtitle1">0707-22 33 44</Typography>
+        <Typography variant="subtitle1">{order.customer.email}</Typography>
+        <Typography variant="subtitle1">{order.customer.phone}</Typography>
       </Box>
     </Box>
   );
