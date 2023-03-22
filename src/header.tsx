@@ -70,7 +70,7 @@ export default function Header() {
         }}
       >
         <NavLink to="./">Start</NavLink>
-        <NavLink to="./confirmbooking">Kassa</NavLink>
+        <NavLink to="./orderconfirmation">Kassa</NavLink>
         <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
