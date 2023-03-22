@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
+import { generateId } from "../../data";
 import { useOrder } from "../contexts/OrderContext";
 
 export default function OrderConfirmation() {
@@ -14,7 +15,6 @@ export default function OrderConfirmation() {
         flexDirection: "column",
         alignItems: "center",
         width: "70vh",
-        height: "50vh",
         backgroundColor: "#D9D9D9",
         margin: "0 auto",
       }}
@@ -31,17 +31,18 @@ export default function OrderConfirmation() {
           textAlign: "center",
         }}
       >
-        Din beställning: {totalCost.toLocaleString("sv-SE")} kr
+        <p>Din beställning, ordernummer: {generateId()}</p>
+        <p>Summa: {totalCost.toLocaleString("sv-SE")} kr </p>
       </Typography>
       {order.products.map((product) => (
         <Card
           variant="outlined"
+          data-cy="product"
           key={product.id}
           sx={{
             width: "90%",
             margin: "0.8rem 0",
             backgroundColor: "white",
-            height: "5rem",
             border: "1px solid black",
           }}
         >
@@ -67,9 +68,16 @@ export default function OrderConfirmation() {
                 alt={product.title}
                 style={{ width: "30%", height: "100%" }}
               />
-              <Typography variant="subtitle2">{product.title}</Typography>
+              <Typography variant="subtitle2" data-cy="product-title">
+                {product.title}
+              </Typography>
               <Typography variant="subtitle2">{product.quantity}</Typography>
-              <Typography variant="subtitle2">{product.price} kr</Typography>
+              <Typography variant="subtitle2" data-cy="product-price">
+                {product.price} kr
+              </Typography>
+              <Typography variant="subtitle2" data-cy="product-description">
+                {product.description}
+              </Typography>
             </Box>
           </CardContent>
         </Card>
@@ -98,13 +106,20 @@ export default function OrderConfirmation() {
           width: "90%",
         }}
       >
-        <Typography variant="subtitle1">{order.customer.name}</Typography>
-        <Typography variant="subtitle1">
-          {order.customer.street} ,{order.customer.zipcode},{" "}
-          {order.customer.city}
+        <Typography variant="subtitle1" data-cy="customer-name">
+          {order.customer.name}
         </Typography>
-        <Typography variant="subtitle1">{order.customer.email}</Typography>
-        <Typography variant="subtitle1">{order.customer.phone}</Typography>
+        <Typography variant="subtitle1">
+          <span data-cy="customer-address">{order.customer.street},</span>
+          <span data-cy="customer-zipcode">{order.customer.zipcode},</span>
+          <span data-cy="customer-city"> {order.customer.city}</span>
+        </Typography>
+        <Typography variant="subtitle1" data-cy="customer-email">
+          {order.customer.email}
+        </Typography>
+        <Typography variant="subtitle1" data-cy="customer-phone">
+          {order.customer.phone}
+        </Typography>
       </Box>
     </Box>
   );
