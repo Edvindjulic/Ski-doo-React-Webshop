@@ -1,10 +1,11 @@
-import * as React from "react";
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { useCart } from "../contexts/CartContext";
+import { useOrder } from "../contexts/OrderContext";
 
 const CheckoutSchema = Yup.object().shape({
   email: Yup.string()
@@ -24,6 +25,8 @@ type CheckoutValues = Yup.InferType<typeof CheckoutSchema>;
 
 export default function CheckoutForm() {
   const navigate = useNavigate();
+  const { setOrder } = useOrder();
+  const { cart, clearCart } = useCart();
 
   const formik = useFormik<CheckoutValues>({
     initialValues: {
@@ -36,9 +39,18 @@ export default function CheckoutForm() {
     },
     validationSchema: CheckoutSchema,
     onSubmit: (values) => {
-      navigate("/confirmbooking");
-
-      console.log(values);
+      const customer = {
+        name: values.name,
+        email: values.email,
+        city: values.city,
+        phone: values.phone,
+        street: values.street,
+        zipcode: parseInt(values.zipcode),
+      };
+      const products = cart;
+      setOrder({ products, customer });
+      navigate("/confirmation");
+      clearCart();
     },
   });
   return (

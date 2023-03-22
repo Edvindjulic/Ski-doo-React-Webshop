@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { CartItem, Product, products } from "../../data";
+import { createContext, ReactNode, useContext } from "react";
+import { CartItem } from "../../data";
 import { useLocalStorageState } from "../hooks/useLocalstorage";
 
 interface ContextValue {
@@ -7,6 +7,7 @@ interface ContextValue {
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
   addProduct: (product: CartItem) => void;
   removeProduct: (product: CartItem) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<ContextValue>(null as any);
@@ -28,6 +29,11 @@ export default function ShoppingCart({ children }: Props) {
   //   setCart([...cart, anything]);
   //   console.log(cart);
   // };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const addProduct = (product: CartItem) => {
     const existingProductIndex = cart.findIndex(
       (item) => item.id === product.id
@@ -91,6 +97,7 @@ export default function ShoppingCart({ children }: Props) {
         setCart,
         addProduct,
         removeProduct,
+        clearCart,
       }}
     >
       {children}

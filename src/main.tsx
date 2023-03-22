@@ -9,13 +9,13 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import ShoppingCart from "./contexts/CartContext";
+import OrderProvider from "./contexts/OrderContext";
 import "./index.css";
 import Admin from "./pages/Admin";
-import ConfirmBooking from "./pages/ConfirmBooking";
 import Checkout from "./pages/Checkout";
-import Products from "./pages/Products";
-import OrderProvider from "./contexts/OrderContext";
+import OrderConfirmation from "./pages/OrderConfirmation";
 import ProductInfo from "./pages/ProductInfo";
+import Products from "./pages/Products";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +23,7 @@ const router = createBrowserRouter(
       <Route index element={<Products />} />
       <Route path="product/:id" element={<ProductInfo />} />
       <Route path="checkout" element={<Checkout />} />
-      <Route path="confirmbooking" element={<ConfirmBooking />} />
+      <Route path="confirmation" element={<OrderConfirmation />} />
       <Route path="admin" element={<Admin />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Route>

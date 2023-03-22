@@ -20,7 +20,8 @@ export default function Header() {
         alignItems: "center",
         height: "7rem",
         textDecoration: "none",
-      }}>
+      }}
+    >
       <Box
         sx={{
           width: "100%",
@@ -31,7 +32,8 @@ export default function Header() {
             color: "white",
             textDecoration: "none",
           },
-        }}>
+        }}
+      >
         <Box sx={{ marginLeft: "auto", fontSize: "30px" }}>
           <NavLink to="./">SNÖSKOTERSHOPEN</NavLink>{" "}
         </Box>
@@ -41,20 +43,19 @@ export default function Header() {
             fontSize: "2rem",
             marginLeft: "auto",
             marginRight: "1rem",
-          }}>
+          }}
+        >
           <Tooltip title="Kundvagn">
             <NavLink to="./checkout">
-              <IconButton
-                aria-label="cart"
-                data-cy="cart-link"
-                color="success">
+              <IconButton aria-label="cart" data-cy="cart-link" color="success">
                 <StyledBadge
                   badgeContent={cart.reduce(
                     (total, item) => total + item.quantity,
                     0
                   )}
                   color="warning"
-                  data-cy="cart-items-count-badge">
+                  data-cy="cart-items-count-badge"
+                >
                   <ShoppingCartIcon />
                 </StyledBadge>
               </IconButton>
@@ -78,9 +79,10 @@ export default function Header() {
               color: "yellow",
             },
           },
-        }}>
+        }}
+      >
         <NavLink to="./">Start</NavLink>
-        <NavLink to="./checkout">Kassa</NavLink>
+        <NavLink to="./confirmation">Kassa</NavLink>
         <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
