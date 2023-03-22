@@ -25,8 +25,8 @@ type CheckoutValues = Yup.InferType<typeof CheckoutSchema>;
 
 export default function CheckoutForm() {
   const navigate = useNavigate();
-  const { price, setOrder } = useOrder();
-  const { cart, addProduct, removeProduct } = useCart();
+  const { setOrder } = useOrder();
+  const { cart, clearCart } = useCart();
 
   const formik = useFormik<CheckoutValues>({
     initialValues: {
@@ -48,9 +48,9 @@ export default function CheckoutForm() {
         zipcode: parseInt(values.zipcode),
       };
       const products = cart;
-      const totalPrice = 100;
-      setOrder({ products, totalPrice, customer });
-      navigate("/orderconfirmation");
+      setOrder({ products, customer });
+      navigate("/confirmation");
+      clearCart();
     },
   });
   return (
