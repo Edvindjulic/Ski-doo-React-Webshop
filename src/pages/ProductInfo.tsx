@@ -1,9 +1,9 @@
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { CartItem, products } from "../../data";
-import { useCart } from "../contexts/CartContext";
-import Snackbar from "../components/Snackbar";
 import { useParams } from "react-router-dom";
+import { CartItem, products } from "../../data";
+import Snackbar from "../components/Snackbar";
+import { useCart } from "../contexts/CartContext";
 
 export default function ProductInfo() {
   const params = useParams();
@@ -41,10 +41,10 @@ export default function ProductInfo() {
       <CardContent>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h5">2024</Typography>
-          <Typography variant="h5">{selectedProduct?.price}</Typography>
+          <Typography data-cy="product-price" variant="h5">{selectedProduct?.price}</Typography>
         </Box>
-        <Typography variant="h4">{selectedProduct?.title}</Typography>
-        <Typography>{selectedProduct?.description}</Typography>
+        <Typography data-cy="product-title" variant="h4">{selectedProduct?.title}</Typography>
+        <Typography data-cy="product-description">{selectedProduct?.description}</Typography>
       </CardContent>
     </React.Fragment>
   );
@@ -75,8 +75,9 @@ export default function ProductInfo() {
           alignItems: "center",
         }}
       >
-        <Card sx={{}} variant="outlined">
+        <Card sx={{display: 'flex', justifyContent: 'flex-end', zIndex: '10'}} variant="outlined">
           {card}
+          <img src={selectedProduct.image} alt="" width='50px'/>
           <button
             data-cy="product-buy-button"
             onClick={() => {

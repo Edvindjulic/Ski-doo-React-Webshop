@@ -28,6 +28,7 @@ export default function Snackbar({
   return (
     <>
       <MuiSnackbar
+        data-cy="added-to-cart-toast"
         open={open}
         onClose={handleClose}
         autoHideDuration={3000}
@@ -63,6 +64,7 @@ export default function Snackbar({
                   height: "40px",
                 }}
               />
+              <p>har lagts till</p>
               <Typography variant="subtitle1">
                 {lastAddedProduct.title}
               </Typography>
