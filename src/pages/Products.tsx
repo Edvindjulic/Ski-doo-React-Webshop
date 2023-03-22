@@ -28,39 +28,69 @@ export default function Products() {
   };
 
   return (
-    <Box sx={{display: 'flex', flexWrap: 'wrap',padding: '1rem', "& a": {
-      color: "black",
-      textDecoration: "none",
-}}}>
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        padding: "1rem",
+        "& a": {
+          color: "black",
+          textDecoration: "none",
+        },
+      }}
+    >
       {products.map((product) => (
-        <Card  sx={{ display: 'flex', flexDirection: 'column', alignItems:'center', maxWidth: '30%', margin: '1rem', padding: '1rem'}}>
-          <Link to={"/product/" + product.id} data-cy="product">
+        <Card
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            maxWidth: "30%",
+            margin: "1rem",
+            padding: "1rem",
+          }}
+          data-cy="product"
+        >
+          <Link to={"/product/" + product.id}>
             <img src={product.image} alt={product.title} width="150px" />
-            
-            <Box sx={
-              {
-                display: 'flex',
-                fontSize: '25px',
-                
-          }}>
-              <Box sx={{fontStyle: 'italic', paddingRight: '0.8rem' }}>
-                <h2 data-cy="product-title">{product.brand}</h2>  
+
+            <Box
+              sx={{
+                display: "flex",
+                fontSize: "25px",
+              }}
+            >
+              <Box sx={{ fontStyle: "italic", paddingRight: "0.8rem" }}>
+                <h2 data-cy="product-title">{product.brand}</h2>
               </Box>
               <Box>
                 <h2 data-cy="product-title">{product.title}</h2>
               </Box>
             </Box>
-            </Link>
-            <Box sx={{display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '25px'}}>
-              <h6>2023</h6>
-              <h6 data-cy="product-price">{product.price}</h6>
-            </Box>
-            <p data-cy="product-description">{product.description}</p>
-            {/* <h6 data-cy="product-id">{product.id}</h6> */}
-            <Box sx={{display:'flex', justifyContent:'flex-end', padding: '0.5rem'}}>
-              <button
-                data-cy="product-buy-button"
-                onClick={() => {
+          </Link>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              fontSize: "25px",
+            }}
+          >
+            <h6>2023</h6>
+            <h6 data-cy="product-price">{product.price}</h6>
+          </Box>
+          <p data-cy="product-description">{product.description}</p>
+          {/* <h6 data-cy="product-id">{product.id}</h6> */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              padding: "0.5rem",
+            }}
+          >
+            <button
+              data-cy="product-buy-button"
+              onClick={() => {
                 addProduct(product as CartItem);
                 setSnackbarOpen(true);
                 setLastAddedProduct({
@@ -69,18 +99,17 @@ export default function Products() {
                   image: product.image,
                 });
               }}
-              >
+            >
               Add to cart
-              </button>
-            </Box>
+            </button>
+          </Box>
         </Card>
-        
       ))}
       <Snackbar
-  open={snackbarOpen}
-  handleClose={handleSnackbarClose}
-  lastAddedProduct={lastAddedProduct}
-/>
+        open={snackbarOpen}
+        handleClose={handleSnackbarClose}
+        lastAddedProduct={lastAddedProduct}
+      />
     </Box>
   );
 }

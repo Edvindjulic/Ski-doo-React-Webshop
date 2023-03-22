@@ -100,7 +100,8 @@ export default function BasicTable() {
                 </Button>
               </TableCell>
               <TableCell align="left" data-cy="product-price">
-                {(product.quantity * product.price).toLocaleString("sv-SE")} SEK
+                {/* {(product.quantity * product.price).toLocaleString("sv-SE")} */}
+                {product.quantity * product.price}
               </TableCell>
             </TableRow>
           ))}
