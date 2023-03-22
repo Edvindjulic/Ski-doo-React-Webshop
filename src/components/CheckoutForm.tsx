@@ -15,7 +15,9 @@ const CheckoutSchema = Yup.object().shape({
     )
     .required("Ange en email"),
   street: Yup.string().required("Ange din adress"),
-  phone: Yup.string().required("Ange ditt telefonnummer"),
+  phone: Yup.string()
+    .required("Ange ditt telefonnummer")
+    .matches(/^[0-9]{8,}$/, "Telefonnumret måste bestå av minst 8 siffror"),
   name: Yup.string().required("Ange ditt namn"),
   zipcode: Yup.string().required("Ange ditt postnummer").min(5).max(5),
   city: Yup.string().required("Ange din stad"),
