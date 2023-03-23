@@ -1,5 +1,5 @@
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { Avatar, Box, Button, Card, CardContent, Typography } from "@mui/material";
+import { Avatar, Box, Button, Card, CardContent, Typography, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { CartItem, products } from "../../data";
@@ -67,6 +67,8 @@ export default function ProductInfo() {
     return <h1>Product not found</h1>;
   }
 
+  const matches = useMediaQuery('(min-width:1280px)')
+
   return (
     <Box
       sx={{
@@ -78,7 +80,7 @@ export default function ProductInfo() {
         height: "78.4vh",
         alignItems: "flex-end",
         justifyContent: "center",
-        padding: '0.5rem' // mediaquery!
+        padding: matches? '0.5rem' : '0rem'
       }}
     >
       <Box
@@ -91,10 +93,10 @@ export default function ProductInfo() {
           
         }}
       >
-        <Card sx={{display: 'flex', flexDirection: 'column', zIndex: '10', height: '22rem'}} variant="outlined">
+        <Card sx={{display: 'flex', flexDirection: 'column', zIndex: '10', height: matches? '22rem' : '26rem'}} variant="outlined">
           {card}
           
-            <Box sx={{display: 'flex', justifyContent:'flex-end', marginLeft:'auto', marginTop: 'auto' , width: '100%' }}> 
+            <Box sx={{display: 'flex', justifyContent:'flex-end', marginLeft:'auto', width: '100%', paddingBottom: matches? 'auto' : '1rem' }}> 
               <Button variant='contained' sx={{width: '4.5rem', margin: '0 0.8rem 0.8rem 0' }}
                 data-cy="product-buy-button"
                 onClick={() => {
@@ -119,10 +121,10 @@ export default function ProductInfo() {
             left: "10%",
             width: "50%",
             height: "50%",
-            backgroundImage: `url(${selectedProduct?.background})`, // behöver mediaquery!
+            backgroundImage: matches? `url(${selectedProduct?.background})` : 'none',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
-            zIndex: "100",
+            // zIndex: "200",
           }}
         >
           <Snackbar
