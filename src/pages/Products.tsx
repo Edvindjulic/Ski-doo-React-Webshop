@@ -1,5 +1,4 @@
-import { Box, Card } from "@mui/material";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { Box, Card, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem, products } from "../../data";
@@ -39,11 +38,6 @@ export default function Products() {
         alignItems:"center",
         height:"100%",
         backgroundImage: `url(${backgroundImage})`,
-        backgroundPositionY: '15%',
-        backgroundRepeat: "no-repeat",
-        
-        
-        
         "& a": {
           color: "black",
           textDecoration: "none",
@@ -59,15 +53,9 @@ export default function Products() {
             // maxWidth: "30%",
             margin: "1rem",
             padding: "2rem",
-            maxHeight:matches ? "29rem": "none",
+            maxHeight:matches ? "29.6rem": "none",
             justifyContent:"center",
             height:"100%",
-            
-             
-            
-            
-            
-            
           }}
           data-cy="product"
         > 
