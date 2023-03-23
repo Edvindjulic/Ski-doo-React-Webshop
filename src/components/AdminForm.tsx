@@ -57,7 +57,10 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
     initialValues,
     validationSchema: AdminSchema,
     onSubmit: (values) => {
-      const uniqueID = generateId();
+      let uniqueID = values.id;
+      if (values.id === "") {
+        uniqueID = generateId();
+      }
       const customer = {
         id: uniqueID,
         brand: values.brand,
