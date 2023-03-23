@@ -13,6 +13,8 @@ import OrderProvider from "./contexts/OrderContext";
 import "./index.css";
 import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
+import EditProduct from "./pages/EditProduct";
+import NewProduct from "./pages/NewProduct";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import ProductInfo from "./pages/ProductInfo";
 import Products from "./pages/Products";
@@ -25,6 +27,8 @@ const router = createBrowserRouter(
       <Route path="checkout" element={<Checkout />} />
       <Route path="confirmation" element={<OrderConfirmation />} />
       <Route path="admin" element={<Admin />} />
+      <Route path="admin/product/:id" element={<EditProduct />} />
+      <Route path="admin/product/new" element={<NewProduct />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   )

@@ -9,13 +9,18 @@ import { useCart } from "../contexts/CartContext";
 import { useOrder } from "../contexts/OrderContext";
 
 const AdminSchema = Yup.object().shape({
-  id: Yup.string().required("Ange id"),
+  id: Yup.string(),
   brand: Yup.string(),
   title: Yup.string().required("Ange titel"),
   description: Yup.string().required("Ange beskrivning"),
-  image: Yup.string().required("Ange bild"),
+  image: Yup.string()
+    .required("Ange bild")
+    .url("Bilden måste vara en giltig URL"),
   background: Yup.string(),
-  price: Yup.number().required("Ange pris"),
+  price: Yup.number()
+    .typeError("Priset måste vara en siffra")
+    .positive("Priset måste vara större än 0")
+    .required("Ange pris"),
 });
 
 type AdminValues = Yup.InferType<typeof AdminSchema>;
@@ -84,7 +89,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
       data-cy="product-form"
     >
       {" "}
-      ADMINFORM
       <TextField
         fullWidth
         id="id"
@@ -126,8 +130,8 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         onBlur={formik.handleBlur}
         error={formik.touched.title && Boolean(formik.errors.title)}
         helperText={formik.touched.title && formik.errors.title}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        inputProps={{ "data-cy": "product-title" }}
+        FormHelperTextProps={{ "data-cy": "product-title-error" } as any}
         autoComplete="name"
       />
       <TextField
@@ -141,8 +145,8 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         onBlur={formik.handleBlur}
         error={formik.touched.description && Boolean(formik.errors.description)}
         helperText={formik.touched.description && formik.errors.description}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        inputProps={{ "data-cy": "product-description" }}
+        FormHelperTextProps={{ "data-cy": "product-description-error" } as any}
         autoComplete="name"
       />
       <TextField
@@ -156,8 +160,8 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         onBlur={formik.handleBlur}
         error={formik.touched.image && Boolean(formik.errors.image)}
         helperText={formik.touched.image && formik.errors.image}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        inputProps={{ "data-cy": "product-image" }}
+        FormHelperTextProps={{ "data-cy": "product-image-error" } as any}
         autoComplete="name"
       />
       <TextField
@@ -186,8 +190,8 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         onBlur={formik.handleBlur}
         error={formik.touched.price && Boolean(formik.errors.price)}
         helperText={formik.touched.price && formik.errors.price}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        inputProps={{ "data-cy": "product-price" }}
+        FormHelperTextProps={{ "data-cy": "product-price-error" } as any}
         autoComplete="name"
       />
       <Button color="primary" variant="contained" fullWidth type="submit">
