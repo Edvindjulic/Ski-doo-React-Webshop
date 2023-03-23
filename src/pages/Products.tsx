@@ -26,15 +26,23 @@ export default function Products() {
     }
     setSnackbarOpen(false);
   };
-
+  const backgroundImage =
+ "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
   return (
     <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        padding: "1rem",
+        
         justifyContent:"center",
         alignItems:"center",
+        height:"100%",
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundPositionY: '15%',
+        backgroundRepeat: "no-repeat",
+        
+        
+        
         "& a": {
           color: "black",
           textDecoration: "none",
@@ -47,9 +55,18 @@ export default function Products() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            
             // maxWidth: "30%",
             margin: "1rem",
-            padding: "1rem",
+            padding: "2rem",
+            height:"100%",
+            maxHeight:"29rem",
+            justifyContent:"center",
+           
+            
+            
+            
+            
           }}
           data-cy="product"
         >
