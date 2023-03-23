@@ -20,7 +20,7 @@ const AdminSchema = Yup.object().shape({
 
 type AdminValues = Yup.InferType<typeof AdminSchema>;
 
-const defaultValues: AdminValues = {
+export const defaultValues: AdminValues = {
   id: "",
   brand: "",
   title: "",
@@ -188,7 +188,7 @@ export default function AdminForm({ myProduct }: AdminFormProps) {
         autoComplete="name"
       />
       <Button color="primary" variant="contained" fullWidth type="submit">
-        Lägg till produkt
+        Ändra en produkt
       </Button>
     </Box>
   );
