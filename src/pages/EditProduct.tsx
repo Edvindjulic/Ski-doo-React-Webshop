@@ -1,9 +1,6 @@
-import { Box, Card } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
-import { CartItem, products } from "../../data";
-import AdminForm, { defaultValues } from "../components/AdminForm";
-
-const minProdukt = products[2];
+import { useParams } from "react-router-dom";
+import { products } from "../../data";
+import AdminForm from "../components/AdminForm";
 
 export default function EditProduct() {
   const params = useParams();

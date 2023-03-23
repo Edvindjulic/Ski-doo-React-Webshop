@@ -106,24 +106,10 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
       /> */}
       <TextField
         fullWidth
-        id="brand"
-        type="brand"
-        name="brand"
-        label="Brand"
-        value={formik.values.brand}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.brand && Boolean(formik.errors.brand)}
-        helperText={formik.touched.brand && formik.errors.brand}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-      />
-      <TextField
-        fullWidth
         id="title"
         type="title"
         name="title"
-        label="Title"
+        label="Titel"
         value={formik.values.title}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -137,7 +123,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         id="description"
         type="description"
         name="description"
-        label="Description"
+        label="Beskrivning"
         value={formik.values.description}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -148,10 +134,24 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
       />
       <TextField
         fullWidth
+        id="brand"
+        type="brand"
+        name="brand"
+        label="Märke"
+        value={formik.values.brand}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.brand && Boolean(formik.errors.brand)}
+        helperText={formik.touched.brand && formik.errors.brand}
+        inputProps={{ "data-cy": "customer-name" }}
+        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+      />
+      <TextField
+        fullWidth
         id="image"
         type="text"
         name="image"
-        label="Image"
+        label="Bild-URL"
         value={formik.values.image}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -165,7 +165,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         id="background"
         type="background"
         name="background"
-        label="background"
+        label="Bakgrundsbild-URL"
         value={formik.values.background}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -179,7 +179,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         id="price"
         type="price"
         name="price"
-        label="Price"
+        label="Pris"
         value={formik.values.price}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
