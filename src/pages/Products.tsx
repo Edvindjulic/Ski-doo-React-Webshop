@@ -33,6 +33,8 @@ export default function Products() {
         display: "flex",
         flexWrap: "wrap",
         padding: "1rem",
+        justifyContent:"center",
+        alignItems:"center",
         "& a": {
           color: "black",
           textDecoration: "none",
