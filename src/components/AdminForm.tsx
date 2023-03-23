@@ -4,9 +4,7 @@ import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { Product } from "../../data";
-import { useCart } from "../contexts/CartContext";
-import { useOrder } from "../contexts/OrderContext";
+import { generateId, Product } from "../../data";
 
 const AdminSchema = Yup.object().shape({
   id: Yup.string(),
@@ -19,7 +17,7 @@ const AdminSchema = Yup.object().shape({
   background: Yup.string(),
   price: Yup.number()
     .typeError("Priset måste vara en siffra")
-    .positive("Priset måste vara större än 0")
+    .positive("Priset måste vara högre än 0 kr")
     .required("Ange pris"),
 });
 
@@ -59,8 +57,9 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
     initialValues,
     validationSchema: AdminSchema,
     onSubmit: (values) => {
+      const uniqueID = generateId();
       const customer = {
-        id: values.id,
+        id: uniqueID,
         brand: values.brand,
         title: values.title,
         description: values.description,
@@ -84,12 +83,11 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         },
       }}
       noValidate
-      autoComplete="on"
       onSubmit={formik.handleSubmit}
       data-cy="product-form"
     >
       {" "}
-      <TextField
+      {/* <TextField
         fullWidth
         id="id"
         type="id"
@@ -102,8 +100,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.id && formik.errors.id}
         inputProps={{ "data-cy": "customer-id" }}
         FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-        autoComplete="name"
-      />
+      /> */}
       <TextField
         fullWidth
         id="brand"
@@ -117,7 +114,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.brand && formik.errors.brand}
         inputProps={{ "data-cy": "customer-name" }}
         FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-        autoComplete="Brand"
       />
       <TextField
         fullWidth
@@ -132,7 +128,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.title && formik.errors.title}
         inputProps={{ "data-cy": "product-title" }}
         FormHelperTextProps={{ "data-cy": "product-title-error" } as any}
-        autoComplete="name"
       />
       <TextField
         fullWidth
@@ -147,7 +142,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.description && formik.errors.description}
         inputProps={{ "data-cy": "product-description" }}
         FormHelperTextProps={{ "data-cy": "product-description-error" } as any}
-        autoComplete="name"
       />
       <TextField
         fullWidth
@@ -162,7 +156,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.image && formik.errors.image}
         inputProps={{ "data-cy": "product-image" }}
         FormHelperTextProps={{ "data-cy": "product-image-error" } as any}
-        autoComplete="name"
       />
       <TextField
         fullWidth
@@ -177,7 +170,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.background && formik.errors.background}
         inputProps={{ "data-cy": "customer-name" }}
         FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-        autoComplete="name"
       />
       <TextField
         fullWidth
@@ -192,7 +184,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         helperText={formik.touched.price && formik.errors.price}
         inputProps={{ "data-cy": "product-price" }}
         FormHelperTextProps={{ "data-cy": "product-price-error" } as any}
-        autoComplete="name"
       />
       <Button color="primary" variant="contained" fullWidth type="submit">
         {buttonText}
