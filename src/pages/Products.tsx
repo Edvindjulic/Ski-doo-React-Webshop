@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/material";
+import { Box, Card, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem, products } from "../../data";
@@ -26,13 +26,18 @@ export default function Products() {
     }
     setSnackbarOpen(false);
   };
-
+  const backgroundImage =
+ "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
+ const matches = useMediaQuery('(min-width:500px)')
   return (
     <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        padding: "1rem",
+        justifyContent:"center",
+        alignItems:"center",
+        height:"100%",
+        backgroundImage: `url(${backgroundImage})`,
         "& a": {
           color: "black",
           textDecoration: "none",
@@ -47,10 +52,13 @@ export default function Products() {
             alignItems: "center",
             // maxWidth: "30%",
             margin: "1rem",
-            padding: "1rem",
+            padding: "2rem",
+            maxHeight:matches ? "29.6rem": "none",
+            justifyContent:"center",
+            height:"100%",
           }}
           data-cy="product"
-        >
+        > 
           <Link to={"/product/" + product.id}>
             <img src={product.image} alt={product.title} width="150px" />
 
