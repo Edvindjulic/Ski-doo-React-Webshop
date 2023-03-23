@@ -31,20 +31,23 @@ export const defaultValues: AdminValues = {
 };
 
 type AdminFormProps = {
-  myProduct?: Product;
+  product?: Product;
+  isNewProduct: boolean;
 };
 
-export default function AdminForm({ myProduct }: AdminFormProps) {
+export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
   const navigate = useNavigate();
 
+  const buttonText = isNewProduct ? "Ny produkt" : "Ändra produkt";
+
   const initialValues: AdminValues = {
-    id: myProduct?.id || defaultValues.id,
-    brand: myProduct?.brand || defaultValues.brand,
-    title: myProduct?.title || defaultValues.title,
-    description: myProduct?.description || defaultValues.description,
-    image: myProduct?.image || defaultValues.image,
-    background: myProduct?.background || defaultValues.background,
-    price: myProduct?.price || defaultValues.price,
+    id: product?.id || defaultValues.id,
+    brand: product?.brand || defaultValues.brand,
+    title: product?.title || defaultValues.title,
+    description: product?.description || defaultValues.description,
+    image: product?.image || defaultValues.image,
+    background: product?.background || defaultValues.background,
+    price: product?.price || defaultValues.price,
   };
 
   const formik = useFormik<AdminValues>({
@@ -188,7 +191,7 @@ export default function AdminForm({ myProduct }: AdminFormProps) {
         autoComplete="name"
       />
       <Button color="primary" variant="contained" fullWidth type="submit">
-        Ändra en produkt
+        {buttonText}
       </Button>
     </Box>
   );

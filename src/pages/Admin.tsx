@@ -7,8 +7,8 @@ export default function Admin() {
   return (
     <>
       <h1>Admin Page goes here</h1>
-      <AdminForm myProduct={minProdukt} />
-      <AdminForm myProduct={defaultValues} />
+      <AdminForm product={minProdukt} isNewProduct={false} />
+      <AdminForm product={defaultValues} isNewProduct={true} />
     </>
   );
 }
