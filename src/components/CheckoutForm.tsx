@@ -129,7 +129,7 @@ export default function CheckoutForm() {
         helperText={formik.touched.city && formik.errors.city}
         inputProps={{ "data-cy": "customer-city" }}
         FormHelperTextProps={{ "data-cy": "customer-city-error" } as any}
-        autoComplete="city"
+        autoComplete="address-level2"
       />
       <TextField
         fullWidth
