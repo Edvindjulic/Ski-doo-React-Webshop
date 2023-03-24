@@ -1,7 +1,6 @@
 import { Box, Button, Card } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { CartItem, products } from "../../data";
-import AdminForm, { defaultValues } from "../components/AdminForm";
+import { products } from "../../data";
 
 const minProdukt = products[2];
 
