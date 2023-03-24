@@ -1,5 +1,9 @@
 import { ShoppingCart as ShoppingCartIcon } from "@mui/icons-material";
-import { Box, IconButton, Tooltip } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
 import StyledBadge from "@mui/material/Badge";
 
 import { NavLink } from "react-router-dom";
@@ -11,8 +15,7 @@ export default function Header() {
   return (
     <Box
       sx={{
-        background: "black",
-        color: "white",
+        background: "white",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -29,13 +32,30 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "center",
           "& a": {
-            color: "white",
+            color: "black",
             textDecoration: "none",
           },
         }}
       >
-        <Box sx={{ marginLeft: "auto", fontSize: "30px" }}>
-          <NavLink to="./">SNÖSKOTERSHOPEN</NavLink>{" "}
+        <Box
+          sx={{
+            marginLeft: "auto",
+            fontSize: "50px",
+            fontFamily: "Montserrat",
+            fontStyle: "italic",
+            alignItems: 'center',
+            '& img': {
+              width: '200px',
+            }
+          }}
+        >
+          <NavLink to="./">
+            {" "}
+            <img
+              src="/ski-doo-logo.svg"
+              alt=""
+            />{" "}
+          </NavLink>{" "}
         </Box>
         <Box
           sx={{
@@ -47,10 +67,15 @@ export default function Header() {
         >
           <Tooltip title="Kundvagn">
             <NavLink to="./checkout">
-              <IconButton aria-label="cart" data-cy="cart-link" color="success">
+              <IconButton
+                aria-label="cart"
+                data-cy="cart-link"
+                color="success"
+              >
                 <StyledBadge
                   badgeContent={cart.reduce(
-                    (total, item) => total + item.quantity,
+                    (total, item) =>
+                      total + item.quantity,
                     0
                   )}
                   color="warning"
@@ -71,9 +96,9 @@ export default function Header() {
           justifyContent: "space-between",
           padding: "0 1rem",
           textDecoration: "none",
-          color: "white",
+          color: "black",
           "& a": {
-            color: "white",
+            color: "black",
             textDecoration: "none",
             "&:hover": {
               color: "yellow",
@@ -82,7 +107,9 @@ export default function Header() {
         }}
       >
         <NavLink to="./">Start</NavLink>
-        <NavLink to="./confirmation">Kassa</NavLink>
+        <NavLink to="./confirmation">
+          Kassa
+        </NavLink>
         <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
