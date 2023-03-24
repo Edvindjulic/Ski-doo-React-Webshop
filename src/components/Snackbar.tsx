@@ -6,11 +6,14 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 interface SnackbarProps {
   open: boolean;
   handleClose: (
-    event: React.SyntheticEvent<Element, Event> | Event,
+    event:
+      | React.SyntheticEvent<Element, Event>
+      | Event,
     reason?: string
   ) => void;
   lastAddedProduct?: {
@@ -31,8 +34,11 @@ export default function Snackbar({
         data-cy="added-to-cart-toast"
         open={open}
         onClose={handleClose}
-        autoHideDuration={3000}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        /* autoHideDuration={3000} */
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
       >
         {lastAddedProduct && (
           <Paper
@@ -47,6 +53,12 @@ export default function Snackbar({
               borderRadius: "3px",
             }}
           >
+            <Typography
+              variant="subtitle1"
+              sx={{ textAlign: "center" }}
+            >
+              Har lagts till
+            </Typography>
             <Box
               sx={{
                 display: "flex",
@@ -64,15 +76,26 @@ export default function Snackbar({
                   height: "40px",
                 }}
               />
-              <p>har lagts till</p>
               <Typography variant="subtitle1">
                 {lastAddedProduct.title}
               </Typography>
               <Typography variant="subtitle1">
-                {lastAddedProduct.price} kr
+                {lastAddedProduct.price.toLocaleString("sv-SE")} SEK
               </Typography>
             </Box>
-            <Button variant="contained">Gå till kassan</Button>
+            <NavLink to="./checkout">
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "black",
+                  "&:hover": {
+                    backgroundColor: "grey",
+                  },
+                }}
+              >
+                Gå till kassan
+              </Button>
+            </NavLink>
           </Paper>
         )}
       </MuiSnackbar>
