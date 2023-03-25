@@ -4,7 +4,7 @@ import { useProduct } from "../contexts/ProductContext";
 
 export default function Admin() {
   const navigate = useNavigate();
-  const { product, clearProduct } = useProduct();
+  const { product, clearProduct, removeProduct, addProduct } = useProduct();
 
   return (
     <>
@@ -105,6 +105,26 @@ export default function Admin() {
               >
                 Ändra produkt
               </button>
+              <Button
+                data-cy="admin-add-product"
+                variant="contained"
+                color="error"
+                onClick={() => {
+                  removeProduct(product);
+                }}
+              >
+                Ta bort
+              </Button>
+              <Button
+                data-cy="admin-add-product"
+                variant="contained"
+                color="success"
+                onClick={() => {
+                  addProduct(product);
+                }}
+              >
+                Lägg till
+              </Button>
               <span data-cy="product-id">{product.id}</span>
               <span data-cy="product-price">{product.price}</span>
             </Box>

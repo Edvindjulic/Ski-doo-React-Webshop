@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { generateId, Product } from "../../data";
+import { useProduct } from "../contexts/ProductContext";
 
 const AdminSchema = Yup.object().shape({
   id: Yup.string(),
@@ -40,6 +41,7 @@ type AdminFormProps = {
 
 export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
   const navigate = useNavigate();
+  const { addProduct } = useProduct();
 
   const buttonText = isNewProduct ? "Ny produkt" : "Ändra produkt";
 
@@ -70,8 +72,13 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         background: values.background,
         price: values.price,
       };
+      if (isNewProduct) {
+        addProduct(customer as Product);
+      } else {
+        console.log("oopsiedaisy");
+      }
       console.log(customer);
-      // navigate("/confirmation");
+      navigate("/admin");
     },
   });
   return (
