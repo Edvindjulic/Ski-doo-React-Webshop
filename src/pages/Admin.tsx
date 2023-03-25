@@ -1,20 +1,11 @@
 import { Box, Button, Card } from "@mui/material";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import DeleteDialog from "../components/Dialog";
 import { useProduct } from "../contexts/ProductContext";
 
 export default function Admin() {
   const navigate = useNavigate();
-  const { product, removeProduct, addProduct } = useProduct();
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const { product } = useProduct();
 
   return (
     <>
@@ -105,50 +96,7 @@ export default function Admin() {
               >
                 Ändra produkt
               </button>
-              {/* <Button
-                data-cy="admin-add-product"
-                variant="contained"
-                color="error"
-                onClick={handleClickOpen}
-              >
-                Ta bort produkt
-              </Button> */}
-              {/* <div> */}
-              {/* <Dialog
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">
-                    Bekräfta för att ta bort produkten
-                  </DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                      Du kan inte ångra dig efteråt om du tar bort produkten 😨
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleClose}>Avbryt</Button>
-                    <Button
-                      onClick={() => {
-                        removeProduct(product), handleClose;
-                      }}
-                      autoFocus
-                    >
-                      Ta bort
-                    </Button>
-                  </DialogActions>
-                </Dialog> */}
-              <Button
-                data-cy="admin-remove-product"
-                onClick={() => {
-                  removeProduct(product);
-                }}
-              >
-                Ta bort
-              </Button>
-              {/* </div> */}
+              <DeleteDialog {...product} />
 
               <span data-cy="product-id">{product.id}</span>
               <span data-cy="product-price">{product.price}</span>
