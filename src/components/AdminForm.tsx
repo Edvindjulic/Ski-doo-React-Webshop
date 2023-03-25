@@ -98,21 +98,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
       onSubmit={formik.handleSubmit}
       data-cy="product-form"
     >
-      {" "}
-      {/* <TextField
-        fullWidth
-        id="id"
-        type="id"
-        name="id"
-        label="ID"
-        value={formik.values.id}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.id && Boolean(formik.errors.id)}
-        helperText={formik.touched.id && formik.errors.id}
-        inputProps={{ "data-cy": "customer-id" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-      /> */}
       <TextField
         fullWidth
         id="title"

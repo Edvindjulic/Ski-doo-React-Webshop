@@ -13,28 +13,6 @@ export default function BasicTable() {
   const totalCost = cart.reduce((acc, item) => {
     return acc + item.quantity * item.price;
   }, 0);
-  // interface ProductMap {
-  //   [id: string]: {
-  //     product: Product;
-  //     quantity: number;
-  //   };
-  // }
-
-  // const cartUniqueItems = Object.values(
-  //   cart.reduce((acc: ProductMap, product) => {
-  //     if (acc[product.id]) {
-  //       acc[product.id].quantity++;
-  //     } else {
-  //       acc[product.id] = {
-  //         product,
-  //         quantity: 1,
-  //       };
-  //     }
-  //     return acc;
-  //   }, {})
-  // );
-
-  let unique = [...new Map(cart.map((item) => [item["id"], item])).values()];
 
   return (
     <TableContainer component={Paper}>
@@ -72,7 +50,6 @@ export default function BasicTable() {
                   sx={{ width: 70, height: 70 }}
                   variant="square"
                 />
-                {/* <img src={product.image} alt={product.title} /> */}
               </TableCell>
               <TableCell align="center" data-cy="product-title">
                 {product.title}
