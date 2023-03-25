@@ -141,6 +141,7 @@ export default function Admin() {
                   </DialogActions>
                 </Dialog> */}
               <Button
+                data-cy="admin-remove-product"
                 onClick={() => {
                   removeProduct(product);
                 }}

@@ -42,13 +42,17 @@ export default function ProductInventory({ children }: Props) {
   }
 
   const updateProduct = (id: string, newData: Product) => {
-    setProduct((prevState) => [
-      ...prevState.filter((x) => x.id !== id),
-      {
-        ...(prevState.find((x) => x.id === id) || {}),
+    setProduct((prevState) => {
+      const index = prevState.findIndex((x) => x.id === id);
+      if (index === -1) return prevState;
+      const updatedItem = {
+        ...prevState[index],
         ...newData,
-      },
-    ]);
+      };
+      const newArray = [...prevState];
+      newArray[index] = updatedItem;
+      return newArray;
+    });
   };
 
   return (
