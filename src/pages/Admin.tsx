@@ -1,11 +1,10 @@
 import { Box, Button, Card } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { products } from "../../data";
-
-const minProdukt = products[2];
+import { useProduct } from "../contexts/ProductContext";
 
 export default function Admin() {
   const navigate = useNavigate();
+  const { product, clearProduct } = useProduct();
 
   return (
     <>
@@ -19,6 +18,16 @@ export default function Admin() {
       >
         Lägg till en ny produkt
       </Button>
+      <Button
+        data-cy="admin-add-product"
+        variant="contained"
+        color="error"
+        onClick={() => {
+          clearProduct();
+        }}
+      >
+        Ta bort produkter
+      </Button>
 
       <Box
         sx={{
@@ -31,7 +40,7 @@ export default function Admin() {
           },
         }}
       >
-        {products.map((product) => (
+        {product.map((product) => (
           <Card
             sx={{
               display: "flex",

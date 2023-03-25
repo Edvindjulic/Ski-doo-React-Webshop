@@ -10,6 +10,7 @@ import {
 import App from "./App";
 import ShoppingCart from "./contexts/CartContext";
 import OrderProvider from "./contexts/OrderContext";
+import ProductInventory from "./contexts/ProductContext";
 import "./index.css";
 import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
@@ -38,7 +39,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <OrderProvider>
       <ShoppingCart>
-        <RouterProvider router={router} />
+        <ProductInventory>
+          <RouterProvider router={router} />
+        </ProductInventory>
       </ShoppingCart>
     </OrderProvider>
   </React.StrictMode>
