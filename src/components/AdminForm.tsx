@@ -41,7 +41,7 @@ type AdminFormProps = {
 
 export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
   const navigate = useNavigate();
-  const { addProduct } = useProduct();
+  const { addProduct, updateProduct } = useProduct();
 
   const buttonText = isNewProduct ? "Ny produkt" : "Ändra produkt";
 
@@ -74,7 +74,9 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
       };
       if (isNewProduct) {
         addProduct(customer as Product);
-      } else {
+      }
+      if (!isNewProduct) {
+        updateProduct(customer.id as string, customer as Product);
         console.log("oopsiedaisy");
       }
       console.log(customer);

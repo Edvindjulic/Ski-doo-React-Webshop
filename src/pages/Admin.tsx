@@ -1,10 +1,20 @@
 import { Box, Button, Card } from "@mui/material";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useProduct } from "../contexts/ProductContext";
 
 export default function Admin() {
   const navigate = useNavigate();
-  const { product, clearProduct, removeProduct, addProduct } = useProduct();
+  const { product, removeProduct, addProduct } = useProduct();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -17,16 +27,6 @@ export default function Admin() {
         }}
       >
         Lägg till en ny produkt
-      </Button>
-      <Button
-        data-cy="admin-add-product"
-        variant="contained"
-        color="error"
-        onClick={() => {
-          clearProduct();
-        }}
-      >
-        Ta bort produkter
       </Button>
 
       <Box
@@ -105,26 +105,50 @@ export default function Admin() {
               >
                 Ändra produkt
               </button>
-              <Button
+              {/* <Button
                 data-cy="admin-add-product"
                 variant="contained"
                 color="error"
+                onClick={handleClickOpen}
+              >
+                Ta bort produkt
+              </Button> */}
+              {/* <div> */}
+              {/* <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    Bekräfta för att ta bort produkten
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      Du kan inte ångra dig efteråt om du tar bort produkten 😨
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>Avbryt</Button>
+                    <Button
+                      onClick={() => {
+                        removeProduct(product), handleClose;
+                      }}
+                      autoFocus
+                    >
+                      Ta bort
+                    </Button>
+                  </DialogActions>
+                </Dialog> */}
+              <Button
                 onClick={() => {
                   removeProduct(product);
                 }}
               >
                 Ta bort
               </Button>
-              <Button
-                data-cy="admin-add-product"
-                variant="contained"
-                color="success"
-                onClick={() => {
-                  addProduct(product);
-                }}
-              >
-                Lägg till
-              </Button>
+              {/* </div> */}
+
               <span data-cy="product-id">{product.id}</span>
               <span data-cy="product-price">{product.price}</span>
             </Box>

@@ -8,6 +8,7 @@ interface ContextValue {
   addProduct: (product: Product) => void;
   removeProduct: (product: Product) => void;
   clearProduct: () => void;
+  updateProduct: (id: string, newData: Product) => void;
 }
 
 export const ProductContext = createContext<ContextValue>(null as any);
@@ -40,6 +41,16 @@ export default function ProductInventory({ children }: Props) {
     });
   }
 
+  const updateProduct = (id: string, newData: Product) => {
+    setProduct((prevState) => [
+      ...prevState.filter((x) => x.id !== id),
+      {
+        ...(prevState.find((x) => x.id === id) || {}),
+        ...newData,
+      },
+    ]);
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -48,6 +59,7 @@ export default function ProductInventory({ children }: Props) {
         addProduct,
         removeProduct,
         clearProduct,
+        updateProduct,
       }}
     >
       {children}

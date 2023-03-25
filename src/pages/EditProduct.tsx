@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
-import { products } from "../../data";
 import AdminForm from "../components/AdminForm";
+import { useProduct } from "../contexts/ProductContext";
 
 export default function EditProduct() {
   const params = useParams();
-  const selectedProduct = products.find((product) => product.id === params.id);
+  const { product } = useProduct();
+
+  const selectedProduct = product.find((chosen) => chosen.id === params.id);
 
   return (
     <>
