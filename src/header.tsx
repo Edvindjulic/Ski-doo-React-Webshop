@@ -70,7 +70,9 @@ export default function Header() {
         >
           <NavLink to="./">Start</NavLink>
           <NavLink to="./confirmation">Kassa</NavLink>
-          <NavLink to="./admin">Admin</NavLink>
+          <NavLink to="./admin" data-cy="admin-link">
+            Admin
+          </NavLink>
           <Box
             sx={{
               color: "Grey",
