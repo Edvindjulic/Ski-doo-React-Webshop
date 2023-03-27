@@ -1,9 +1,14 @@
 import { ShoppingCart as ShoppingCartIcon } from "@mui/icons-material";
-import { Box, IconButton, Tooltip } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
 import StyledBadge from "@mui/material/Badge";
 
 import { NavLink } from "react-router-dom";
 import { useCart } from "./contexts/CartContext";
+import Logo from "./components/Logo";
 
 export default function Header() {
   const { cart } = useCart();
@@ -11,15 +16,15 @@ export default function Header() {
   return (
     <Box
       sx={{
-        background: "black",
-        color: "white",
+        background: "white",
         width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "7rem",
+        height: "auto",
         textDecoration: "none",
+        padding: '1rem'
       }}
     >
       <Box
@@ -28,62 +33,79 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "center",
           "& a": {
-            color: "white",
+            color: "black",
             textDecoration: "none",
           },
         }}
       >
-        <Box sx={{ marginLeft: "auto", fontSize: "30px" }}>
-          <NavLink to="./">SNÖSKOTERSHOPEN</NavLink>{" "}
+        <Box
+          sx={{
+            alignItems: 'center',
+            padding: '0.5rem 0'
+          }}
+        >
+          <NavLink to="./">
+            <Logo fill="black" width={200} height={50} />
+          </NavLink>
         </Box>
         <Box
           sx={{
-            color: "Grey",
-            fontSize: "2rem",
-            marginLeft: "auto",
-            marginRight: "1rem",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: 'center',
+            gap: '2rem',
+            padding: "0 1rem",
+            textDecoration: "none",
+            color: "black",
+            fontFamily: "Oswald, sans-serif",
+            fontSize: "1.3rem",
+            "& a": {
+              color: "black",
+              textDecoration: "none",
+              "&:hover": {
+                color: "rgb(0, 0, 0, 0.5)",
+              },
+            },
           }}
         >
-          <Tooltip title="Kundvagn">
-            <NavLink to="./checkout">
-              <IconButton aria-label="cart" data-cy="cart-link" color="success">
-                <StyledBadge
-                  badgeContent={cart.reduce(
-                    (total, item) => total + item.quantity,
-                    0
-                  )}
-                  color="warning"
-                  data-cy="cart-items-count-badge"
+          <NavLink to="./">Start</NavLink>
+          <NavLink to="./confirmation">
+            Kassa
+          </NavLink>
+          <NavLink to="./admin">Admin</NavLink>
+          <Box
+            sx={{
+              color: "Grey",
+              fontSize: "2rem",
+            }}
+          >
+            <Tooltip title="Kundvagn">
+              <NavLink to="./checkout">
+                <IconButton
+                  aria-label="cart"
+                  data-cy="cart-link"
+                  color="success"
                 >
-                  <ShoppingCartIcon />
-                </StyledBadge>
-              </IconButton>
-            </NavLink>
-          </Tooltip>
+                  <StyledBadge
+                    badgeContent={cart.reduce(
+                      (total, item) =>
+                        total + item.quantity,
+                      0
+                    )}
+                    color="warning"
+                    data-cy="cart-items-count-badge"
+                  >
+                    <ShoppingCartIcon />
+                  </StyledBadge>
+                </IconButton>
+              </NavLink>
+            </Tooltip>
+          </Box>
         </Box>
-      </Box>
-
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "0 1rem",
-          textDecoration: "none",
-          color: "white",
-          "& a": {
-            color: "white",
-            textDecoration: "none",
-            "&:hover": {
-              color: "yellow",
-            },
-          },
-        }}
-      >
-        <NavLink to="./">Start</NavLink>
-        <NavLink to="./confirmation">Kassa</NavLink>
-        <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
   );
