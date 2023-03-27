@@ -57,7 +57,7 @@ export default function Header() {
             display: "flex",
             justifyContent: "center",
             alignItems: 'center',
-            gap: '3rem',
+            gap: '2rem',
             padding: "0 1rem",
             textDecoration: "none",
             color: "black",
