@@ -43,10 +43,8 @@ export default function Header() {
       >
         <Box
           sx={{
-            fontSize: "50px",
-            fontFamily: "Montserrat",
-            fontStyle: "italic",
             alignItems: 'center',
+            padding: '0.5rem 0'
           }}
         >
           <NavLink to="./">
@@ -59,15 +57,17 @@ export default function Header() {
             display: "flex",
             justifyContent: "center",
             alignItems: 'center',
-            gap: '1rem',
+            gap: '3rem',
             padding: "0 1rem",
             textDecoration: "none",
             color: "black",
+            fontFamily: "Oswald, sans-serif",
+            fontSize: "1.3rem",
             "& a": {
               color: "black",
               textDecoration: "none",
               "&:hover": {
-                color: "yellow",
+                color: "rgb(0, 0, 0, 0.5)",
               },
             },
           }}
