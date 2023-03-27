@@ -1,5 +1,5 @@
 import CheckoutForm from "../components/CheckoutForm";
-import BasicTable from "../components/Table";
+import BasicTable from "../components/table";
 
 export default function Checkout() {
   return (

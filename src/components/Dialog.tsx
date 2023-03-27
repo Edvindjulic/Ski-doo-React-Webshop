@@ -41,6 +41,7 @@ export default function DeleteDialog(props: Product) {
         <DialogActions>
           <Button onClick={handleClose}>Avbryt</Button>
           <Button
+            color="error"
             data-cy="confirm-delete-button"
             onClick={() => {
               removeProduct(props);
