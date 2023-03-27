@@ -8,6 +8,7 @@ import StyledBadge from "@mui/material/Badge";
 
 import { NavLink } from "react-router-dom";
 import { useCart } from "./contexts/CartContext";
+import Logo from "./components/Logo";
 
 export default function Header() {
   const { cart } = useCart();
@@ -21,8 +22,9 @@ export default function Header() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "7rem",
+        height: "auto",
         textDecoration: "none",
+        padding: '1rem'
       }}
     >
       <Box
@@ -31,6 +33,8 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "center",
           "& a": {
             color: "black",
             textDecoration: "none",
@@ -39,78 +43,69 @@ export default function Header() {
       >
         <Box
           sx={{
-            marginLeft: "auto",
             fontSize: "50px",
             fontFamily: "Montserrat",
             fontStyle: "italic",
             alignItems: 'center',
-            '& img': {
-              width: '200px',
-            }
           }}
         >
           <NavLink to="./">
-            {" "}
-            <img
-              src="/ski-doo-logo.svg"
-              alt=""
-            />{" "}
-          </NavLink>{" "}
+            <Logo fill="black" width={400} height={50} />
+          </NavLink>
         </Box>
         <Box
           sx={{
-            color: "Grey",
-            fontSize: "2rem",
-            marginLeft: "auto",
-            marginRight: "1rem",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: 'center',
+            gap: '1rem',
+            padding: "0 1rem",
+            textDecoration: "none",
+            color: "black",
+            "& a": {
+              color: "black",
+              textDecoration: "none",
+              "&:hover": {
+                color: "yellow",
+              },
+            },
           }}
         >
-          <Tooltip title="Kundvagn">
-            <NavLink to="./checkout">
-              <IconButton
-                aria-label="cart"
-                data-cy="cart-link"
-                color="success"
-              >
-                <StyledBadge
-                  badgeContent={cart.reduce(
-                    (total, item) =>
-                      total + item.quantity,
-                    0
-                  )}
-                  color="warning"
-                  data-cy="cart-items-count-badge"
+          <NavLink to="./">Start</NavLink>
+          <NavLink to="./confirmation">
+            Kassa
+          </NavLink>
+          <NavLink to="./admin">Admin</NavLink>
+          <Box
+            sx={{
+              color: "Grey",
+              fontSize: "2rem",
+            }}
+          >
+            <Tooltip title="Kundvagn">
+              <NavLink to="./checkout">
+                <IconButton
+                  aria-label="cart"
+                  data-cy="cart-link"
+                  color="success"
                 >
-                  <ShoppingCartIcon />
-                </StyledBadge>
-              </IconButton>
-            </NavLink>
-          </Tooltip>
+                  <StyledBadge
+                    badgeContent={cart.reduce(
+                      (total, item) =>
+                        total + item.quantity,
+                      0
+                    )}
+                    color="warning"
+                    data-cy="cart-items-count-badge"
+                  >
+                    <ShoppingCartIcon />
+                  </StyledBadge>
+                </IconButton>
+              </NavLink>
+            </Tooltip>
+          </Box>
         </Box>
-      </Box>
-
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "0 1rem",
-          textDecoration: "none",
-          color: "black",
-          "& a": {
-            color: "black",
-            textDecoration: "none",
-            "&:hover": {
-              color: "yellow",
-            },
-          },
-        }}
-      >
-        <NavLink to="./">Start</NavLink>
-        <NavLink to="./confirmation">
-          Kassa
-        </NavLink>
-        <NavLink to="./admin">Admin</NavLink>
       </Box>
     </Box>
   );
