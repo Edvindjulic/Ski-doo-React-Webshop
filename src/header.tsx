@@ -50,7 +50,7 @@ export default function Header() {
           }}
         >
           <NavLink to="./">
-            <Logo fill="black" width={400} height={50} />
+            <Logo fill="black" width={200} height={50} />
           </NavLink>
         </Box>
         <Box
