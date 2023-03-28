@@ -96,17 +96,6 @@ export default function OrderConfirmation() {
               <p>Summa: {totalCost.toLocaleString("sv-SE")} kr </p>
             </Box>
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              backgroundColor: "green",
-              textAlign: "left",
-            }}>
-            <p>Tack för din beställning!</p>
-            <p>Ditt ordernummer: {generateId()}</p>
-          </Box>
         </Box>
         <Box
           sx={{
@@ -117,9 +106,20 @@ export default function OrderConfirmation() {
             flexDirection: "column",
             alignItems: "center",
           }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              // backgroundColor: "green",
+              textAlign: "left",
+            }}>
+            <p>Tack för din beställning!</p>
+            <p>Ditt ordernummer: {generateId()}</p>
+          </Box>
           <Typography
-            variant="h5"
-            component="h5"
+            variant="h6"
+            component="h6"
             sx={{
               height: "6vh",
               fontSize: "1rem",
@@ -135,6 +135,8 @@ export default function OrderConfirmation() {
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
+              padding: "1rem",
+              marginBottom: "1rem",
             }}>
             <Typography variant="subtitle1" data-cy="customer-name">
               {order.customer.name}
