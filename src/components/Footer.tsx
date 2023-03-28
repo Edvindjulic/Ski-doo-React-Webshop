@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
 import CopyrightIcon from "@mui/icons-material/Copyright";
+import { Box } from "@mui/material";
 
 export default function Footer() {
   return (

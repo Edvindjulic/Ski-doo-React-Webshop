@@ -1,14 +1,10 @@
 import { ShoppingCart as ShoppingCartIcon } from "@mui/icons-material";
-import {
-  Box,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
+import { Box, IconButton, Tooltip } from "@mui/material";
 import StyledBadge from "@mui/material/Badge";
 
 import { NavLink } from "react-router-dom";
-import { useCart } from "./contexts/CartContext";
 import Logo from "./components/Logo";
+import { useCart } from "./contexts/CartContext";
 
 export default function Header() {
   const { cart } = useCart();
@@ -24,7 +20,7 @@ export default function Header() {
         alignItems: "center",
         height: "auto",
         textDecoration: "none",
-        padding: '1rem'
+        padding: "1rem",
       }}
     >
       <Box
@@ -43,8 +39,8 @@ export default function Header() {
       >
         <Box
           sx={{
-            alignItems: 'center',
-            padding: '0.5rem 0'
+            alignItems: "center",
+            padding: "0.5rem 0",
           }}
         >
           <NavLink to="./">
@@ -56,8 +52,8 @@ export default function Header() {
             width: "100%",
             display: "flex",
             justifyContent: "center",
-            alignItems: 'center',
-            gap: '2rem',
+            alignItems: "center",
+            gap: "2rem",
             padding: "0 1rem",
             textDecoration: "none",
             color: "black",
@@ -73,10 +69,10 @@ export default function Header() {
           }}
         >
           <NavLink to="./">Start</NavLink>
-          <NavLink to="./confirmation">
-            Kassa
+          <NavLink to="./confirmation">Kassa</NavLink>
+          <NavLink to="./admin" data-cy="admin-link">
+            Admin
           </NavLink>
-          <NavLink to="./admin">Admin</NavLink>
           <Box
             sx={{
               color: "Grey",
@@ -92,8 +88,7 @@ export default function Header() {
                 >
                   <StyledBadge
                     badgeContent={cart.reduce(
-                      (total, item) =>
-                        total + item.quantity,
+                      (total, item) => total + item.quantity,
                       0
                     )}
                     color="warning"

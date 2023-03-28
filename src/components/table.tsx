@@ -1,4 +1,6 @@
-import { Avatar, Button, Input } from "@mui/material";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { Avatar, IconButton, Input } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,34 +9,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useCart } from "../contexts/CartContext";
-
 export default function BasicTable() {
   const { cart, addProduct, removeProduct } = useCart();
   const totalCost = cart.reduce((acc, item) => {
     return acc + item.quantity * item.price;
   }, 0);
-  // interface ProductMap {
-  //   [id: string]: {
-  //     product: Product;
-  //     quantity: number;
-  //   };
-  // }
-
-  // const cartUniqueItems = Object.values(
-  //   cart.reduce((acc: ProductMap, product) => {
-  //     if (acc[product.id]) {
-  //       acc[product.id].quantity++;
-  //     } else {
-  //       acc[product.id] = {
-  //         product,
-  //         quantity: 1,
-  //       };
-  //     }
-  //     return acc;
-  //   }, {})
-  // );
-
-  let unique = [...new Map(cart.map((item) => [item["id"], item])).values()];
 
   return (
     <TableContainer component={Paper}>
@@ -72,32 +51,32 @@ export default function BasicTable() {
                   sx={{ width: 70, height: 70 }}
                   variant="square"
                 />
-                {/* <img src={product.image} alt={product.title} /> */}
               </TableCell>
               <TableCell align="center" data-cy="product-title">
                 {product.title}
               </TableCell>
               <TableCell align="center">
-                <Button
-                  variant="contained"
+                <IconButton
+                  aria-label="remove"
+                  color="primary"
                   onClick={() => removeProduct(product)}
                   data-cy="decrease-quantity-button"
                 >
-                  -
-                </Button>{" "}
+                  <RemoveCircleOutlineIcon />
+                </IconButton>
               </TableCell>
               <TableCell align="center">
                 <Input value={product.quantity} data-cy="product-quantity" />
               </TableCell>
               <TableCell align="center">
-                <Button
-                  variant="contained"
-                  size="small"
+                <IconButton
+                  aria-label="remove"
+                  color="primary"
                   onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
                 >
-                  +
-                </Button>
+                  <AddCircleOutlineIcon />
+                </IconButton>
               </TableCell>
               <TableCell align="left" data-cy="product-price">
                 {/* {(product.quantity * product.price).toLocaleString("sv-SE")} */}
