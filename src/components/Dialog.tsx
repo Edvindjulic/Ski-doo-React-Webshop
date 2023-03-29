@@ -26,11 +26,10 @@ export default function DeleteDialog(props: Product) {
     <>
       <Button
         data-cy="admin-remove-product"
-        variant="contained"
         color="error"
         onClick={handleClickOpen}
       >
-        Ta bort produkt
+        Radera
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
@@ -48,7 +47,7 @@ export default function DeleteDialog(props: Product) {
               handleClose();
             }}
           >
-            Ta bort
+            Radera
           </Button>
         </DialogActions>
       </Dialog>
