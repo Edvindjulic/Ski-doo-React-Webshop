@@ -220,7 +220,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
                   display: "flex",
                   fontSize: "25px",
                   justifyContent: "space-between",
-                  backgroundColor: "red",
                 }}
               >
                 <Box
