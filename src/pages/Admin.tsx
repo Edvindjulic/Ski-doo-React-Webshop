@@ -1,109 +1,145 @@
-import { Box, Button, Card } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import DeleteDialog from "../components/Dialog";
 import { useProduct } from "../contexts/ProductContext";
 
 export default function Admin() {
   const navigate = useNavigate();
   const { product } = useProduct();
+  const theme = useTheme();
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <>
-      <Button
-        data-cy="admin-add-product"
-        variant="contained"
-        color="success"
-        onClick={() => {
-          navigate("/admin/product/new");
-        }}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "1rem",
+      }}
+    >
+      <Box>
+        <Button
+          data-cy="admin-add-product"
+          variant="contained"
+          color="success"
+          onClick={() => {
+            navigate("/admin/product/new");
+          }}
+        >
+          Lägg till en ny produkt
+        </Button>
+      </Box>
+      <TableContainer
+        component={Paper}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        Lägg till en ny produkt
-      </Button>
-
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          padding: "1rem",
-          "& a": {
-            color: "black",
-            textDecoration: "none",
-          },
-        }}
-      >
-        {product.map((product) => (
-          <Card
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              maxWidth: "100%",
-              minWidth: "10rem",
-              margin: "1rem",
-              padding: "1rem",
-            }}
-            data-cy="product"
-          >
-            <Link
-              to={"/admin/product/" + product.id}
-              data-cy="admin-edit-product"
-            >
-              <img src={product.image} alt={product.title} width="150px" />
-
-              <Box
-                sx={{
-                  display: "flex",
-                  fontSize: "15px",
-                }}
-              >
-                <Box sx={{ fontStyle: "italic", paddingRight: "0.8rem" }}>
-                  <h2>{product.brand}</h2>
-                </Box>
-                <Box>
-                  <h2 data-cy="product-title">{product.title}</h2>
-                </Box>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  fontSize: "25px",
-                }}
-              >
-                <h6>2023</h6>
-                <h6 data-cy="product-price">{product.price}</h6>
-              </Box>
-              <Box
-                sx={{ maxWidth: "30rem", display: "flex", flexWrap: "wrap" }}
-              >
-                <p data-cy="product-description">{product.description}</p>
-              </Box>
-            </Link>
-            <Box
+        <Table
+          sx={{ minWidth: 330, maxWidth: 800 }}
+          aria-label="simple table"
+          size="small"
+          padding="none"
+        >
+          <TableHead>
+            <TableRow
               sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                padding: "0.5rem",
+                bgcolor: "primary.main",
               }}
             >
-              <button
-                data-cy="product-buy-button"
-                onClick={() => {
-                  navigate("/admin/product/" + product.id);
+              <TableCell align="center" sx={{ typography: "h6" }}>
+                Bild
+              </TableCell>
+              <TableCell align="center" sx={{ typography: "h6" }}>
+                ID
+              </TableCell>
+              <TableCell align="center" sx={{ typography: "h6" }}>
+                Titel
+              </TableCell>
+              <TableCell align="center" sx={{ typography: "h6" }}>
+                Pris{" "}
+              </TableCell>
+              <TableCell align="center"></TableCell>
+              <TableCell align="center" sx={{ typography: "h6" }}></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {product.map((product) => (
+              <TableRow
+                key={product.id}
+                sx={{
+                  "&:last-child td, &:last-child th": {},
                 }}
+                data-cy="product"
               >
-                Ändra produkt
-              </button>
-              <DeleteDialog {...product} />
-
-              <span data-cy="product-id">{product.id}</span>
-              <span data-cy="product-price">{product.price}</span>
-            </Box>
-          </Card>
-        ))}
-      </Box>
-    </>
+                <TableCell component="th" scope="row" sx={{ width: "20%" }}>
+                  {/* <Avatar
+                    alt={product.title}
+                    src={product.image}
+                    sx={{
+                      width: "auto",
+                      height: "auto",
+                      maxHeight: "15rem",
+                      minHeight: "5rem",
+                    }}
+                    variant="rounded"
+                  /> */}
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    style={{
+                      maxWidth: isSmallScreen ? "5rem" : "20rem",
+                    }}
+                  />
+                </TableCell>
+                <TableCell
+                  align="center"
+                  data-cy="product-id"
+                  sx={{ width: "16%" }}
+                >
+                  {product.id}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ width: "16%" }}
+                  data-cy="product-title"
+                >
+                  {product.title}
+                </TableCell>
+                <TableCell align="center" data-cy="product-price">
+                  {product.price}
+                </TableCell>
+                <TableCell align="center" sx={{ width: "16%" }}>
+                  <DeleteDialog {...product} />
+                </TableCell>
+                <TableCell align="center" sx={{ width: "16%" }}>
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      navigate("/admin/product/" + product.id);
+                    }}
+                    data-cy="admin-edit-product"
+                  >
+                    Redigera
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 }
