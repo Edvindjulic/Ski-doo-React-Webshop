@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Button,
   Paper,
@@ -9,6 +8,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DeleteDialog from "../components/Dialog";
@@ -17,6 +18,9 @@ import { useProduct } from "../contexts/ProductContext";
 export default function Admin() {
   const navigate = useNavigate();
   const { product } = useProduct();
+  const theme = useTheme();
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
@@ -81,15 +85,23 @@ export default function Admin() {
                 data-cy="product"
               >
                 <TableCell component="th" scope="row" sx={{ width: "20%" }}>
-                  <Avatar
+                  {/* <Avatar
                     alt={product.title}
                     src={product.image}
                     sx={{
                       width: "auto",
                       height: "auto",
                       maxHeight: "15rem",
+                      minHeight: "5rem",
                     }}
                     variant="rounded"
+                  /> */}
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    style={{
+                      maxWidth: isSmallScreen ? "5rem" : "20rem",
+                    }}
                   />
                 </TableCell>
                 <TableCell
