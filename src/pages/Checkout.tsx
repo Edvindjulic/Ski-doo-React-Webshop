@@ -34,7 +34,7 @@ export default function Checkout() {
           <CheckoutForm />
         </Box>
       ) : (
-        <Typography variant="h5">
+        <Typography variant="h5" sx={{ padding: "3rem" }}>
           Du har inte lagt till något i kassan ännu.
         </Typography>
       )}
