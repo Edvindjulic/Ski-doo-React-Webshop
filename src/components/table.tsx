@@ -1,6 +1,6 @@
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import { Avatar, IconButton, Input } from "@mui/material";
+import { Avatar, IconButton, Input, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,9 +16,12 @@ export default function BasicTable() {
   }, 0);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer
+      component={Paper}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+    >
       <Table
-        sx={{ minWidth: 350, maxWidth: 1000 }}
+        sx={{ minWidth: 330, maxWidth: 1000 }}
         aria-label="simple table"
         size="small"
         padding="none"
@@ -29,33 +32,51 @@ export default function BasicTable() {
               bgcolor: "primary.main",
             }}
           >
-            <TableCell>Products</TableCell>
-            <TableCell align="center">Name</TableCell>
+            <TableCell align="center" sx={{ typography: "h6" }}>
+              Produkter
+            </TableCell>
+            <TableCell align="center" sx={{ typography: "h6" }}>
+              Modell
+            </TableCell>
             <TableCell align="center"></TableCell>
-            <TableCell align="center">Quantity</TableCell>
+            <TableCell align="center" sx={{ typography: "h6" }}>
+              Antal
+            </TableCell>
             <TableCell align="center"></TableCell>
-            <TableCell align="left">Price</TableCell>
+            <TableCell align="center" sx={{ typography: "h6" }}>
+              Pris
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {cart.map((product) => (
             <TableRow
               key={product.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{
+                "&:last-child td, &:last-child th": {},
+              }}
               data-cy="cart-item"
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx={{ width: "40%" }}>
                 <Avatar
                   alt={product.title}
                   src={product.image}
-                  sx={{ width: 70, height: 70 }}
-                  variant="square"
+                  sx={{
+                    width: "auto",
+                    height: "auto",
+                    maxHeight: "15rem",
+                  }}
+                  variant="rounded"
                 />
               </TableCell>
-              <TableCell align="center" data-cy="product-title">
+              <TableCell
+                align="center"
+                data-cy="product-title"
+                sx={{ width: "10%" }}
+              >
                 {product.title}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" sx={{ width: "10%" }}>
                 <IconButton
                   aria-label="remove"
                   color="primary"
@@ -65,12 +86,16 @@ export default function BasicTable() {
                   <RemoveCircleOutlineIcon />
                 </IconButton>
               </TableCell>
-              <TableCell align="center">
-                <Input value={product.quantity} data-cy="product-quantity" />
+              <TableCell align="center" sx={{ width: "10%" }}>
+                <Input
+                  value={product.quantity}
+                  data-cy="product-quantity"
+                  sx={{ width: "1.2rem" }}
+                />
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" sx={{ width: "10%" }}>
                 <IconButton
-                  aria-label="remove"
+                  aria-label="add"
                   color="primary"
                   onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
@@ -78,18 +103,17 @@ export default function BasicTable() {
                   <AddCircleOutlineIcon />
                 </IconButton>
               </TableCell>
-              <TableCell align="left" data-cy="product-price">
-                {/* {(product.quantity * product.price).toLocaleString("sv-SE")} */}
+              <TableCell align="center" data-cy="product-price">
                 {product.quantity * product.price}
               </TableCell>
             </TableRow>
           ))}
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell colSpan={3} />
-            <TableCell align="center">Total price:</TableCell>
-            <TableCell align="left" data-cy="total-price">
-              {totalCost.toLocaleString("sv-SE")} SEK
+            <TableCell align="right" data-cy="total-price" colSpan={6}>
+              <Typography variant="h6">
+                Totalt: {totalCost.toLocaleString("sv-SE")} SEK
+              </Typography>
             </TableCell>
           </TableRow>
         </TableBody>
