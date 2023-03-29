@@ -201,13 +201,13 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
               padding: "2rem",
               justifyContent: "center",
               maxWidth: "30rem",
+              minWidth: "15rem",
               "& a": {
                 color: "black",
                 textDecoration: "none",
               },
             }}
           >
-            <h2>Förhandsgranskning</h2>
             <Link to={"/product/" + formik.values.id}>
               <img
                 src={formik.values.image}
@@ -219,9 +219,16 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
                 sx={{
                   display: "flex",
                   fontSize: "25px",
+                  justifyContent: "space-between",
+                  backgroundColor: "red",
                 }}
               >
-                <Box sx={{ fontStyle: "italic", paddingRight: "0.8rem" }}>
+                <Box
+                  sx={{
+                    fontStyle: "italic",
+                    paddingRight: "0.8rem",
+                  }}
+                >
                   <h2>{formik.values.brand}</h2>
                 </Box>
                 <Box>
@@ -255,7 +262,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
                 padding: "0.5rem",
               }}
             >
-              <Button>Add to cart</Button>
+              <Button color="success">Add to cart</Button>
             </Box>
           </Card>
         </Box>
