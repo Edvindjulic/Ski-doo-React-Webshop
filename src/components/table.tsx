@@ -110,7 +110,12 @@ export default function BasicTable() {
           ))}
 
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell align="right" data-cy="total-price" colSpan={6}>
+            <TableCell
+              align="right"
+              data-cy="total-price"
+              colSpan={6}
+              sx={{ padding: "1rem" }}
+            >
               <Typography variant="h6">
                 Totalt: {totalCost.toLocaleString("sv-SE")} SEK
               </Typography>
