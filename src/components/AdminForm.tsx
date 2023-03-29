@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
+import { Button, Card, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { generateId, Product } from "../../data";
 import { useProduct } from "../contexts/ProductContext";
@@ -42,8 +42,9 @@ type AdminFormProps = {
 export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
   const navigate = useNavigate();
   const { addProduct, updateProduct } = useProduct();
-
-  const buttonText = isNewProduct ? "Ny produkt" : "Ändra produkt";
+  const buttonText = isNewProduct ? "Lägg till produkt" : "Ändra produkt";
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const initialValues: AdminValues = {
     id: product?.id || defaultValues.id,
@@ -82,107 +83,183 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
     },
   });
   return (
-    <Box
-      component="form"
-      sx={{
-        "& > :not(style)": {
-          m: 1,
-          width: "25ch",
-          display: "flex",
-          flexDirection: "column",
-        },
-      }}
-      noValidate
-      onSubmit={formik.handleSubmit}
-      data-cy="product-form"
-    >
-      <TextField
-        fullWidth
-        id="title"
-        type="title"
-        name="title"
-        label="Titel"
-        value={formik.values.title}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.title && Boolean(formik.errors.title)}
-        helperText={formik.touched.title && formik.errors.title}
-        inputProps={{ "data-cy": "product-title" }}
-        FormHelperTextProps={{ "data-cy": "product-title-error" } as any}
-      />
-      <TextField
-        fullWidth
-        id="description"
-        type="description"
-        name="description"
-        label="Beskrivning"
-        value={formik.values.description}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.description && Boolean(formik.errors.description)}
-        helperText={formik.touched.description && formik.errors.description}
-        inputProps={{ "data-cy": "product-description" }}
-        FormHelperTextProps={{ "data-cy": "product-description-error" } as any}
-      />
-      <TextField
-        fullWidth
-        id="brand"
-        type="brand"
-        name="brand"
-        label="Märke"
-        value={formik.values.brand}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.brand && Boolean(formik.errors.brand)}
-        helperText={formik.touched.brand && formik.errors.brand}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-      />
-      <TextField
-        fullWidth
-        id="image"
-        type="text"
-        name="image"
-        label="Bild-URL"
-        value={formik.values.image}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.image && Boolean(formik.errors.image)}
-        helperText={formik.touched.image && formik.errors.image}
-        inputProps={{ "data-cy": "product-image" }}
-        FormHelperTextProps={{ "data-cy": "product-image-error" } as any}
-      />
-      <TextField
-        fullWidth
-        id="background"
-        type="background"
-        name="background"
-        label="Bakgrundsbild-URL"
-        value={formik.values.background}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.background && Boolean(formik.errors.background)}
-        helperText={formik.touched.background && formik.errors.background}
-        inputProps={{ "data-cy": "customer-name" }}
-        FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-      />
-      <TextField
-        fullWidth
-        id="price"
-        type="price"
-        name="price"
-        label="Pris"
-        value={formik.values.price}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.price && Boolean(formik.errors.price)}
-        helperText={formik.touched.price && formik.errors.price}
-        inputProps={{ "data-cy": "product-price" }}
-        FormHelperTextProps={{ "data-cy": "product-price-error" } as any}
-      />
-      <Button color="primary" variant="contained" fullWidth type="submit">
-        {buttonText}
-      </Button>
-    </Box>
+    <>
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": {
+            m: 1,
+            width: "25ch",
+            display: "flex",
+            flexDirection: "column",
+          },
+        }}
+        noValidate
+        onSubmit={formik.handleSubmit}
+        data-cy="product-form"
+      >
+        <TextField
+          fullWidth
+          id="title"
+          type="title"
+          name="title"
+          label="Titel"
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.title && Boolean(formik.errors.title)}
+          helperText={formik.touched.title && formik.errors.title}
+          inputProps={{ "data-cy": "product-title" }}
+          FormHelperTextProps={{ "data-cy": "product-title-error" } as any}
+        />
+        <TextField
+          fullWidth
+          id="description"
+          type="description"
+          name="description"
+          label="Beskrivning"
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.description && Boolean(formik.errors.description)
+          }
+          helperText={formik.touched.description && formik.errors.description}
+          inputProps={{ "data-cy": "product-description" }}
+          FormHelperTextProps={
+            { "data-cy": "product-description-error" } as any
+          }
+        />
+        <TextField
+          fullWidth
+          id="brand"
+          type="brand"
+          name="brand"
+          label="Märke"
+          value={formik.values.brand}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.brand && Boolean(formik.errors.brand)}
+          helperText={formik.touched.brand && formik.errors.brand}
+          inputProps={{ "data-cy": "customer-name" }}
+          FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        />
+        <TextField
+          fullWidth
+          id="image"
+          type="text"
+          name="image"
+          label="Bild-URL"
+          value={formik.values.image}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.image && Boolean(formik.errors.image)}
+          helperText={formik.touched.image && formik.errors.image}
+          inputProps={{ "data-cy": "product-image" }}
+          FormHelperTextProps={{ "data-cy": "product-image-error" } as any}
+        />
+        <TextField
+          fullWidth
+          id="background"
+          type="background"
+          name="background"
+          label="Bakgrundsbild-URL"
+          value={formik.values.background}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.background && Boolean(formik.errors.background)}
+          helperText={formik.touched.background && formik.errors.background}
+          inputProps={{ "data-cy": "customer-name" }}
+          FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
+        />
+        <TextField
+          fullWidth
+          id="price"
+          type="price"
+          name="price"
+          label="Pris"
+          value={formik.values.price}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.price && Boolean(formik.errors.price)}
+          helperText={formik.touched.price && formik.errors.price}
+          inputProps={{ "data-cy": "product-price" }}
+          FormHelperTextProps={{ "data-cy": "product-price-error" } as any}
+        />
+        <Button color="primary" variant="contained" fullWidth type="submit">
+          {buttonText}
+        </Button>
+      </Box>
+      {!isSmallScreen && (
+        <Box sx={{ textAlign: "center" }}>
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              margin: "1rem",
+              padding: "2rem",
+              justifyContent: "center",
+              maxWidth: "30rem",
+              "& a": {
+                color: "black",
+                textDecoration: "none",
+              },
+            }}
+          >
+            <h2>Förhandsgranskning</h2>
+            <Link to={"/product/" + formik.values.id}>
+              <img
+                src={formik.values.image}
+                alt={formik.values.title}
+                width="100%"
+              />
+
+              <Box
+                sx={{
+                  display: "flex",
+                  fontSize: "25px",
+                }}
+              >
+                <Box sx={{ fontStyle: "italic", paddingRight: "0.8rem" }}>
+                  <h2>{formik.values.brand}</h2>
+                </Box>
+                <Box>
+                  <h2 data-cy="formik.values-title">{formik.values.title}</h2>
+                </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  fontSize: "25px",
+                }}
+              >
+                <h6>2023</h6>
+                <h6>{formik.values.price}</h6>
+              </Box>
+              <Box
+                sx={{ maxWidth: "30rem", display: "flex", flexWrap: "wrap" }}
+              >
+                <p data-cy="formik.values-description">
+                  {formik.values.description}
+                </p>
+              </Box>
+            </Link>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                padding: "0.5rem",
+              }}
+            >
+              <Button>Add to cart</Button>
+            </Box>
+          </Card>
+        </Box>
+      )}
+    </>
   );
 }

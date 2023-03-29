@@ -88,14 +88,14 @@ export default function Admin() {
                 padding: "0.5rem",
               }}
             >
-              <button
+              <Button
                 data-cy="product-buy-button"
                 onClick={() => {
                   navigate("/admin/product/" + product.id);
                 }}
               >
                 Ändra produkt
-              </button>
+              </Button>
               <DeleteDialog {...product} />
 
               <span data-cy="product-id">{product.id}</span>
