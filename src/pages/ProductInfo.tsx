@@ -20,6 +20,7 @@ export default function ProductInfo() {
 
   const { product } = useProduct();
   const { addProduct } = useCart();
+  const { product } = useProduct();
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [lastAddedProduct, setLastAddedProduct] = useState<

@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import AdminForm from "../components/AdminForm";
 import { useProduct } from "../contexts/ProductContext";
@@ -9,12 +10,17 @@ export default function EditProduct() {
   const selectedProduct = product.find((chosen) => chosen.id === params.id);
 
   return (
-    <>
-      <h2>
-        {selectedProduct?.brand}
-        {selectedProduct?.title}
-      </h2>
-      <AdminForm product={selectedProduct} isNewProduct={false} />
-    </>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <h2>Redigera produkt</h2>
+      <Box sx={{ display: "flex" }}>
+        <AdminForm product={selectedProduct} isNewProduct={false} />
+      </Box>
+    </Box>
   );
 }
