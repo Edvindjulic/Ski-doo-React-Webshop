@@ -73,7 +73,7 @@ export default function Products() {
               : "none",
             justifyContent: "center",
             height: "100%",
-            width: matches ? "30%" : "100%",
+            width: matches ? "18rem" : "100%",
           }}
           data-cy="product"
         >
@@ -144,6 +144,7 @@ export default function Products() {
               <Box
                 sx={{
                   maxWidth: "30rem",
+                  height: "10rem",
                 }}
               >
                 <p data-cy="product-description">
