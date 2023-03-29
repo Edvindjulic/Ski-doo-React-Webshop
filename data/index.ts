@@ -28,7 +28,7 @@ export const products: Product[] = [
     brand: "Ski-Doo",
     title: "Tundra",
     description:
-      "Djup snö, hårda vinterförhållanden - det spelar ingen roll för Tundra LE. Med REV Gen4 plattformen kan föraren nu ta sig an allt med ultrasnabba köregenskaper, överlägsen bärförmåga och mångsidiga funktioner som alla drivs av pålitliga Rotax-motorer.",
+      "Tundra skotrarna är kända som mekaniska snöskor och har en smal design som ger en följsamhet unik för en arbetsskoter. Den perfekta enkla arbetslösningen till ett förmånligt pris.",
     image:
       "https://user-images.githubusercontent.com/77364209/226325839-3736baab-2f64-4bf9-adc4-00accf75408c.png",
     background:
@@ -40,7 +40,7 @@ export const products: Product[] = [
     brand: "Ski-Doo",
     title: "MXZ",
     description:
-      "Dynamisk ledprestanda med värdeorienterade funktioner och förtroendeingivande körning. En skoter full av skoj utan att plånboken töms.",
+      "MXZ skotrarna är inspirerade av tävlingsmodellerna och ger motocross-liknande köregenskaper och följsamhet med avancerade nyheter som körkvalitet och spännande Rotax motorer.",
     image:
       "https://user-images.githubusercontent.com/77364209/226326216-9c31b63a-8542-4bbf-a35d-735409aa3f4a.png",
 
