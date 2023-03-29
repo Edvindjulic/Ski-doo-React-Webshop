@@ -96,4 +96,40 @@ export const products: Product[] = [
       "https://user-images.githubusercontent.com/77364209/226326910-3b25b359-ab02-4d94-a541-02736800a1ac.png",
     price: 127900,
   },
+  {
+    id: "7",
+    brand: "Ski-Doo",
+    title: "Summit",
+    description:
+    "Summit snöskotrar som är extremt följsamma och utrustade med branschdefinierande Rotaxkraft levererar dynamiska prestanda och omedelbar respons i teknisk vinterterräng.",
+    image:
+      "https://user-images.githubusercontent.com/117123951/228628453-03360b89-c15b-4e8f-9c9a-48190568b168.png",
+    background:
+      "https://user-images.githubusercontent.com/117123951/228661492-e9d56d57-e626-47b3-98c9-f07822d060c5.png",
+    price: 178900, 
+  },
+  {
+    id: "8",
+    brand: "Ski-Doo",
+    title: "Grand Touring",
+    description:
+    "Grand Touring snöskotrar är fulla av stil, lyxig komfort och bra prestanda. De erbjuder världens bästa körupplevelse för förare och passagerare.",
+    image:
+      "https://user-images.githubusercontent.com/117123951/228660718-5a9e0b0b-2d11-4801-8439-665ec940ed0e.png",
+    background:
+      "https://user-images.githubusercontent.com/117123951/228661787-cf985f0b-db1d-4ace-abe8-e40e233e8476.png",
+    price: 165900,
+  },
+  {
+    id: "9",
+    brand: "Ski-Doo",
+    title: "Summit Neo",
+    description:
+    "Mycket Summit djupsnönöje i en medelstor skoter som är perfekt för nybörjare, mindre förare eller de som letar efter en mindre utmanande körning till ett bra pris.",
+    image:
+      "https://user-images.githubusercontent.com/117123951/228662571-efa281b7-55f7-4c4d-a96f-de0b639f2bd5.png",
+    background:
+      "https://user-images.githubusercontent.com/117123951/228662707-6f1da2a6-1dea-4008-8952-2951e70571c4.png",
+    price: 101900,
+  },
 ];

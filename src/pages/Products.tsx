@@ -73,7 +73,7 @@ export default function Products() {
               : "none",
             justifyContent: "center",
             height: "100%",
-            width: matches ? "18rem" : "100%",
+            width: matches ? "20rem" : "100%",
           }}
           data-cy="product"
         >
@@ -91,7 +91,7 @@ export default function Products() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "150px",
+                  width: "250px",
                   height: "150px",
                 }}
               >
@@ -112,20 +112,12 @@ export default function Products() {
                 marginTop: "2rem",
               }}
             >
-              <Box
-                sx={{
-                  fontSize: "16px",
-                }}
-              >
+              <Box>
                 <Typography variant="subtitle2">
                   2024
                 </Typography>
               </Box>
-              <Box
-                sx={{
-                  fontWeight: "bold",
-                }}
-              >
+              <Box>
                 <Typography
                   variant="h5"
                   data-cy="product-title"
@@ -133,7 +125,9 @@ export default function Products() {
                   {product.title}
                 </Typography>
               </Box>
-              <Box sx={{}}>
+              <Box sx={{
+                marginBottom: "0.5rem",
+              }}>
                 <Typography
                   variant="subtitle2"
                   data-cy="product-price"
@@ -144,12 +138,12 @@ export default function Products() {
               <Box
                 sx={{
                   maxWidth: "30rem",
-                  height: "10rem",
+                  height: "9rem",
                 }}
               >
-                <p data-cy="product-description">
+                <Typography variant="body1" data-cy="product-description">
                   {product.description}
-                </p>
+                </Typography>
               </Box>
             </Box>
           </Link>

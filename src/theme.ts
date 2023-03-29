@@ -1,26 +1,37 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     primary: {
-      main: '#adbccd',
-      contrastText: '#0f1225',
+      main: "#adbccd",
+      contrastText: "#0f1225",
     },
     secondary: {
-      main: '#0f1225',
-      contrastText: '#f1ece6',
+      main: "#0f1225",
+      contrastText: "#f1ece6",
     },
     background: {
-      default: '#ffffff',
-      paper: '#ffffff',
+      default: "#ffffff",
+      paper: "#ffffff",
     },
     info: {
-      main: '#eadbd4',
+      main: "#eadbd4",
+    },
+  },
+  typography: {
+    fontFamily: ["Oswald, sans-serif", "Roboto"].join(","),
+    h5: { 
+      fontWeight: 300,
+      fontFamily: "Oswald",
+    },
+    body1: {
+      fontSize: "0.9rem",
+      fontWeight: 100,
+      fontFamily: "Roboto",
     }
   },
 });
-
 
 // #0f1225 - dark blue. Use for text and icons in the header
 // #1f4b8e - blue. Use for buttons and links
