@@ -67,14 +67,13 @@ export default function Header() {
             gap: "2rem",
             padding: "0 1rem",
             textDecoration: "none",
-            color: "black",
             fontFamily: "Oswald, sans-serif",
             fontSize: "1.3rem",
             "& a": {
-              color: "black",
+              color: theme.palette.primary.contrastText,
               textDecoration: "none",
               "&:hover": {
-                color: "rgb(0, 0, 0, 0.5)",
+                color: theme.palette.secondary.main,
               },
             },
           }}
@@ -100,7 +99,7 @@ export default function Header() {
                 <IconButton
                   aria-label="cart"
                   data-cy="cart-link"
-                  color="success"
+                  color="secondary"
                 >
                   <StyledBadge
                     badgeContent={cart.reduce(
@@ -108,7 +107,7 @@ export default function Header() {
                         total + item.quantity,
                       0
                     )}
-                    color="warning"
+                    color="info"
                     data-cy="cart-items-count-badge"
                   >
                     <ShoppingCartIcon />

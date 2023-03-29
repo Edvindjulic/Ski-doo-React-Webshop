@@ -4,10 +4,25 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#c8e8e9',
+      main: '#adbccd',
+      contrastText: '#0f1225',
     },
     secondary: {
-      main: '#f50057',
+      main: '#0f1225',
     },
+    background: {
+      default: '#ffffff',
+      paper: '#ffffff',
+    },
+    info: {
+      main: '#eadbd4',
+    }
   },
 });
+
+
+// #0f1225 - dark blue. Use for text and icons in the header
+// #1f4b8e - blue. Use for buttons and links
+// #adbccd - light blue. Use for borders and backgrounds
+// #f1ece6 - cream. Use for backgrounds and borders
+// #eadbd4 - creamy pink. Use for stand out elements

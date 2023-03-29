@@ -16,7 +16,7 @@ export default function Logo(props: LogoProps) {
       width={props.width}
       height={props.height}
       viewBox="0 0 116.3 25.48"
-      fill={theme.palette.primary.main}
+      fill={theme.palette.primary.contrastText}
     >
       <title>logo-skidoo</title>
       <g id="Brands_Logo" data-name="Brands Logo">
