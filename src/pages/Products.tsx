@@ -79,6 +79,7 @@ export default function Products() {
                   justifyContent: "center",
                   width: "250px",
                   height: "150px",
+                  overflow: "hidden",
                 }}
               >
                 <img src={product.image} alt={product.title} width="100%" />
@@ -93,7 +94,7 @@ export default function Products() {
                 marginTop: "2rem",
               }}
             >
-              <Box>
+              <Box sx={{ paddingTop: "0.2rem" }}>
                 <Typography variant="subtitle2">2024</Typography>
               </Box>
               <Box>

@@ -225,6 +225,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
                     justifyContent: "center",
                     width: "250px",
                     height: "150px",
+                    overflow: "hidden",
                   }}
                 >
                   <img
@@ -243,7 +244,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
                   marginTop: "2rem",
                 }}
               >
-                <Box>
+                <Box sx={{ paddingTop: "0.2rem" }}>
                   <Typography variant="subtitle2">2024</Typography>
                 </Box>
                 <Box>
