@@ -1,3 +1,5 @@
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Box,
   Button,
@@ -8,15 +10,11 @@ import {
 } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CloseIcon from '@mui/icons-material/Close';
 
 interface SnackbarProps {
   open: boolean;
   handleClose: (
-    event:
-      | React.SyntheticEvent<Element, Event>
-      | Event,
+    event: React.SyntheticEvent<Element, Event> | Event,
     reason?: string
   ) => void;
   lastAddedProduct?: {
@@ -78,11 +76,10 @@ export default function Snackbar({
                 marginBottom: "1rem",
               }}
             >
-              <CheckCircleIcon sx={{color:"green", fontSize: '1rem', marginRight: '0.5rem'}}/>
-              <Typography
-                variant="subtitle1"
-                sx={{ textAlign: "center" }}
-              >
+              <CheckCircleIcon
+                sx={{ color: "green", fontSize: "1rem", marginRight: "0.5rem" }}
+              />
+              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
                 Har lagts till i kundvagnen
               </Typography>
             </Box>
@@ -102,7 +99,6 @@ export default function Snackbar({
                   alt="product"
                   style={{
                     width: "70px",
-                    height: "70px",
                   }}
                 />
               </Box>

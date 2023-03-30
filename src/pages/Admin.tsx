@@ -8,6 +8,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -29,8 +30,11 @@ export default function Admin() {
         flexDirection: "column",
         alignItems: "center",
         gap: "1rem",
+        marginTop: "1rem",
+        marginBottom: "1rem",
       }}
     >
+      <Typography variant="h4">Admin</Typography>
       <Box>
         <Button
           data-cy="admin-add-product"
@@ -45,34 +49,50 @@ export default function Admin() {
       </Box>
       <TableContainer
         component={Paper}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minWidth: 330,
+          maxWidth: 800,
+        }}
       >
-        <Table
-          sx={{ minWidth: 330, maxWidth: 800 }}
-          aria-label="simple table"
-          size="small"
-          padding="none"
-        >
+        <Table aria-label="simple table" size="small" padding="none">
           <TableHead>
             <TableRow
               sx={{
                 bgcolor: "secondary.main",
               }}
             >
-              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
+              <TableCell
+                align="center"
+                sx={{ typography: "h6", color: "secondary.contrastText" }}
+              >
                 Bild
               </TableCell>
-              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
+              <TableCell
+                align="center"
+                sx={{ typography: "h6", color: "secondary.contrastText" }}
+              >
                 ID
               </TableCell>
-              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
+              <TableCell
+                align="center"
+                sx={{ typography: "h6", color: "secondary.contrastText" }}
+              >
                 Titel
               </TableCell>
-              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
+              <TableCell
+                align="center"
+                sx={{ typography: "h6", color: "secondary.contrastText" }}
+              >
                 Pris{" "}
               </TableCell>
               <TableCell align="center"></TableCell>
-              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}></TableCell>
+              <TableCell
+                align="center"
+                sx={{ typography: "h6", color: "secondary.contrastText" }}
+              ></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

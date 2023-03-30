@@ -1,10 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { theme } from "../theme";
 
 export default function Footer() {
   return (
     <Box
       sx={{
-        backgroundColor: "black",
+        backgroundColor: theme.palette.secondary.main,
+
         color: "white",
         width: "100%",
         display: "flex",
@@ -14,9 +16,11 @@ export default function Footer() {
       }}
     >
       <Box sx={{ paddingLeft: "1rem" }}>
-        <p>Ski-Doo </p>
-        <p>support@skidoo.se</p>
-        <p>0611-550602</p>
+        <Typography variant="h6" sx={{ marginBottom: "1rem" }}>
+          <p>Ski-Doo</p>
+          <p>support@skidoo.se</p>
+          <p>0611-550602</p>
+        </Typography>
       </Box>
     </Box>
   );

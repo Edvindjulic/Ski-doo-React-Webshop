@@ -38,7 +38,9 @@ export default function DeleteDialog(props: Product) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Avbryt</Button>
+          <Button onClick={handleClose} color="secondary">
+            Avbryt
+          </Button>
           <Button
             color="error"
             data-cy="confirm-delete-button"

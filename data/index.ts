@@ -1,6 +1,5 @@
 export interface Product {
   id: string;
-  brand?: string;
   title: string;
   description: string;
   image: string;
@@ -25,7 +24,6 @@ export const generateId = () => {
 export const products: Product[] = [
   {
     id: "1",
-    brand: "Ski-Doo",
     title: "Tundra",
     description:
       "Tundra skotrarna är kända som mekaniska snöskor och har en smal design som ger en följsamhet unik för en arbetsskoter. Den perfekta enkla arbetslösningen till ett förmånligt pris.",
@@ -37,7 +35,6 @@ export const products: Product[] = [
   },
   {
     id: "2",
-    brand: "Ski-Doo",
     title: "MXZ",
     description:
       "MXZ skotrarna är inspirerade av tävlingsmodellerna och ger motocross-liknande köregenskaper och följsamhet med avancerade nyheter som körkvalitet och spännande Rotax motorer.",
@@ -50,7 +47,6 @@ export const products: Product[] = [
   },
   {
     id: "3",
-    brand: "Ski-Doo",
     title: "FreeRide",
     description:
       "Freeride klarar av att erövra extrema förhållanden i djupsnö och gör det med alldeles egen stil, och sticker ut i en värld där branta sluttningar och stora hopp är normen.",
@@ -62,7 +58,6 @@ export const products: Product[] = [
   },
   {
     id: "4",
-    brand: "Ski-Doo",
     title: "Renegade",
     description:
       "Framtagen för vinteräventyraren med längre drivband för bättre grepp och ökad komfort. Med två- och fyrtakts Rotax motorer finns det en Renegade för alla ledförhållanden.",
@@ -74,7 +69,6 @@ export const products: Product[] = [
   },
   {
     id: "5",
-    brand: "Ski-Doo",
     title: "Expedition",
     description:
       "Ski-Doo Expedition-modellerna är otroligt mångsidiga och har en fantastisk kapacitet i en och samma skoter, både på och utanför leder. Jobba vid stugan ena timmen, starta ett nytt äventyr nästa timme.",
@@ -86,7 +80,6 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    brand: "Ski-Doo",
     title: "Skandic",
     description:
       "Brutal styrka möter förfinad kapacitet med Skandic. Dess enorma dragkapacitet och stora bäryta gör svåra arbeten enkla och dess stora bärförmåga gör att du kan köra dit du vill.",
@@ -98,22 +91,20 @@ export const products: Product[] = [
   },
   {
     id: "7",
-    brand: "Ski-Doo",
     title: "Summit",
     description:
-    "Summit snöskotrar som är extremt följsamma och utrustade med branschdefinierande Rotaxkraft levererar dynamiska prestanda och omedelbar respons i teknisk vinterterräng.",
+      "Summit snöskotrar som är extremt följsamma och utrustade med branschdefinierande Rotaxkraft levererar dynamiska prestanda och omedelbar respons i teknisk vinterterräng.",
     image:
       "https://user-images.githubusercontent.com/117123951/228628453-03360b89-c15b-4e8f-9c9a-48190568b168.png",
     background:
       "https://user-images.githubusercontent.com/117123951/228661492-e9d56d57-e626-47b3-98c9-f07822d060c5.png",
-    price: 178900, 
+    price: 178900,
   },
   {
     id: "8",
-    brand: "Ski-Doo",
     title: "Grand Touring",
     description:
-    "Grand Touring snöskotrar är fulla av stil, lyxig komfort och bra prestanda. De erbjuder världens bästa körupplevelse för förare och passagerare.",
+      "Grand Touring snöskotrar är fulla av stil, lyxig komfort och bra prestanda. De erbjuder världens bästa körupplevelse för förare och passagerare.",
     image:
       "https://user-images.githubusercontent.com/117123951/228660718-5a9e0b0b-2d11-4801-8439-665ec940ed0e.png",
     background:
@@ -122,10 +113,9 @@ export const products: Product[] = [
   },
   {
     id: "9",
-    brand: "Ski-Doo",
     title: "Summit Neo",
     description:
-    "Mycket Summit djupsnönöje i en medelstor skoter som är perfekt för nybörjare, mindre förare eller de som letar efter en mindre utmanande körning till ett bra pris.",
+      "Mycket Summit djupsnönöje i en medelstor skoter som är perfekt för nybörjare, mindre förare eller de som letar efter en mindre utmanande körning till ett bra pris.",
     image:
       "https://user-images.githubusercontent.com/117123951/228662571-efa281b7-55f7-4c4d-a96f-de0b639f2bd5.png",
     background:
