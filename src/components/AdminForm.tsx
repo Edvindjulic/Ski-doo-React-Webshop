@@ -186,7 +186,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
           inputProps={{ "data-cy": "product-price" }}
           FormHelperTextProps={{ "data-cy": "product-price-error" } as any}
         />
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button color="secondary" variant="contained" fullWidth type="submit">
           {buttonText}
         </Button>
       </Box>
