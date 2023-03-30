@@ -15,109 +15,152 @@ export default function OrderConfirmation() {
         flexDirection: "column",
         alignItems: "center",
         backgroundColor: "#D9D9D9",
-        margin: "0 auto",
-      }}
-    >
-      <Typography
-        variant="h5"
-        component="h5"
-        sx={{
-          height: "auto",
-          width: "100%",
-          fontWeight: "bold",
-          backgroundColor: "lightblue",
-          padding: "0.2rem",
-          textAlign: "center",
-        }}
-      >
-        <p>Din beställning, ordernummer: {generateId()}</p>
-        <p>Summa: {totalCost.toLocaleString("sv-SE")} kr </p>
-      </Typography>
-      {order.products.map((product) => (
-        <Card
-          variant="outlined"
-          data-cy="product"
-          key={product.id}
-          sx={{
-            width: "95%",
-            margin: "0.8rem 0",
-            backgroundColor: "white",
-            border: "1px solid black",
-          }}
-        >
-          <CardContent
+        margin: "auto",
+      }}>
+      <Box sx={{ marginTop: "1rem" }}>
+        {order.products.map((product) => (
+          <Card
+            variant="outlined"
+            data-cy="product"
+            key={product.id}
             sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-            }}
-          >
+              width: "30rem",
+              // margin: "1rem 0",
+              backgroundColor: "white",
+              borderBottom: "1px solid black",
+            }}>
+            <CardContent
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}>
+              <Box
+                sx={{
+                  // border: "1px solid red",
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "1rem",
+                  justifyContent: "center",
+                  flex: "1",
+                  alignItems: "center",
+                }}>
+                <Box sx={{ display: "flex", flex: "1" }}>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    style={{ width: "8rem", height: "auto" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", flex: "1" }}>
+                  <Typography
+                    variant="subtitle2"
+                    data-cy="product-title">
+                    {product.title}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex", flex: "1" }}>
+                  <Typography variant="subtitle2">
+                    {product.quantity}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex", flex: "1" }}>
+                  <Typography
+                    variant="subtitle2"
+                    data-cy="product-price">
+                    {product.price} kr
+                  </Typography>
+                </Box>
+              </Box>
+            </CardContent>
+          </Card>
+        ))}
+        <Box>
+          <Typography
+            variant="h6"
+            component="h6"
+            sx={{
+              height: "auto",
+              fontWeight: "bold",
+              backgroundColor: "white",
+              padding: "0.2rem",
+              textAlign: "center",
+            }}>
             <Box
               sx={{
                 display: "flex",
-                flexDirection: "row",
-                gap: "1rem",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={product.image}
-                alt={product.title}
-                style={{ width: "20%", height: "100%" }}
-              />
-              <Typography variant="subtitle2" data-cy="product-title">
-                {product.title}
-              </Typography>
-              <Typography variant="subtitle2">{product.quantity}</Typography>
-              <Typography variant="subtitle2" data-cy="product-price">
-                {product.price} kr
-              </Typography>
-              <Typography variant="subtitle2" data-cy="product-description">
-                {product.description}
-              </Typography>
+                justifyContent: "flex-end",
+                paddingRight: "1rem",
+              }}>
+              <p>Summa: {totalCost.toLocaleString("sv-SE")} kr </p>
             </Box>
-          </CardContent>
-        </Card>
-      ))}
-
-      <Typography
-        variant="h5"
-        component="h5"
-        sx={{
-          height: "6vh",
-          fontSize: "1rem",
-          fontWeight: "bold",
-          marginTop: "1rem",
-          marginLeft: "2rem",
-          textAlign: "left",
-        }}
-      >
-        Din order levereras till följande adress
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          width: "90%",
-        }}
-      >
-        <Typography variant="subtitle1" data-cy="customer-name">
-          {order.customer.name}
-        </Typography>
-        <Typography variant="subtitle1">
-          <span data-cy="customer-address">{order.customer.street},</span>
-          <span data-cy="customer-zipcode">{order.customer.zipcode},</span>
-          <span data-cy="customer-city"> {order.customer.city}</span>
-        </Typography>
-        <Typography variant="subtitle1" data-cy="customer-email">
-          {order.customer.email}
-        </Typography>
-        <Typography variant="subtitle1" data-cy="customer-phone">
-          {order.customer.phone}
-        </Typography>
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            background: "white",
+            margin: "0r 0 2rem 0",
+            width: "30rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              // backgroundColor: "green",
+              textAlign: "left",
+            }}>
+            <p>Tack för din beställning!</p>
+            <p>Ditt ordernummer: {generateId()}</p>
+          </Box>
+          <Typography
+            variant="h6"
+            component="h6"
+            sx={{
+              height: "6vh",
+              fontSize: "1rem",
+              fontWeight: "bold",
+              marginTop: "1rem",
+              marginLeft: "2rem",
+              textAlign: "left",
+            }}>
+            Din order levereras till följande adress
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              padding: "1rem",
+              marginBottom: "1rem",
+            }}>
+            <Typography variant="subtitle1" data-cy="customer-name">
+              {order.customer.name}
+            </Typography>
+            <Typography variant="subtitle1">
+              <span data-cy="customer-address">
+                {order.customer.street},
+              </span>
+              <span data-cy="customer-zipcode">
+                {order.customer.zipcode},
+              </span>
+              <span data-cy="customer-city">
+                {" "}
+                {order.customer.city}
+              </span>
+            </Typography>
+            <Typography variant="subtitle1" data-cy="customer-email">
+              {order.customer.email}
+            </Typography>
+            <Typography variant="subtitle1" data-cy="customer-phone">
+              {order.customer.phone}
+            </Typography>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
