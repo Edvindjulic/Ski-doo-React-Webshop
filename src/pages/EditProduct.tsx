@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import AdminForm from "../components/AdminForm";
 import { useProduct } from "../contexts/ProductContext";
@@ -15,9 +15,13 @@ export default function EditProduct() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: "1rem",
+        marginBottom: "1rem",
       }}
     >
-      <h2>Redigera produkt</h2>
+      <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
+        Redigera produkt
+      </Typography>
       <Box sx={{ display: "flex" }}>
         <AdminForm product={selectedProduct} isNewProduct={false} />
       </Box>

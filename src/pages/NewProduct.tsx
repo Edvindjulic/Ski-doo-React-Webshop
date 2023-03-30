@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Product } from "../../data";
 import AdminForm, { defaultValues } from "../components/AdminForm";
 
@@ -9,9 +9,14 @@ export default function EditProduct() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: "1rem",
+        marginBottom: "1rem",
       }}
     >
-      <h2>Lägg till en ny produkt</h2>
+      <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
+        Lägg till en ny produkt
+      </Typography>
+
       <Box sx={{ display: "flex", gap: "1rem" }}>
         <AdminForm product={defaultValues as Product} isNewProduct={true} />
       </Box>

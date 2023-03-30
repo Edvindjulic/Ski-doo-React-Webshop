@@ -17,9 +17,11 @@ export default function Checkout() {
         alignItems: "center",
         flexDirection: "column",
         gap: "1rem",
+        marginTop: "1rem",
+        marginBottom: "1rem",
       }}
     >
-      <Typography variant="h4" sx={{ marginTop: '1rem'}}>Kassa </Typography>
+      <Typography variant="h4">Kassa </Typography>
       {cart.length > 0 ? (
         <Box
           sx={{
