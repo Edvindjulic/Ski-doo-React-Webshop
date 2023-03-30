@@ -29,21 +29,21 @@ export default function BasicTable() {
         <TableHead>
           <TableRow
             sx={{
-              bgcolor: "primary.main",
+              bgcolor: "secondary.main",
             }}
           >
-            <TableCell align="center" sx={{ typography: "h6" }}>
+            <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
               Produkter
             </TableCell>
-            <TableCell align="center" sx={{ typography: "h6" }}>
+            <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
               Modell
             </TableCell>
             <TableCell align="center"></TableCell>
-            <TableCell align="center" sx={{ typography: "h6" }}>
+            <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
               Antal
             </TableCell>
             <TableCell align="center"></TableCell>
-            <TableCell align="center" sx={{ typography: "h6" }}>
+            <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
               Pris
             </TableCell>
           </TableRow>
@@ -79,7 +79,7 @@ export default function BasicTable() {
               <TableCell align="center" sx={{ width: "10%" }}>
                 <IconButton
                   aria-label="remove"
-                  color="primary"
+                  color="secondary"
                   onClick={() => removeProduct(product)}
                   data-cy="decrease-quantity-button"
                 >
@@ -96,7 +96,7 @@ export default function BasicTable() {
               <TableCell align="center" sx={{ width: "10%" }}>
                 <IconButton
                   aria-label="add"
-                  color="primary"
+                  color="secondary"
                   onClick={() => addProduct(product)}
                   data-cy="increase-quantity-button"
                 >

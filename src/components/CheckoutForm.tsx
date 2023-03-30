@@ -166,7 +166,7 @@ export default function CheckoutForm() {
           autoComplete="tel"
         />
 
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button color="secondary" variant="contained" fullWidth type="submit">
           Beställ
         </Button>
       </Box>

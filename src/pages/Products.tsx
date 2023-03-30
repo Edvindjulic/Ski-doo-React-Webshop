@@ -1,27 +1,38 @@
-import { Box, Card, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem } from "../../data";
 import Snackbar from "../components/Snackbar";
 import { useCart } from "../contexts/CartContext";
 import { useProduct } from "../contexts/ProductContext";
+import { theme } from "../theme";
 
 export default function Products() {
   const { product } = useProduct();
 
   const { addProduct } = useCart();
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [lastAddedProduct, setLastAddedProduct] = useState<
-    | {
-        title: string;
-        price: number;
-        image: string;
-      }
-    | undefined
-  >(undefined);
+  const [snackbarOpen, setSnackbarOpen] =
+    useState(false);
+  const [lastAddedProduct, setLastAddedProduct] =
+    useState<
+      | {
+          title: string;
+          price: number;
+          image: string;
+        }
+      | undefined
+    >(undefined);
 
   const handleSnackbarClose = (
-    event: React.SyntheticEvent<Element, Event> | Event,
+    event:
+      | React.SyntheticEvent<Element, Event>
+      | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {
@@ -29,9 +40,10 @@ export default function Products() {
     }
     setSnackbarOpen(false);
   };
-  const backgroundImage =
-    "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
-  const matches = useMediaQuery("(min-width:500px)");
+  
+  const matches = useMediaQuery(
+    "(min-width:500px)"
+  );
   return (
     <Box
       sx={{
@@ -40,7 +52,7 @@ export default function Products() {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundColor: "background.default",
         "& a": {
           color: "black",
           textDecoration: "none",
@@ -53,47 +65,86 @@ export default function Products() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            // maxWidth: "30%",
             margin: "1rem",
             padding: "2rem",
-            maxHeight: matches ? "29.6rem" : "none",
+            maxHeight: matches
+              ? "29.6rem"
+              : "none",
             justifyContent: "center",
             height: "100%",
+            width: matches ? "22rem" : "100%",
           }}
           data-cy="product"
         >
           <Link to={"/product/" + product.id}>
-            <img src={product.image} alt={product.title} width="150px" />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "5rem",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "250px",
+                  height: "150px",
+                }}
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  width="100%"
+                  height="100%"
+                />
+              </Box>
+            </Box>
 
             <Box
               sx={{
                 display: "flex",
-                fontSize: "25px",
+                flexDirection: "column",
+                alignItems: "start",
+                marginTop: "2rem",
               }}
             >
-              <Box sx={{ fontStyle: "italic", paddingRight: "0.8rem" }}>
-                <h2>{product.brand}</h2>
+              <Box>
+                <Typography variant="subtitle2">
+                  2024
+                </Typography>
               </Box>
               <Box>
-                <h2 data-cy="product-title">{product.title}</h2>
+                <Typography
+                  variant="h5"
+                  data-cy="product-title"
+                >
+                  {product.title}
+                </Typography>
+              </Box>
+              <Box sx={{
+                marginBottom: "0.5rem",
+              }}>
+                <Typography
+                  variant="subtitle2"
+                  data-cy="product-price"
+                >
+                  Pris {product.price} kr
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  maxWidth: "30rem",
+                  height: "12rem",
+                }}
+              >
+                <Typography variant="body1" data-cy="product-description">
+                  {product.description}
+                </Typography>
               </Box>
             </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "100%",
-                fontSize: "25px",
-              }}
-            >
-              <h6>2023</h6>
-              <h6 data-cy="product-price">{product.price}</h6>
-            </Box>
-            <Box sx={{ maxWidth: "30rem", display: "flex", flexWrap: "wrap" }}>
-              <p data-cy="product-description">{product.description}</p>
-            </Box>
-            {/* <h6 data-cy="product-id">{product.id}</h6> */}
           </Link>
           <Box
             sx={{
@@ -102,7 +153,20 @@ export default function Products() {
               padding: "0.5rem",
             }}
           >
-            <button
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{
+                backgroundColor:
+                  theme.palette.secondary.main,
+                color:
+                  theme.palette.secondary
+                    .contrastText,
+                "&:hover": {
+                  backgroundColor:
+                    theme.palette.secondary.light
+                },
+              }}
               data-cy="product-buy-button"
               onClick={() => {
                 addProduct(product as CartItem);
@@ -114,8 +178,8 @@ export default function Products() {
                 });
               }}
             >
-              Add to cart
-            </button>
+              Lägg till i kundvagnen
+            </Button>
           </Box>
         </Card>
       ))}

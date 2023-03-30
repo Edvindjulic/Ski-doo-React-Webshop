@@ -1,7 +1,8 @@
-import React from "react";
+import { Theme } from "@mui/material/styles";
+import { theme } from "../theme";
 
 interface LogoProps {
-  fill: string;
+  theme: Theme;
   height: number;
   width: number;
 }
@@ -15,7 +16,7 @@ export default function Logo(props: LogoProps) {
       width={props.width}
       height={props.height}
       viewBox="0 0 116.3 25.48"
-      fill={props.fill}
+      fill={theme.palette.secondary.dark}
     >
       <title>logo-skidoo</title>
       <g id="Brands_Logo" data-name="Brands Logo">

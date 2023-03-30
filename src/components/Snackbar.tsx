@@ -37,7 +37,7 @@ export default function Snackbar({
         data-cy="added-to-cart-toast"
         open={open}
         onClose={handleClose}
-        autoHideDuration={3000} 
+        /* autoHideDuration={3000}  */
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
@@ -47,7 +47,7 @@ export default function Snackbar({
           <Paper
             elevation={4}
             sx={{
-              bgcolor: "white",
+              backgroundColor: "primary",
               borderColor: "grey.300",
               borderWidth: 1,
               borderStyle: "solid",
@@ -125,9 +125,10 @@ export default function Snackbar({
               <Button
                 variant="contained"
                 sx={{
-                  backgroundColor: "black",
+                  backgroundColor: "secondary.main",
+                  color: "secondary.contrastText",
                   "&:hover": {
-                    backgroundColor: "grey",
+                    backgroundColor: "secondary.light",
                   },
                   alignSelf: "flex-end",
                 }}

@@ -56,23 +56,23 @@ export default function Admin() {
           <TableHead>
             <TableRow
               sx={{
-                bgcolor: "primary.main",
+                bgcolor: "secondary.main",
               }}
             >
-              <TableCell align="center" sx={{ typography: "h6" }}>
+              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
                 Bild
               </TableCell>
-              <TableCell align="center" sx={{ typography: "h6" }}>
+              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
                 ID
               </TableCell>
-              <TableCell align="center" sx={{ typography: "h6" }}>
+              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
                 Titel
               </TableCell>
-              <TableCell align="center" sx={{ typography: "h6" }}>
+              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}>
                 Pris{" "}
               </TableCell>
               <TableCell align="center"></TableCell>
-              <TableCell align="center" sx={{ typography: "h6" }}></TableCell>
+              <TableCell align="center" sx={{ typography: "h6", color: "secondary.contrastText" }}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -126,7 +126,7 @@ export default function Admin() {
                 </TableCell>
                 <TableCell align="center" sx={{ width: "16%" }}>
                   <Button
-                    color="primary"
+                    color="secondary"
                     onClick={() => {
                       navigate("/admin/product/" + product.id);
                     }}

@@ -1,5 +1,10 @@
 import { ShoppingCart as ShoppingCartIcon } from "@mui/icons-material";
-import { Box, IconButton, Tooltip } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Tooltip,
+  useTheme,
+} from "@mui/material";
 import StyledBadge from "@mui/material/Badge";
 
 import { NavLink } from "react-router-dom";
@@ -8,11 +13,13 @@ import { useCart } from "./contexts/CartContext";
 
 export default function Header() {
   const { cart } = useCart();
+  const theme = useTheme();
 
   return (
     <Box
       sx={{
-        background: "white",
+        backgroundColor:
+          theme.palette.primary.main,
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -44,7 +51,11 @@ export default function Header() {
           }}
         >
           <NavLink to="./">
-            <Logo fill="black" width={200} height={50} />
+            <Logo
+              theme={theme}
+              width={200}
+              height={50}
+            />
           </NavLink>
         </Box>
         <Box
@@ -56,14 +67,16 @@ export default function Header() {
             gap: "2rem",
             padding: "0 1rem",
             textDecoration: "none",
-            color: "black",
             fontFamily: "Oswald, sans-serif",
             fontSize: "1.3rem",
             "& a": {
-              color: "black",
+              color:
+                theme.palette.primary
+                  .contrastText,
               textDecoration: "none",
               "&:hover": {
-                color: "rgb(0, 0, 0, 0.5)",
+                color:
+                  theme.palette.secondary.light,
               },
             },
           }}
@@ -73,25 +86,21 @@ export default function Header() {
           <NavLink to="./admin" data-cy="admin-link">
             Admin
           </NavLink>
-          <Box
-            sx={{
-              color: "Grey",
-              fontSize: "2rem",
-            }}
-          >
+          <Box>
             <Tooltip title="Kundvagn">
               <NavLink to="./checkout">
                 <IconButton
                   aria-label="cart"
                   data-cy="cart-link"
-                  color="success"
+                  color="secondary"
                 >
                   <StyledBadge
                     badgeContent={cart.reduce(
-                      (total, item) => total + item.quantity,
+                      (total, item) =>
+                        total + item.quantity,
                       0
                     )}
-                    color="warning"
+                    color="info"
                     data-cy="cart-items-count-badge"
                   >
                     <ShoppingCartIcon />
