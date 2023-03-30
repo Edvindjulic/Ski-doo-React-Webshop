@@ -81,12 +81,7 @@ export default function Products() {
                   height: "150px",
                 }}
               >
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  width="100%"
-                  height="100%"
-                />
+                <img src={product.image} alt={product.title} width="100%" />
               </Box>
             </Box>
 
