@@ -69,7 +69,7 @@ export default function Header() {
           }}
         >
           <NavLink to="./">Start</NavLink>
-          <NavLink to="./confirmation">Kassa</NavLink>
+          <NavLink to="./checkout">Kassa</NavLink>
           <NavLink to="./admin" data-cy="admin-link">
             Admin
           </NavLink>
