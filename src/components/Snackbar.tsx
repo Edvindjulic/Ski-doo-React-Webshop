@@ -35,7 +35,7 @@ export default function Snackbar({
         data-cy="added-to-cart-toast"
         open={open}
         onClose={handleClose}
-        /* autoHideDuration={3000}  */
+        autoHideDuration={3000}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
