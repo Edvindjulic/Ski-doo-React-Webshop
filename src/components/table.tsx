@@ -103,7 +103,11 @@ export default function BasicTable() {
                   <AddCircleOutlineIcon />
                 </IconButton>
               </TableCell>
-              <TableCell align="center" data-cy="product-price">
+              <TableCell
+                align="center"
+                data-cy="product-price"
+                sx={{ width: "8rem" }}
+              >
                 {product.quantity * product.price}
               </TableCell>
             </TableRow>
