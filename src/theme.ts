@@ -2,22 +2,38 @@ import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
-    mode: "light",
+    mode: 'light',
     primary: {
-      main: "#adbccd",
-      contrastText: "#0f1225",
+      main: '#E8F1F2',
+      light: 'rgb(236, 243, 244)',
+      dark: 'rgb(162, 168, 169)',
+      // svart text på ljusblå bakgrund
+      contrastText: '#090809',
     },
+    // Mörkblå färg för lägg till i kundvagn, ram i kassa, etc.
     secondary: {
-      main: "#0f1225",
-      contrastText: "#f1ece6",
+      main: '#13293D',
+      light: 'rgb(66, 83, 99)',
+      dark: 'rgb(13, 28, 42)',
+      contrastText: '#ffffff',
     },
     background: {
-      default: "#ffffff",
-      paper: "#ffffff",
+      paper: '#f5f5f5',
+      default: '#FFFFFF',
     },
+    // Färger för ikoner, meddelande etc.
     info: {
-      main: "#eadbd4",
+      main: '#1B98E0',
+      dark: 'rgb(18, 106, 156)',
     },
+    error: {
+      main: '#d32f2f',
+      dark: '#c62828',
+    },
+    success: {
+      main: '#2e7d32',
+      dark: '#1b5e20',
+  },
   },
   typography: {
     fontFamily: ["Oswald, sans-serif", "Roboto"].join(","),
@@ -25,16 +41,26 @@ export const theme = createTheme({
       fontWeight: 300,
       fontFamily: "Oswald",
     },
+    h4: {
+      fontFamily: "Oswald",
+    },
     body1: {
-      fontSize: "0.9rem",
+      fontSize: "1rem",
       fontWeight: 100,
       fontFamily: "Roboto",
-    }
+    },
+    body2: {
+      fontSize: "1.2rem",
+      fontWeight: 100,
+      fontFamily: "Roboto",
+    },
   },
 });
 
-// #0f1225 - dark blue. Use for text and icons in the header
-// #1f4b8e - blue. Use for buttons and links
-// #adbccd - light blue. Use for borders and backgrounds
-// #f1ece6 - cream. Use for backgrounds and borders
-// #eadbd4 - creamy pink. Use for stand out elements
+// e8f1f2 - ljusljusblå
+// 090809 - mörkmörkblå
+// 1b98e0 - blå
+// 006494 - mörkare blå
+// ffffff - vit
+// 000000 - svart
+// f5f5f5 - ljusgrå

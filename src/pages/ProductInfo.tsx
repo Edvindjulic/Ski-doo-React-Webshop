@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   CardContent,
+  Tooltip,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -20,20 +21,23 @@ export default function ProductInfo() {
 
   const { product } = useProduct();
   const { addProduct } = useCart();
- 
 
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [lastAddedProduct, setLastAddedProduct] = useState<
-    | {
-        title: string;
-        price: number;
-        image: string;
-      }
-    | undefined
-  >(undefined);
+  const [snackbarOpen, setSnackbarOpen] =
+    useState(false);
+  const [lastAddedProduct, setLastAddedProduct] =
+    useState<
+      | {
+          title: string;
+          price: number;
+          image: string;
+        }
+      | undefined
+    >(undefined);
 
   const handleSnackbarClose = (
-    event: React.SyntheticEvent<Element, Event> | Event,
+    event:
+      | React.SyntheticEvent<Element, Event>
+      | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {
@@ -45,7 +49,9 @@ export default function ProductInfo() {
   const backgroundImage =
     "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
 
-  const selectedProduct = product.find((product) => product.id === params.id);
+  const selectedProduct = product.find(
+    (product) => product.id === params.id
+  );
 
   const card = (
     <React.Fragment>
@@ -67,10 +73,17 @@ export default function ProductInfo() {
             <Avatar
               src={selectedProduct?.image}
               alt="avatar"
-              sx={{ width: "10rem", height: "5rem", padding: "0.5rem" }}
+              sx={{
+                width: "10rem",
+                height: "5rem",
+                padding: "0.5rem",
+              }}
             />
             <Box sx={{ padding: "1.2rem" }}>
-              <Typography data-cy="product-title" variant="h4">
+              <Typography
+                data-cy="product-title"
+                variant="h4"
+              >
                 {selectedProduct?.title}
               </Typography>
             </Box>
@@ -83,15 +96,26 @@ export default function ProductInfo() {
               fontSize: "60px",
             }}
           >
-            <Typography variant="h5">2024</Typography>
-            <Typography data-cy="product-price" variant="h5">
+            <Typography variant="h5">
+              2024
+            </Typography>
+            <Typography
+              data-cy="product-price"
+              variant="h5"
+            >
               {selectedProduct?.price}
               <span>SEK</span>
             </Typography>
           </Box>
         </Box>
-        <Box sx={{ padding: "0.8rem", display: "flex", flexWrap: "wrap" }}>
-          <Typography data-cy="product-description">
+        <Box
+          sx={{
+            padding: "0.8rem",
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          <Typography variant="body2" data-cy="product-description">
             {selectedProduct?.description}
           </Typography>
         </Box>
@@ -103,7 +127,9 @@ export default function ProductInfo() {
     return <h1>Product not found</h1>;
   }
 
-  const matches = useMediaQuery("(min-width:1280px)");
+  const matches = useMediaQuery(
+    "(min-width:1280px)"
+  );
 
   return (
     <Box
@@ -132,6 +158,8 @@ export default function ProductInfo() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             zIndex: "10",
             height: matches ? "22rem" : "26rem",
           }}
@@ -145,25 +173,35 @@ export default function ProductInfo() {
               justifyContent: "flex-end",
               marginLeft: "auto",
               width: "100%",
-              paddingBottom: matches ? "auto" : "1rem",
+              paddingBottom: matches
+                ? "auto"
+                : "1rem",
             }}
           >
-            <Button
-              variant="contained"
-              sx={{ width: "4.5rem", margin: "0 0.8rem 0.8rem 0" }}
-              data-cy="product-buy-button"
-              onClick={() => {
-                addProduct(selectedProduct as CartItem);
-                setSnackbarOpen(true);
-                setLastAddedProduct({
-                  title: selectedProduct.title,
-                  price: selectedProduct.price,
-                  image: selectedProduct.image,
-                });
-              }}
-            >
-              <AddShoppingCartIcon />
-            </Button>
+            <Tooltip title="Lägg till i kundvagnen">
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{
+                  width: "4.5rem",
+                  margin: "0 0.8rem 0.8rem 0",
+                }}
+                data-cy="product-buy-button"
+                onClick={() => {
+                  addProduct(
+                    selectedProduct as CartItem
+                  );
+                  setSnackbarOpen(true);
+                  setLastAddedProduct({
+                    title: selectedProduct.title,
+                    price: selectedProduct.price,
+                    image: selectedProduct.image,
+                  });
+                }}
+              >
+                <AddShoppingCartIcon />
+              </Button>
+            </Tooltip>
           </Box>
         </Card>
         <Box

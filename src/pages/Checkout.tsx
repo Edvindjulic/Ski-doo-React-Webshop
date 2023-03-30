@@ -19,7 +19,7 @@ export default function Checkout() {
         gap: "1rem",
       }}
     >
-      <Typography variant="h4">Kassa </Typography>
+      <Typography variant="h4" sx={{ marginTop: '1rem'}}>Kassa </Typography>
       {cart.length > 0 ? (
         <Box
           sx={{

@@ -70,10 +70,13 @@ export default function Header() {
             fontFamily: "Oswald, sans-serif",
             fontSize: "1.3rem",
             "& a": {
-              color: theme.palette.primary.contrastText,
+              color:
+                theme.palette.primary
+                  .contrastText,
               textDecoration: "none",
               "&:hover": {
-                color: theme.palette.secondary.main,
+                color:
+                  theme.palette.secondary.light,
               },
             },
           }}
@@ -88,12 +91,7 @@ export default function Header() {
           >
             Admin
           </NavLink>
-          <Box
-            sx={{
-              color: "Grey",
-              fontSize: "2rem",
-            }}
-          >
+          <Box>
             <Tooltip title="Kundvagn">
               <NavLink to="./checkout">
                 <IconButton

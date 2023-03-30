@@ -40,8 +40,7 @@ export default function Products() {
     }
     setSnackbarOpen(false);
   };
-  const backgroundImage =
-    "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
+  
   const matches = useMediaQuery(
     "(min-width:500px)"
   );
@@ -53,7 +52,7 @@ export default function Products() {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundColor: "background.default",
         "& a": {
           color: "black",
           textDecoration: "none",
@@ -73,7 +72,7 @@ export default function Products() {
               : "none",
             justifyContent: "center",
             height: "100%",
-            width: matches ? "20rem" : "100%",
+            width: matches ? "22rem" : "100%",
           }}
           data-cy="product"
         >
@@ -138,7 +137,7 @@ export default function Products() {
               <Box
                 sx={{
                   maxWidth: "30rem",
-                  height: "9rem",
+                  height: "12rem",
                 }}
               >
                 <Typography variant="body1" data-cy="product-description">
@@ -163,6 +162,10 @@ export default function Products() {
                 color:
                   theme.palette.secondary
                     .contrastText,
+                "&:hover": {
+                  backgroundColor:
+                    theme.palette.secondary.light
+                },
               }}
               data-cy="product-buy-button"
               onClick={() => {
