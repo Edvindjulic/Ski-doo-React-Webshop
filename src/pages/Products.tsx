@@ -1,11 +1,14 @@
 import { Box, Card, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CartItem, products } from "../../data";
+import { CartItem } from "../../data";
 import Snackbar from "../components/Snackbar";
 import { useCart } from "../contexts/CartContext";
+import { useProduct } from "../contexts/ProductContext";
 
 export default function Products() {
+  const { product } = useProduct();
+
   const { addProduct } = useCart();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [lastAddedProduct, setLastAddedProduct] = useState<
@@ -27,16 +30,16 @@ export default function Products() {
     setSnackbarOpen(false);
   };
   const backgroundImage =
- "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
- const matches = useMediaQuery('(min-width:500px)')
+    "https://www.ski-doo.com/content/dam/global/en/ski-doo/my22/images/models/Ski-Doo-Model-Essential-Background.jpg";
+  const matches = useMediaQuery("(min-width:500px)");
   return (
     <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        justifyContent:"center",
-        alignItems:"center",
-        height:"100%",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
         backgroundImage: `url(${backgroundImage})`,
         "& a": {
           color: "black",
@@ -44,7 +47,7 @@ export default function Products() {
         },
       }}
     >
-      {products.map((product) => (
+      {product.map((product) => (
         <Card
           sx={{
             display: "flex",
@@ -53,12 +56,12 @@ export default function Products() {
             // maxWidth: "30%",
             margin: "1rem",
             padding: "2rem",
-            maxHeight:matches ? "29.6rem": "none",
-            justifyContent:"center",
-            height:"100%",
+            maxHeight: matches ? "29.6rem" : "none",
+            justifyContent: "center",
+            height: "100%",
           }}
           data-cy="product"
-        > 
+        >
           <Link to={"/product/" + product.id}>
             <img src={product.image} alt={product.title} width="150px" />
 
@@ -75,30 +78,28 @@ export default function Products() {
                 <h2 data-cy="product-title">{product.title}</h2>
               </Box>
             </Box>
-          
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-              fontSize: "25px",
-            
-            }}
-          >
-            <h6>2023</h6>
-            <h6 data-cy="product-price">{product.price}</h6>
-          </Box>
-          <Box sx={{ maxWidth: '30rem', display: 'flex', flexWrap: 'wrap'}}>
-            <p data-cy="product-description">{product.description}</p>
-          </Box>
-          {/* <h6 data-cy="product-id">{product.id}</h6> */}
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+                fontSize: "25px",
+              }}
+            >
+              <h6>2023</h6>
+              <h6 data-cy="product-price">{product.price}</h6>
+            </Box>
+            <Box sx={{ maxWidth: "30rem", display: "flex", flexWrap: "wrap" }}>
+              <p data-cy="product-description">{product.description}</p>
+            </Box>
+            {/* <h6 data-cy="product-id">{product.id}</h6> */}
           </Link>
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-end",
               padding: "0.5rem",
-              
             }}
           >
             <button
