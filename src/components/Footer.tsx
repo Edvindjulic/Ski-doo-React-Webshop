@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { theme } from "../theme";
 
 export default function Footer() {
@@ -16,9 +16,11 @@ export default function Footer() {
       }}
     >
       <Box sx={{ paddingLeft: "1rem" }}>
-        <h4>Ski-Doo</h4>
-        <h3>support@skidoo.se</h3>
-        <h3>0611-550602</h3>
+        <Typography variant="h6" sx={{ marginBottom: "1rem" }}>
+          <p>Ski-Doo</p>
+          <p>support@skidoo.se</p>
+          <p>0611-550602</p>
+        </Typography>
       </Box>
     </Box>
   );

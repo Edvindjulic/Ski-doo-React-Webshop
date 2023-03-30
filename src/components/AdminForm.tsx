@@ -1,4 +1,10 @@
-import { Button, Card, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Button,
+  Card,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
@@ -9,7 +15,6 @@ import { useProduct } from "../contexts/ProductContext";
 
 const AdminSchema = Yup.object().shape({
   id: Yup.string(),
-  brand: Yup.string(),
   title: Yup.string().required("Ange titel"),
   description: Yup.string().required("Ange beskrivning"),
   image: Yup.string()
@@ -26,7 +31,6 @@ type AdminValues = Yup.InferType<typeof AdminSchema>;
 
 export const defaultValues: AdminValues = {
   id: "",
-  brand: "",
   title: "",
   description: "",
   image: "",
@@ -40,6 +44,7 @@ type AdminFormProps = {
 };
 
 export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
+  const matches = useMediaQuery("(min-width:500px)");
   const navigate = useNavigate();
   const { addProduct, updateProduct } = useProduct();
   const buttonText = isNewProduct ? "Lägg till produkt" : "Ändra produkt";
@@ -48,7 +53,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
 
   const initialValues: AdminValues = {
     id: product?.id || defaultValues.id,
-    brand: product?.brand || defaultValues.brand,
     title: product?.title || defaultValues.title,
     description: product?.description || defaultValues.description,
     image: product?.image || defaultValues.image,
@@ -66,7 +70,6 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
       }
       const customer = {
         id: uniqueID,
-        brand: values.brand,
         title: values.title,
         description: values.description,
         image: values.image,
@@ -130,20 +133,7 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
             { "data-cy": "product-description-error" } as any
           }
         />
-        <TextField
-          fullWidth
-          id="brand"
-          type="brand"
-          name="brand"
-          label="Märke"
-          value={formik.values.brand}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.brand && Boolean(formik.errors.brand)}
-          helperText={formik.touched.brand && formik.errors.brand}
-          inputProps={{ "data-cy": "customer-name" }}
-          FormHelperTextProps={{ "data-cy": "customer-name-error" } as any}
-        />
+
         <TextField
           fullWidth
           id="image"
@@ -191,67 +181,93 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
         </Button>
       </Box>
       {!isSmallScreen && (
-        <Box sx={{ textAlign: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            backgroundColor: "background.default",
+            "& a": {
+              color: "black",
+              textDecoration: "none",
+            },
+          }}
+        >
           <Card
+            key={formik.values.id}
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               margin: "1rem",
               padding: "2rem",
+              maxHeight: matches ? "29.6rem" : "none",
               justifyContent: "center",
-              maxWidth: "30rem",
-              minWidth: "15rem",
-              "& a": {
-                color: "black",
-                textDecoration: "none",
-              },
+              height: "100%",
+              width: matches ? "22rem" : "100%",
             }}
           >
             <Link to={"/product/" + formik.values.id}>
-              <img
-                src={formik.values.image}
-                alt={formik.values.title}
-                width="100%"
-              />
-
               <Box
                 sx={{
                   display: "flex",
-                  fontSize: "25px",
-                  justifyContent: "space-between",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "5rem",
                 }}
               >
                 <Box
                   sx={{
-                    fontStyle: "italic",
-                    paddingRight: "0.8rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "250px",
+                    height: "150px",
                   }}
                 >
-                  <h2>{formik.values.brand}</h2>
-                </Box>
-                <Box>
-                  <h2 data-cy="formik.values-title">{formik.values.title}</h2>
+                  <img
+                    src={formik.values.image}
+                    alt={formik.values.title}
+                    width="100%"
+                  />
                 </Box>
               </Box>
 
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  fontSize: "25px",
+                  flexDirection: "column",
+                  alignItems: "start",
+                  marginTop: "2rem",
                 }}
               >
-                <h6>2023</h6>
-                <h6>{formik.values.price}</h6>
-              </Box>
-              <Box
-                sx={{ maxWidth: "30rem", display: "flex", flexWrap: "wrap" }}
-              >
-                <p data-cy="formik.values-description">
-                  {formik.values.description}
-                </p>
+                <Box>
+                  <Typography variant="subtitle2">2024</Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h5">{formik.values.title}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <Typography variant="subtitle2">
+                    Pris {formik.values.price} kr
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    maxWidth: "30rem",
+                    height: "12rem",
+                  }}
+                >
+                  <Typography variant="body1">
+                    {formik.values.description}
+                  </Typography>
+                </Box>
               </Box>
             </Link>
             <Box
@@ -261,7 +277,19 @@ export default function AdminForm({ product, isNewProduct }: AdminFormProps) {
                 padding: "0.5rem",
               }}
             >
-              <Button color="success">Add to cart</Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{
+                  backgroundColor: theme.palette.secondary.main,
+                  color: theme.palette.secondary.contrastText,
+                  "&:hover": {
+                    backgroundColor: theme.palette.secondary.light,
+                  },
+                }}
+              >
+                Lägg till i kundvagnen
+              </Button>
             </Box>
           </Card>
         </Box>
