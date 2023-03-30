@@ -1,28 +1,36 @@
-import { Box, Button, Card, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem } from "../../data";
 import Snackbar from "../components/Snackbar";
 import { useCart } from "../contexts/CartContext";
 import { useProduct } from "../contexts/ProductContext";
-import { theme } from "../theme";
 
 export default function Products() {
   const { product } = useProduct();
-
   const { addProduct } = useCart();
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [lastAddedProduct, setLastAddedProduct] = useState<
-    | {
-        title: string;
-        price: number;
-        image: string;
-      }
-    | undefined
-  >(undefined);
+  const [snackbarOpen, setSnackbarOpen] =
+    useState(false);
+  const [lastAddedProduct, setLastAddedProduct] =
+    useState<
+      | {
+          title: string;
+          price: number;
+          image: string;
+        }
+      | undefined
+    >(undefined);
 
   const handleSnackbarClose = (
-    event: React.SyntheticEvent<Element, Event> | Event,
+    event:
+      | React.SyntheticEvent<Element, Event>
+      | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {
@@ -31,7 +39,9 @@ export default function Products() {
     setSnackbarOpen(false);
   };
 
-  const matches = useMediaQuery("(min-width:500px)");
+  const matches = useMediaQuery(
+    "(min-width:500px)"
+  );
   return (
     <Box
       sx={{
@@ -56,7 +66,9 @@ export default function Products() {
             alignItems: "center",
             margin: "1rem",
             padding: "2rem",
-            maxHeight: matches ? "29.6rem" : "none",
+            maxHeight: matches
+              ? "29.6rem"
+              : "none",
             justifyContent: "center",
             height: "100%",
             width: matches ? "22rem" : "100%",
@@ -82,7 +94,11 @@ export default function Products() {
                   overflow: "hidden",
                 }}
               >
-                <img src={product.image} alt={product.title} width="100%" />
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  width="100%"
+                />
               </Box>
             </Box>
 
@@ -95,10 +111,15 @@ export default function Products() {
               }}
             >
               <Box sx={{ paddingTop: "0.2rem" }}>
-                <Typography variant="subtitle2">2024</Typography>
+                <Typography variant="subtitle2">
+                  2024
+                </Typography>
               </Box>
               <Box>
-                <Typography variant="h5" data-cy="product-title">
+                <Typography
+                  variant="h5"
+                  data-cy="product-title"
+                >
                   {product.title}
                 </Typography>
               </Box>
@@ -107,7 +128,10 @@ export default function Products() {
                   marginBottom: "0.5rem",
                 }}
               >
-                <Typography variant="subtitle2" data-cy="product-price">
+                <Typography
+                  variant="subtitle2"
+                  data-cy="product-price"
+                >
                   Pris {product.price} kr
                 </Typography>
               </Box>
@@ -117,7 +141,10 @@ export default function Products() {
                   height: "12rem",
                 }}
               >
-                <Typography variant="body1" data-cy="product-description">
+                <Typography
+                  variant="body1"
+                  data-cy="product-description"
+                >
                   {product.description}
                 </Typography>
               </Box>
@@ -134,10 +161,11 @@ export default function Products() {
               variant="contained"
               color="secondary"
               sx={{
-                backgroundColor: theme.palette.secondary.main,
-                color: theme.palette.secondary.contrastText,
+                backgroundColor: "secondary.main",
+                color: "secondary.contrastText",
                 "&:hover": {
-                  backgroundColor: theme.palette.secondary.light,
+                  backgroundColor:
+                    "secondary.light",
                 },
               }}
               data-cy="product-buy-button"

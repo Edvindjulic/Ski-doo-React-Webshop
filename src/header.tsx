@@ -18,8 +18,7 @@ export default function Header() {
   return (
     <Box
       sx={{
-        backgroundColor:
-          theme.palette.primary.main,
+        backgroundColor: "primary.main",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -70,13 +69,10 @@ export default function Header() {
             fontFamily: "Oswald, sans-serif",
             fontSize: "1.3rem",
             "& a": {
-              color:
-                theme.palette.primary
-                  .contrastText,
+              color: "primary.contrastText",
               textDecoration: "none",
               "&:hover": {
-                color:
-                  theme.palette.secondary.light,
+                color: "secondary.light"
               },
             },
           }}
