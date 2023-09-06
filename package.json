@@ -7,7 +7,6 @@
   "author": "Plugga Tech",
   "license": "ISC",
   "scripts": {
-    "postinstall": "plugga init",
     "dev": "vite --port=5173",
     "build": "tsc && vite build",
     "preview": "vite preview"
